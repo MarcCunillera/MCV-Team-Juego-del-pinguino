@@ -1,10 +1,19 @@
 package Modelo;
 
-public class Foca_CPU {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+public class Foca_CPU extends Usuarios {
+	
+	// Hem definit el constructor
+	public Foca_CPU (int ID) {
+		super(ID);
 	}
-
+	
+    // Metodes de la classe foca
+	public void quitarInventario() {
+		
+	}
+	
+	public void Golpear() {
+		
+	}
+	
 }
