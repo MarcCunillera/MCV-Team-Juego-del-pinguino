@@ -2,9 +2,18 @@ package Controlador;
 
 public class Casilla {
 
+	/*
+	 * Creacion de las variables
+	 */
+	
 	private int idCasilla;
 	private int TipoCasilla;
 	private int JugadoresCasilla;
+	
+	/*
+	 * Constructor de la Clase de Casilla
+	 */
+	
 	
 	public Casilla (int idCasilla, int TipoCasilla, int JugadoresCasilla) {
 		
@@ -13,6 +22,10 @@ public class Casilla {
 		this.JugadoresCasilla = JugadoresCasilla;
 		
 	}
+	
+	/*
+	 * Getter y los Setters de cada Variable
+	 */
 	
 	public int getidCasilla() {
 		
