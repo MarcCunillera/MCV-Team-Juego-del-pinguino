@@ -1,5 +1,5 @@
 package Controlador;
-
+import java.util.Random;
 public class Eventos {
 
 	/*
@@ -41,23 +41,27 @@ public class Eventos {
 	 * Metodos de los tipos de Casillas y Objetos
 	 */
 	
-	
-	public void Trineo() {
-	
+	public void CasillaInterogante(int Casilla ) {
+		
+		Random eventAL = new Random();
+		
+		int AjHielo = 1;
+		int Trineu = 2;
+		int oso = 3 ;
+		int Motnieve = 4 ;
+				
+		
 	}
 	
 	
-	public void CasillaInterogante() {
 	
+	public void Trineo(int trineo) {
+		
+		
 	}
 	
 	
 	public void CasillaQuebradiza() {
-	
-	}
-	
-	
-	public void GuerraJugadores() {
 	
 	}
 	
