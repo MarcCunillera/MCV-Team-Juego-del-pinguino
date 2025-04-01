@@ -69,5 +69,9 @@ public class Casilla {
 		
 	}
 	
+	public void GuerraJugadores() {
+		
+	}
+	
 	
 }

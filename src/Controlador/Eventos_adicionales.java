@@ -2,9 +2,23 @@ package Controlador;
 
 public class Eventos_adicionales {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	/*
+	 * Metodos de Perder Turno y Perder 1 objeto Aleatorio
+	 */
+	
+	
+	public void PerderTurno() {
+		
+		
+		
 	}
-
+	
+	public void PerderObjetoAleatorio() {
+		
+		
+		
+	}
+	
+	
+	
 }
