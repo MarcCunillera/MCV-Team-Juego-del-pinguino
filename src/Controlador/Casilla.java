@@ -73,5 +73,17 @@ public class Casilla {
 		
 	}
 	
+	/*
+	 * La letra ( norm ) es una casilla normal
+	 * 
+	 * La palabra ( evn ) para las casillas con los eventos normales
+	 * 
+	 * La palabra ( espc ) para las casillas con los eventos normales
+	 * 
+	 */
+	
+	
+	
+	
 	
 }
