@@ -49,7 +49,14 @@ public class Eventos {
 		int Trineu = 2;
 		int oso = 3 ;
 		int Motnieve = 4 ;
-				
+
+		int Evento = eventAL.nextInt(4)+1 ;
+		
+		while () {
+			
+		}
+		
+		
 		
 	}
 	
@@ -60,14 +67,20 @@ public class Eventos {
 		
 	}
 	
+	/*
+	 * Este metodo afecta al jugador en el inventario ( Para mas de un 8 )
+	 */
 	
-	public void CasillaQuebradiza() {
-	
-	}
+//	public void CasillaQuebradiza() {
+//	
+//	}
 	
 	
 	public void Oso() {
 	
+		int JugadorAtacado
+		
+		
 	}
 	
 	
