@@ -4,26 +4,20 @@ import java.util.ArrayList;
 public class Tablero {
 
 	// Hem instanciat les variables
-	private int casillas;
 	private ArrayList tablero;
+	private int turno;
 	
 	// Hem definit el constructor
-	public Tablero(int casillas) {
-		this.casillas = 50;
-		this.tablero = tablero;
+	public Tablero(ArrayList tablero, int turno ) {
+		this.turno = 0;
+		this.tablero = new ArrayList();
+		tablero.ensureCapacity(50); //asegurar un tamaño (50)
 	}
 	
 	// Geters y seters
-	public int getcasillas() {
-        return casillas;
-    }
 	public ArrayList gettablero() {
 		return tablero;
 	}
-
-    public void setcasillas(int casillas) {
-        this.casillas = casillas;
-    }
     
     public void settablero(ArrayList tablero) {
     	this.tablero = tablero;
@@ -35,15 +29,15 @@ public class Tablero {
     }
 	
     // Metodes de la classe Tablero
-	private void GenerarTablero(int casillas, ArrayList tablero) {
+	private void GenerarTablero(ArrayList tablero) {
 		Random rn = new Random();
 		int tipoCasilla = 5; //cuando llegue al 0 se va a añadir una casilla random al tablero
-		tablero.ensureCapacity(casillas); //asegurar un tamaño
 		
 		//generación de tablero
-		for (int i = 0; i < casillas; i++) {
+		for (int i = 0; i < 50; i++) {
 			if (tipoCasilla != 0) {
 				tipoCasilla--;
+				tablero.add("norm");
 			}else if (tipoCasilla == 0) {
 				tipoCasilla = rn.nextInt(5) +1; //elegir cuantas casillas van a saltar hasta una nueva especial
 				
@@ -51,11 +45,28 @@ public class Tablero {
 		}
 	}
 	
-	private void OrigenTablero() {
+	private void OrigenTablero(ArrayList tablero) {
+		//sirve para poder mover el jugador con el trineo o el agujero
+		
+		
 		
 	}
 	
-	private void DestinoTablero() {
+	private void MoverPinguino(ArrayList<Pinguino> ListaPinguinos) {
+		//posición del jugador al tirar el dado
+		
+		Pinguino pingu = ListaPinguinos.get(turno); //obtener turno
+		if(ListaPinguinos.isEmpty()) {
+			System.out.println("No hay pinguinos");
+		}else {
+			
+			//obtener resultado dado
+			int resul = pingu.TirarDado();
+			System.out.println(pingu.getnombre() + " Con ID: " + pingu.getID() + " Ha sacado un: " + resul);
+			
+			//avanzar turno
+			turno = (turno + 1) % ListaPinguinos.size();
+		}
 		
 	}
 	

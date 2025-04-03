@@ -1,5 +1,5 @@
 package Modelo;
-
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Pinguino extends Usuarios {
@@ -8,14 +8,24 @@ public class Pinguino extends Usuarios {
 	private String color;
 	private String nombre;
 	
+	//lista estatica para almacenar pinguinos
+	private ArrayList<Pinguino> ListaPinguinos = new ArrayList<>();
+	
 	// Hem definit el constructor
 	public Pinguino ( int ID, String color, String nombre) {
 		super(ID);
 		this.color = color;
 		this.nombre = nombre;
+		
+		ListaPinguinos.add(this); //añadir los pinguinos dentro de la lista
 	}
+	
 
 	// Geters y seters
+	public ArrayList<Pinguino> getListaPinguinos(){
+		return ListaPinguinos;
+	}
+	
     public String getcolor() {
         return color;
     }
@@ -38,11 +48,12 @@ public class Pinguino extends Usuarios {
     }
     
     // Metodes de la classe pinguino
-    public void TirarDado() {
+    public int TirarDado() {
     	
     	Random dado = new Random();
         int avanzar = dado.nextInt(6) + 1; // Genera un número de 1 a 6
         System.out.println(nombre + " ha tirat el dau i ha avançat " + avanzar + " caselles.");
+        return avanzar;
     	
     }
     
