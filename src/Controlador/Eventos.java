@@ -108,7 +108,7 @@ public class Eventos {
 		
 		System.out.println("Quieres Sobornar al Oso o aceptar la penalizacion ???");
 		
-		Iventario soborno;
+		Inventario soborno;
 		
 		soborno = new Inventario();
 		
@@ -120,14 +120,14 @@ public class Eventos {
 		
 		if else(oso == Xjugador) {
 			
-			
+			Xjugador.RetornoJugador();
 			System.out.println("El oso te ha atacado ( vuelves al principio del juego )");
 			
 		}
 		
 		else {
 			
-			
+			Xjugador.RetornoJugador();
 			
 		}
 			
