@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.util.Random;
+
 public class Pinguino extends Usuarios {
 	
 	// Hem instanciat les variables
@@ -38,13 +40,19 @@ public class Pinguino extends Usuarios {
     // Metodes de la classe pinguino
     public void TirarDado() {
     	
+    	Random dado = new Random();
+        int avanzar = dado.nextInt(6) + 1; // Genera un número de 1 a 6
+        System.out.println(nombre + " ha tirat el dau i ha avançat " + avanzar + " caselles.");
+    	
     }
     
     public void UsarBolasNieve() {
     	
+    	
     }
     
     public void AlimentarFoca() {
+    	
     	
     }
 
