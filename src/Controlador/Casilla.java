@@ -66,10 +66,13 @@ public class Casilla {
 	public void InteracionEvento () {
 		
 		
-		
 	}
 	
 	public void GuerraJugadores() {
+		
+	}
+	
+	public void RetornoJugador() {
 		
 	}
 	
