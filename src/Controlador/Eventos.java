@@ -35,6 +35,7 @@ public class Eventos {
 	
 	public void AgujeroHielo() {
 		
+		
 	}
 	
 	/*
@@ -48,8 +49,38 @@ public class Eventos {
 		int AjHielo = 1;
 		int Trineu = 2;
 		int oso = 3 ;
-		int Motnieve = 4 ;
+
+		int Evento = eventAL.nextInt(3)+1 ;
+		
+		// Cambiar Obligatoriamnte ( esta de momento el true )
+		
+		while (true) {
+			
+			if(AjHielo == 1) {
 				
+				//AjHielo.AgujeroHielo();
+				
+				System.out.println("Has caido dentro de un agujero de hielo !!!");
+				
+			}
+			
+			else if(Trineu == 2){
+				
+				//Trienu.Trineo();
+				
+				System.out.println("De trineo a trineo !!!");
+				
+			}
+			
+			else if(oso == 3) {
+				
+				System.out.println("Has sido atacado por un Oso !!!");
+				
+				System.out.println("Vuelves al principio del juego");
+				
+			}
+			
+		}
 		
 	}
 	
@@ -60,20 +91,30 @@ public class Eventos {
 		
 	}
 	
+	/*
+	 * Este metodo afecta al jugador en el inventario ( Para mas de un 8 )
+	 */
 	
-	public void CasillaQuebradiza() {
-	
-	}
+//	public void CasillaQuebradiza() {
+//	
+//	}
 	
 	
 	public void Oso() {
 	
-	}
-	
-	
-	public void MotosNieve() {
+		int JugadorAtacado;
+		
 		
 	}
+	
+	
+	/*
+	 * Este metodo afecta al jugador en el inventario ( Para mas de un 8 )
+	 */
+	
+//	public void MotosNieve() {
+//		
+//	}
 
 	
 }
