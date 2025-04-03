@@ -1,5 +1,6 @@
 package Controlador;
 import java.util.Random;
+import Modelo.Inventario;
 public class Eventos {
 
 	/*
@@ -35,7 +36,6 @@ public class Eventos {
 	
 	public void AgujeroHielo() {
 		
-		
 	}
 	
 	/*
@@ -52,35 +52,33 @@ public class Eventos {
 
 		int Evento = eventAL.nextInt(3)+1 ;
 		
-		// Cambiar Obligatoriamnte ( esta de momento el true )
 		
-		while (true) {
+		if(AjHielo == 1) {
 			
-			if(AjHielo == 1) {
-				
-				//AjHielo.AgujeroHielo();
-				
-				System.out.println("Has caido dentro de un agujero de hielo !!!");
-				
-			}
+			//AjHielo.AgujeroHielo();
 			
-			else if(Trineu == 2){
-				
-				//Trienu.Trineo();
-				
-				System.out.println("De trineo a trineo !!!");
-				
-			}
-			
-			else if(oso == 3) {
-				
-				System.out.println("Has sido atacado por un Oso !!!");
-				
-				System.out.println("Vuelves al principio del juego");
-				
-			}
+			System.out.println("Has caido dentro de un agujero de hielo !!!");
 			
 		}
+		
+		else if(Trineu == 2){
+			
+			//Trienu.Trineo();
+			
+			System.out.println("De trineo a trineo !!!");
+			
+		}
+		
+		else if(oso == 3) {
+			
+			//oso.Oso();
+			
+			System.out.println("Has sido atacado por un Oso !!!");
+			
+			System.out.println("Vuelves al principio del juego");
+			
+		}
+		
 		
 	}
 	
@@ -100,17 +98,45 @@ public class Eventos {
 //	}
 	
 	
-	public void Oso() {
+	public void Oso(int CasillaN1) {
 	
 		int JugadorAtacado;
+		int Xjugador;
+		int CPU;
+		int soborno = 0;
+		int oso;
+		
+		System.out.println("Quieres Sobornar al Oso o aceptar la penalizacion ???");
+		
+		Iventario soborno;
+		
+		soborno = new Inventario();
+		
+		if(oso == soborno.vistaInventario) {
+			
+			System.out.println("El Oso ha sido sobornado con los ( 2 peces )");
+			
+		}
+		
+		if else(oso == Xjugador) {
+			
+			
+			System.out.println("El oso te ha atacado ( vuelves al principio del juego )");
+			
+		}
+		
+		else {
+			
+			
+			
+		}
+			
+		
+		return Xjugador;
 		
 		
 	}
 	
-	
-	/*
-	 * Este metodo afecta al jugador en el inventario ( Para mas de un 8 )
-	 */
 	
 //	public void MotosNieve() {
 //		
