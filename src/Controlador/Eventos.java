@@ -103,7 +103,6 @@ public class Eventos {
 		int JugadorAtacado;
 		int Xjugador;
 		int CPU;
-		int soborno = 0;
 		int oso;
 		
 		System.out.println("Quieres Sobornar al Oso o aceptar la penalizacion ???");
