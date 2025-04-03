@@ -1,5 +1,5 @@
 package Controlador;
-
+import java.util.ArrayList;
 public class Casilla {
 
 	/*
@@ -7,7 +7,7 @@ public class Casilla {
 	 */
 	
 	private int idCasilla;
-	private int TipoCasilla;
+	private ArrayList TipoCasilla;
 	private int JugadoresCasilla;
 	
 	/*
@@ -15,10 +15,11 @@ public class Casilla {
 	 */
 	
 	
-	public Casilla (int idCasilla, int TipoCasilla, int JugadoresCasilla) {
+	public Casilla (int idCasilla, ArrayList TipoCasilla, int JugadoresCasilla) {
 		
 		this.idCasilla = idCasilla;
 		this.TipoCasilla = TipoCasilla;
+		TipoCasilla.ensureCapacity(3);
 		this.JugadoresCasilla = JugadoresCasilla;
 		
 	}
@@ -39,12 +40,12 @@ public class Casilla {
 	}
 	
 	
-	public int getTipoCasilla() {
+	public ArrayList getTipoCasilla() {
 		
 		return TipoCasilla;
 		
 	}
-	public void getTipoCasilla(int TipoCasilla) {
+	public void getTipoCasilla(ArrayList TipoCasilla) {
 		
 		this.TipoCasilla = TipoCasilla;
 		
