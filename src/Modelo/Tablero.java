@@ -64,6 +64,7 @@ public class Tablero {
 			int resul = pingu.TirarDado();
 			System.out.println(pingu.getnombre() + " Con ID: " + pingu.getID() + " Ha sacado un: " + resul);
 			
+			
 			//avanzar turno
 			turno = (turno + 1) % ListaPinguinos.size();
 		}

@@ -1,6 +1,7 @@
 package Modelo;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Pinguino extends Usuarios {
 	
@@ -49,12 +50,33 @@ public class Pinguino extends Usuarios {
     
     // Metodes de la classe pinguino
     public int TirarDado() {
+    	Scanner sc = new Scanner(System.in);
+    	Random rn = new Random();
     	
-    	Random dado = new Random();
-        int avanzar = dado.nextInt(6) + 1; // Genera un número de 1 a 6
-        System.out.println(nombre + " ha tirat el dau i ha avançat " + avanzar + " caselles.");
-        return avanzar;
+    	System.out.println("Elige el tipo de dado:");
+    	System.out.println("1- Dado normal");
+    	System.out.println("2- Dado rápido");
+    	System.out.println("3- Dado lento");
+    	int tipoDado = sc.nextInt();
     	
+    	//comprobador
+    	while (tipoDado < 1 || tipoDado > 3) {
+    		System.out.print("El tipo no es válido (1 - 3): ");
+    		tipoDado = sc.nextInt();
+    	}
+    	
+    	//casos
+    	switch(tipoDado) {
+    	case 1:
+    		System.out.println("Has elegido dado Normal");
+    		break;
+    	case 2: 
+    		System.out.println("Has elegido dado Rápido");
+    		break;
+    	case 3:
+    		System.out.println("Has elegido dado Lento");
+    		break;
+    	}
     }
     
     public void UsarBolasNieve() {
