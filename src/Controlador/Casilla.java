@@ -1,5 +1,8 @@
 package Controlador;
+
 import java.util.ArrayList;
+import java.util.Random;
+
 public class Casilla {
 
 	/*
@@ -64,9 +67,23 @@ public class Casilla {
 	}
 
 	
-	public void InteracionEvento () {
+	
+	public static String InteracionEvento() {
 		
+		Dados Dado = new Dados();
 		
+		String[] opciones = {"Bolas de nieve", "Pez", "Dado lento", "Dado rápido"};
+		
+		this.Dados.getDadoRapido().
+		
+		Random random = new Random();
+		
+		int indiceAleatorio = random.nextInt(opciones.length);
+		
+		String resultado = opciones[indiceAleatorio];
+		System.out.println("Te ha tocado: " + resultado);
+		
+		return resultado;
 	}
 	
 	public void GuerraJugadores() {
