@@ -18,7 +18,7 @@ public class Casilla {
 	public Casilla (int idCasilla, ArrayList TipoCasilla, int JugadoresCasilla) {
 		
 		this.idCasilla = idCasilla;
-		this.TipoCasilla = TipoCasilla;
+		this.TipoCasilla = new ArrayList<>();
 		TipoCasilla.ensureCapacity(3);
 		this.JugadoresCasilla = JugadoresCasilla;
 		
