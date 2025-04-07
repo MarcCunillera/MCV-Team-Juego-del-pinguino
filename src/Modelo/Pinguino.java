@@ -49,7 +49,7 @@ public class Pinguino extends Usuarios {
     }
     
     // Metodes de la classe pinguino
-    public int TirarDado() {
+    public int TirarDado(int Dado) {
     	Scanner sc = new Scanner(System.in);
     	Random rn = new Random();
     	
@@ -69,14 +69,18 @@ public class Pinguino extends Usuarios {
     	switch(tipoDado) {
     	case 1:
     		System.out.println("Has elegido dado Normal");
+    		
     		break;
     	case 2: 
     		System.out.println("Has elegido dado Rápido");
+    		
     		break;
     	case 3:
     		System.out.println("Has elegido dado Lento");
+    		
     		break;
     	}
+    	return Dado;
     }
     
     public void UsarBolasNieve() {

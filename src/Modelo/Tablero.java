@@ -31,7 +31,7 @@ public class Tablero {
     // Metodes de la classe Tablero
 	private void GenerarTablero(ArrayList tablero) {
 		Random rn = new Random();
-		int tipoCasilla = 5; //cuando llegue al 0 se va a añadir una casilla random al tablero
+		int tipoCasilla = 3; //cuando llegue al 0 se va a añadir una casilla random al tablero
 		
 		//generación de tablero
 		for (int i = 0; i < 50; i++) {
@@ -39,7 +39,7 @@ public class Tablero {
 				tipoCasilla--;
 				tablero.add("norm");
 			}else if (tipoCasilla == 0) {
-				tipoCasilla = rn.nextInt(5) +1; //elegir cuantas casillas van a saltar hasta una nueva especial
+				tipoCasilla = rn.nextInt(4) +1; //elegir cuantas casillas van a saltar hasta una nueva especial
 				
 			}
 		}
@@ -52,7 +52,7 @@ public class Tablero {
 		
 	}
 	
-	private void MoverPinguino(ArrayList<Pinguino> ListaPinguinos) {
+	private void MoverPinguino(ArrayList<Pinguino> ListaPinguinos, int Dado) {
 		//posición del jugador al tirar el dado
 		
 		Pinguino pingu = ListaPinguinos.get(turno); //obtener turno
@@ -61,7 +61,7 @@ public class Tablero {
 		}else {
 			
 			//obtener resultado dado
-			int resul = pingu.TirarDado();
+			int resul = pingu.TirarDado(Dado);
 			System.out.println(pingu.getnombre() + " Con ID: " + pingu.getID() + " Ha sacado un: " + resul);
 			
 			
