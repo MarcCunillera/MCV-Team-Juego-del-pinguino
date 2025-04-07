@@ -98,44 +98,44 @@ public class Eventos {
 //	}
 	
 	
-	public void Oso(int CasillaN1) {
-	
-		int JugadorAtacado;
-		int Xjugador;
-		int CPU;
-		int soborno = 0;
-		int oso;
-		
-		System.out.println("Quieres Sobornar al Oso o aceptar la penalizacion ???");
-		
-		Iventario soborno;
-		
-		soborno = new Inventario();
-		
-		if(oso == soborno.vistaInventario) {
-			
-			System.out.println("El Oso ha sido sobornado con los ( 2 peces )");
-			
-		}
-		
-		if else(oso == Xjugador) {
-			
-			
-			System.out.println("El oso te ha atacado ( vuelves al principio del juego )");
-			
-		}
-		
-		else {
-			
-			
-			
-		}
-			
-		
-		return Xjugador;
-		
-		
-	}
+//	public void Oso(int CasillaN1) {
+//	
+//		int JugadorAtacado;
+//		int Xjugador;
+//		int CPU;
+//		int soborno = 0;
+//		int oso;
+//		
+//		System.out.println("Quieres Sobornar al Oso o aceptar la penalizacion ???");
+//		
+//		Iventario soborno;
+//		
+//		soborno = new Inventario();
+//		
+//		if(oso == soborno.vistaInventario) {
+//			
+//			System.out.println("El Oso ha sido sobornado con los ( 2 peces )");
+//			
+//		}
+//		
+//		if else(oso == Xjugador) {
+//			
+//			
+//			System.out.println("El oso te ha atacado ( vuelves al principio del juego )");
+//			
+//		}
+//		
+//		else {
+//			
+//			
+//			
+//		}
+//			
+//		
+//		return Xjugador;
+//		
+//		
+//	}
 	
 	
 //	public void MotosNieve() {

@@ -29,7 +29,7 @@ public class Tablero {
     }
 	
     // Metodes de la classe Tablero
-	private void GenerarTablero(ArrayList tablero) {
+	public void GenerarTablero(ArrayList tablero) {
 		Random rn = new Random();
 		int tipoCasilla = 3; //cuando llegue al 0 se va a añadir una casilla random al tablero
 		
@@ -45,14 +45,28 @@ public class Tablero {
 		}
 	}
 	
-	private void OrigenTablero(ArrayList tablero) {
+	public void OrigenTablero(ArrayList tablero, ArrayList<Pinguino> ListaPinguinos) {
 		//sirve para poder mover el jugador con el trineo o el agujero
+		Pinguino pingu = ListaPinguinos.get(turno);
+		int posic = pingu.getPosicion();
+		boolean EventoesAgujero = false;
+		boolean agujero = false;
+		int posicAgujero;
 		
+		if (EventoesAgujero) {
+			for (int i = posic; i < posic && i > 0; i--) {
+				
+			}
+		} else {
+			for (int i = posic; i < tablero.size(); i++) {
+				
+			}
+		}
 		
 		
 	}
 	
-	private void MoverPinguino(ArrayList<Pinguino> ListaPinguinos, int Dado) {
+	public void MoverPinguino(ArrayList<Pinguino> ListaPinguinos, int Dado) {
 		//posición del jugador al tirar el dado
 		
 		Pinguino pingu = ListaPinguinos.get(turno); //obtener turno

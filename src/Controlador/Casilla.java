@@ -24,6 +24,11 @@ public class Casilla {
 		
 	}
 	
+	//método para asignar id de tipo de casilla
+	public void asignarCasillas() {
+		
+	}
+	
 	/*
 	 * Getter y los Setters de cada Variable
 	 */
@@ -69,9 +74,9 @@ public class Casilla {
 		
 	}
 	
-	public void GuerraJugadores() {
-		
-	}
+//	public void GuerraJugadores() {
+//		
+//	}
 	
 	public void RetornoJugador() {
 		
