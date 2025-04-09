@@ -3,6 +3,7 @@ package Controlador;
 import java.util.ArrayList;
 import java.util.Random;
 import Modelo.*;
+import Prueba.Inventario;
 
 public class Casilla {
 	
@@ -98,6 +99,94 @@ public class Casilla {
 	public void RetornoJugador() {
 		
 	}
+	
+	public void AgujeroHielo() {
+		
+	}
+	
+	/*
+	 * Metodos de los tipos de Casillas y Objetos
+	 */
+	
+	public void CasillaInterogante(int Casilla ) {
+		
+		Random eventAL = new Random();
+		
+		int AjHielo = 1;
+		int Trineu = 2;
+		int oso = 3 ;
+
+		int Evento = eventAL.nextInt(3)+1 ;
+		
+		
+		if(Evento == AjHielo) {
+			
+			//AjHielo.AgujeroHielo();
+			
+			System.out.println("Has caido dentro de un agujero de hielo !!!");
+			
+		}
+		
+		else if(Evento == Trineu){
+			
+			//Trienu.Trineo();
+			
+			System.out.println("De trineo a trineo !!!");
+			
+		}
+		
+		else if(Evento == oso) {
+			
+			//oso.Oso();
+			
+			System.out.println("Has sido atacado por un Oso !!!");
+			
+			System.out.println("Vuelves al principio del juego");
+			
+		}
+		
+		
+	}
+	
+	
+	
+	public void Trineo(int trineo) {
+		
+		
+	}
+
+	
+	public void Oso(int CasillaN1) {
+	
+		int JugadorAtacado;
+		int Xjugador;
+		int CPU;
+		int oso;
+		
+		System.out.println("Quieres Sobornar al Oso o aceptar la penalizacion ???");
+		
+		Inventario soborno;
+		
+		soborno = new Inventario();
+		
+		if(oso == soborno.vistaInventario) {
+			
+			System.out.println("El Oso ha sido sobornado con los ( 2 peces )");
+			
+		}
+		
+		else {
+			
+			Xjugador.RetornoJugador();
+			System.out.println("El oso te ha atacado ( vuelves al principio del juego )");
+		
+		}
+		
+		return Xjugador;
+		
+		
+	}
+	
 	
 	/*
 	 * La letra ( norm ) es una casilla normal
