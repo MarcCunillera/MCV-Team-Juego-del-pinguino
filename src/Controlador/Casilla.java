@@ -2,35 +2,76 @@ package Controlador;
 
 import java.util.ArrayList;
 import java.util.Random;
+import Modelo.*;
 
 public class Casilla {
-
-	/*
-	 * Creacion de las variables
-	 */
 	
 	private int idCasilla;
-	private ArrayList TipoCasilla;
-	private int JugadoresCasilla;
-	
-	/*
-	 * Constructor de la Clase de Casilla
-	 */
+	private int idTipoCasilla;
+	private String TipoCasilla;
 	
 	
-	public Casilla (int idCasilla, ArrayList TipoCasilla, int JugadoresCasilla) {
+	public Casilla (int idCasilla, int idTipoCasilla, String TipoCasilla) {
 		
 		this.idCasilla = idCasilla;
-		this.TipoCasilla = new ArrayList<>();
-		TipoCasilla.ensureCapacity(3);
-		this.JugadoresCasilla = JugadoresCasilla;
+		this.idTipoCasilla = idTipoCasilla;
+		this.TipoCasilla = TipoCasilla;
 		
 	}
 	
-	/*
-	 * Getter y los Setters de cada Variable
-	 */
+	//método para asignar id de tipo de casilla
+	public static void asignarCasillas(int idCasilla, ArrayList<Casilla> tablero) {
+		Random rn = new Random();
+		int tipo = rn.nextInt(13);
+		int contOsos = 0;
+		int contTrineos = 0;
+		int contAguj = 0;
+		
+		int idTipo = 0;
+		String nombreTipo = "";
+		
+		switch (tipo) {
+		case 0:
+			//casilla normal
+			idTipo = 0;
+			nombreTipo = "Normal";
+			break;
+		case 1:
+			//oso
+			idTipo = 1;
+			nombreTipo = "oso";
+			contOsos++;
+			break;
+		case 2:
+			//agujero en el hielo
+			idTipo = 2;
+			nombreTipo = "agujero en el hielo";
+			contAguj++;
+			break;
+		case 3:
+			//trineo
+			idTipo = 3;
+			nombreTipo = "trineo";
+			contTrineos++;
+			break;
+		case 4:
+			//evento aleatorio
+			//obtener un pez, obtener 1-3 bolas de nieve, dado rapido (probabilidad baja), dado lento (probabilidad alta)
+			idTipo = 4;
+			nombreTipo = "Evento aleatório";
+			break;
+		default:
+			//casilla normal
+			idTipo = 0;
+			nombreTipo = "Normal";
+			break;
+		}
+		
+		Casilla nuevaCasilla = new Casilla(idCasilla, idTipo, nombreTipo); //generar la casilla
+		tablero.add(nuevaCasilla); //añadir la casilla al tablero
+	}
 	
+	//Getters y setters
 	public int getidCasilla() {
 		
 		return idCasilla;
@@ -43,53 +84,17 @@ public class Casilla {
 	}
 	
 	
-	public ArrayList getTipoCasilla() {
+	public String getTipoCasilla() {
 		
 		return TipoCasilla;
 		
 	}
-	public void getTipoCasilla(ArrayList TipoCasilla) {
+	public void getTipoCasilla(String TipoCasilla) {
 		
 		this.TipoCasilla = TipoCasilla;
 		
 	}
-	
-	
-	public int getJugadoresCasilla() {
-		
-		return JugadoresCasilla;
-		
-	}
-	public void getJugadoresCasilla(int JugadoresCasilla) {
-		
-		this.JugadoresCasilla = JugadoresCasilla;
-		
-	}
 
-	
-	
-	public static String InteracionEvento() {
-		
-		Dados Dado = new Dados();
-		
-		String[] opciones = {"Bolas de nieve", "Pez", "Dado lento", "Dado rápido"};
-		
-		this.Dados.getDadoRapido().
-		
-		Random random = new Random();
-		
-		int indiceAleatorio = random.nextInt(opciones.length);
-		
-		String resultado = opciones[indiceAleatorio];
-		System.out.println("Te ha tocado: " + resultado);
-		
-		return resultado;
-	}
-	
-	public void GuerraJugadores() {
-		
-	}
-	
 	public void RetornoJugador() {
 		
 	}
@@ -102,9 +107,5 @@ public class Casilla {
 	 * La palabra ( espc ) para las casillas con los eventos normales
 	 * 
 	 */
-	
-	
-	
-	
 	
 }

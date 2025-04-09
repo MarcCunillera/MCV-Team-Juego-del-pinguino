@@ -1,27 +1,23 @@
 package Modelo;
 import java.util.Random;
 import java.util.ArrayList;
+import Controlador.*;
 public class Tablero {
 
 	// Hem instanciat les variables
-	private ArrayList tablero;
+	private ArrayList<Casilla> tablero;
 	private int turno;
 	
 	// Hem definit el constructor
 	public Tablero(ArrayList tablero, int turno ) {
+		this.tablero = new ArrayList(50);
 		this.turno = 0;
-		this.tablero = new ArrayList();
-		tablero.ensureCapacity(50); //asegurar un tamaño (50)
 	}
 	
 	// Geters y seters
-	public ArrayList gettablero() {
+	public ArrayList<Casilla> gettablero() {
 		return tablero;
 	}
-    
-    public void settablero(ArrayList tablero) {
-    	this.tablero = tablero;
-    }
     
     // ToString per mostra las casillas
     public String toString() {
@@ -29,30 +25,36 @@ public class Tablero {
     }
 	
     // Metodes de la classe Tablero
-	private void GenerarTablero(ArrayList tablero) {
+	public void GenerarTablero() {
 		Random rn = new Random();
-		int tipoCasilla = 3; //cuando llegue al 0 se va a añadir una casilla random al tablero
-		
 		//generación de tablero
 		for (int i = 0; i < 50; i++) {
-			if (tipoCasilla != 0) {
-				tipoCasilla--;
-				tablero.add("norm");
-			}else if (tipoCasilla == 0) {
-				tipoCasilla = rn.nextInt(4) +1; //elegir cuantas casillas van a saltar hasta una nueva especial
-				
-			}
+			Casilla.asignarCasillas(i, tablero); //llamar al método para generar el tablero
 		}
 	}
 	
-	private void OrigenTablero(ArrayList tablero) {
+	public void OrigenTablero(ArrayList<Casilla> tablero, ArrayList<Pinguino> ListaPinguinos) {
 		//sirve para poder mover el jugador con el trineo o el agujero
+		Pinguino pingu = ListaPinguinos.get(turno);
+		int posic = pingu.getPosicion();
+		boolean EventoesAgujero = false;
+		boolean agujero = false;
+		int posicAgujero;
 		
+		if (EventoesAgujero) {
+			for (int i = posic; i < posic && i > 0; i--) {
+				
+			}
+		} else {
+			for (int i = posic; i < tablero.size(); i++) {
+				
+			}
+		}
 		
 		
 	}
 	
-	private void MoverPinguino(ArrayList<Pinguino> ListaPinguinos, int Dado) {
+	public void MoverPinguino(ArrayList<Pinguino> ListaPinguinos, int Dado) {
 		//posición del jugador al tirar el dado
 		
 		Pinguino pingu = ListaPinguinos.get(turno); //obtener turno
