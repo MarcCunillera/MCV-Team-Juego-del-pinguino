@@ -1,27 +1,23 @@
 package Modelo;
 import java.util.Random;
 import java.util.ArrayList;
+import Controlador.*;
 public class Tablero {
 
 	// Hem instanciat les variables
-	private ArrayList tablero;
+	private ArrayList<Casilla> tablero;
 	private int turno;
 	
 	// Hem definit el constructor
 	public Tablero(ArrayList tablero, int turno ) {
+		this.tablero = new ArrayList(50);
 		this.turno = 0;
-		this.tablero = new ArrayList();
-		tablero.ensureCapacity(50); //asegurar un tamaño (50)
 	}
 	
 	// Geters y seters
-	public ArrayList gettablero() {
+	public ArrayList<Casilla> gettablero() {
 		return tablero;
 	}
-    
-    public void settablero(ArrayList tablero) {
-    	this.tablero = tablero;
-    }
     
     // ToString per mostra las casillas
     public String toString() {
@@ -29,19 +25,14 @@ public class Tablero {
     }
 	
     // Metodes de la classe Tablero
-	public void GenerarTablero(ArrayList tablero) {
+	public void GenerarTablero(ArrayList tablero, boolean b) {
 		Random rn = new Random();
 		int tipoCasilla = 3; //cuando llegue al 0 se va a añadir una casilla random al tablero
 		
+		
 		//generación de tablero
-		for (int i = 0; i < 50; i++) {
-			if (tipoCasilla != 0) {
-				tipoCasilla--;
-				tablero.add("norm");
-			}else if (tipoCasilla == 0) {
-				tipoCasilla = rn.nextInt(4) +1; //elegir cuantas casillas van a saltar hasta una nueva especial
-				
-			}
+		for (int i = 1; i < 51; i++) {
+			
 		}
 	}
 	

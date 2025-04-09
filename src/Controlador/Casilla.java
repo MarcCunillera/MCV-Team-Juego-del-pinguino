@@ -1,32 +1,61 @@
 package Controlador;
 import java.util.ArrayList;
+import java.util.Random;
+import Modelo.*;
 public class Casilla {
-
-	/*
-	 * Creacion de las variables
-	 */
 	
 	private int idCasilla;
-	private ArrayList TipoCasilla;
-	private int JugadoresCasilla;
-	
-	/*
-	 * Constructor de la Clase de Casilla
-	 */
+	private int idTipoCasilla;
+	private String TipoCasilla;
 	
 	
-	public Casilla (int idCasilla, ArrayList TipoCasilla, int JugadoresCasilla) {
+	public Casilla (int idCasilla, int idTipoCasilla, String TipoCasilla) {
 		
 		this.idCasilla = idCasilla;
-		this.TipoCasilla = new ArrayList<>();
-		TipoCasilla.ensureCapacity(3);
-		this.JugadoresCasilla = JugadoresCasilla;
+		this.idTipoCasilla = idTipoCasilla;
+		this.TipoCasilla = TipoCasilla;
 		
 	}
 	
 	//método para asignar id de tipo de casilla
-	public void asignarCasillas() {
+	public void asignarCasillas(Random rn, ArrayList<Casilla> tablero, int idCasilla) {
+		int tipo = rn.nextInt(5);
 		
+		int idTipo;
+		String nombreTipo;
+		
+		switch (tipo) {
+		case 0:
+			//casilla normal
+			idTipo = 0;
+			nombreTipo = "Normal";
+			break;
+		case 1:
+			//oso
+			idTipo = 1;
+			nombreTipo = "oso";
+			break;
+		case 2:
+			//agujero en el hielo
+			idTipo = 2;
+			nombreTipo = "agujero en el hielo";
+			break;
+		case 3:
+			//trineo
+			idTipo = 3;
+			nombreTipo = "trineo";
+			break;
+		case 4:
+			//evento aleatorio
+			//obtener un pez, obtener 1-3 bolas de nieve, dado rapido (probabilidad baja), dado lento (probabilidad alta)
+			idTipo = 4;
+			nombreTipo = "Evento aleatório";
+			break;
+		}
+	}
+	
+	public int eventoAl() {
+		return 1;
 	}
 	
 	/*
@@ -45,29 +74,17 @@ public class Casilla {
 	}
 	
 	
-	public ArrayList getTipoCasilla() {
+	public String getTipoCasilla() {
 		
 		return TipoCasilla;
 		
 	}
-	public void getTipoCasilla(ArrayList TipoCasilla) {
+	public void getTipoCasilla(String TipoCasilla) {
 		
 		this.TipoCasilla = TipoCasilla;
 		
 	}
 	
-	
-	public int getJugadoresCasilla() {
-		
-		return JugadoresCasilla;
-		
-	}
-	public void getJugadoresCasilla(int JugadoresCasilla) {
-		
-		this.JugadoresCasilla = JugadoresCasilla;
-		
-	}
-
 	
 	public void InteracionEvento () {
 		

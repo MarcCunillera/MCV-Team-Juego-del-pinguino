@@ -11,7 +11,7 @@ public class Pinguino extends Usuarios {
 	private int posicion;
 	
 	//lista estatica para almacenar pinguinos
-	private ArrayList<Pinguino> ListaPinguinos = new ArrayList<>();
+	public ArrayList<Pinguino> ListaPinguinos = new ArrayList<>();
 	
 	// Hem definit el constructor
 	public Pinguino ( int ID, String color, String nombre, int posicion) {
