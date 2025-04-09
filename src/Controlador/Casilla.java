@@ -65,25 +65,29 @@ public class Casilla {
 		this.JugadoresCasilla = JugadoresCasilla;
 		
 	}
-
 	
-	
-	public static String InteracionEvento() {
+	public static int InteracionEvento(int eventoAleatorio) {
 		
-		Dados Dado = new Dados();
+		Dados Dado = new Dados(0,0,0);
 		
-		String[] opciones = {"Bolas de nieve", "Pez", "Dado lento", "Dado rápido"};
+		int opciones [] = new int [5];
+		opciones[1] = Dado.getDadoRapido();
+		opciones[2] = Dado.getDadoNormal();
+		opciones[3] = Dado.getDadoLento();
 		
-		this.Dados.getDadoRapido().
+		Objetos Objeto = new Objetos(0,0);
 		
-		Random random = new Random();
+		opciones[4] = Objeto.getNieve();
+		opciones[5] = Objeto.getPez();
 		
-		int indiceAleatorio = random.nextInt(opciones.length);
+		Random rd = new Random();
 		
-		String resultado = opciones[indiceAleatorio];
-		System.out.println("Te ha tocado: " + resultado);
+		int InteracionAleatoria = rd.nextInt(opciones.length)+1;
 		
-		return resultado;
+		int resultado = opciones[InteracionAleatoria];
+		System.out.println("Sorpresaa!!! El evento aleatorio a sido: " + resultado);
+		
+		return eventoAleatorio;
 	}
 	
 	public void GuerraJugadores() {
