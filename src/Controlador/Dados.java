@@ -35,25 +35,4 @@ public class Dados {
 	public void setDadoLento(int dadoLento) {
 		DadoLento = dadoLento;
 	}
-	
-	public void InteraccionDado() {
-		
-	}
-	
-	public void DadoRapidoProbabilidades() {
-		
-	}
-	
-	public void DadoLentoProbabilidades() {
-		
-	}
-	
-	public void DadoEspecial() {
-		
-	}
-	
-	
-	
-	
-
 }

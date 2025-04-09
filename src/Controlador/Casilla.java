@@ -18,11 +18,15 @@ public class Casilla {
 	}
 	
 	//método para asignar id de tipo de casilla
-	public void asignarCasillas(Random rn, ArrayList<Casilla> tablero, int idCasilla) {
-		int tipo = rn.nextInt(5);
+	public static void asignarCasillas(int idCasilla, ArrayList<Casilla> tablero) {
+		Random rn = new Random();
+		int tipo = rn.nextInt(13);
+		int contOsos = 0;
+		int contTrineos = 0;
+		int contAguj = 0;
 		
-		int idTipo;
-		String nombreTipo;
+		int idTipo = 0;
+		String nombreTipo = "";
 		
 		switch (tipo) {
 		case 0:
@@ -34,16 +38,19 @@ public class Casilla {
 			//oso
 			idTipo = 1;
 			nombreTipo = "oso";
+			contOsos++;
 			break;
 		case 2:
 			//agujero en el hielo
 			idTipo = 2;
 			nombreTipo = "agujero en el hielo";
+			contAguj++;
 			break;
 		case 3:
 			//trineo
 			idTipo = 3;
 			nombreTipo = "trineo";
+			contTrineos++;
 			break;
 		case 4:
 			//evento aleatorio
@@ -51,17 +58,18 @@ public class Casilla {
 			idTipo = 4;
 			nombreTipo = "Evento aleatório";
 			break;
+		default:
+			//casilla normal
+			idTipo = 0;
+			nombreTipo = "Normal";
+			break;
 		}
+		
+		Casilla nuevaCasilla = new Casilla(idCasilla, idTipo, nombreTipo); //generar la casilla
+		tablero.add(nuevaCasilla); //añadir la casilla al tablero
 	}
 	
-	public int eventoAl() {
-		return 1;
-	}
-	
-	/*
-	 * Getter y los Setters de cada Variable
-	 */
-	
+	//Getters y setters
 	public int getidCasilla() {
 		
 		return idCasilla;
@@ -91,9 +99,7 @@ public class Casilla {
 		
 	}
 	
-//	public void GuerraJugadores() {
-//		
-//	}
+
 	
 	public void RetornoJugador() {
 		
@@ -107,9 +113,5 @@ public class Casilla {
 	 * La palabra ( espc ) para las casillas con los eventos normales
 	 * 
 	 */
-	
-	
-	
-	
 	
 }
