@@ -102,5 +102,12 @@ public class Pinguino extends Usuarios {
     	
     	
     }
+    
+    public void inventario() {
+    	this.getID();
+    	this.getPez();
+    	
+    	
+    }
 
 }
