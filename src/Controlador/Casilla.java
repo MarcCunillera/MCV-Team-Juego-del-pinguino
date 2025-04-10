@@ -3,7 +3,7 @@ package Controlador;
 import java.util.ArrayList;
 import java.util.Random;
 import Modelo.*;
-import Prueba.Inventario;
+import Modelo.Pinguino;
 
 public class Casilla {
 	
@@ -19,6 +19,36 @@ public class Casilla {
 		this.TipoCasilla = TipoCasilla;
 		
 	}
+	
+	/*
+	 * Cambiar el tipo ID de la casilla interrogante cuanbdo se sepa que tipo de
+	 * casilla va a ser
+	 */
+	
+	//Getters y setters
+		public int getidCasilla() {
+			
+			return idCasilla;
+			
+		}
+		public void getidCasilla(int idCasilla) {
+			
+			this.idCasilla = idCasilla;
+			
+		}
+		
+		
+		public String getTipoCasilla() {
+			
+			return TipoCasilla;
+			
+		}
+		public void getTipoCasilla(String TipoCasilla) {
+			
+			this.TipoCasilla = TipoCasilla;
+			
+		}
+	
 	
 	//método para asignar id de tipo de casilla
 	public static void asignarCasillas(int idCasilla, ArrayList<Casilla> tablero) {
@@ -104,6 +134,7 @@ public class Casilla {
 		this.idTipoCasilla = idTipoCasilla;
 	}
 
+
 	public void RetornoJugador() {
 		
 	}
@@ -112,47 +143,67 @@ public class Casilla {
 		
 	}
 	
-	/*
+	/**
 	 * Metodos de los tipos de Casillas y Objetos
 	 */
 	
-	public void CasillaInterogante(int Casilla ) {
+	public void CasillaInterogante(Pinguino pingu) {
 		
 		Random eventAL = new Random();
 		
-		int AjHielo = 1;
-		int Trineu = 2;
-		int oso = 3 ;
+		/**
+		 * Creacion de la variables con su respectivo valor que tiene cada uno
+		 */
+		
+		int DadoRapido = 1;
+		int DadoLento = 2;
+		int peces = 3 ;
+		int Bolasnieve = 4;
+		String evntxt = "";
 
 		int Evento = eventAL.nextInt(3)+1 ;
 		
+		/**
+		 * En este switch case tenemos los eventos en general que estaran en cada casilla
+		 */
 		
-		if(Evento == AjHielo) {
-			
-			//AjHielo.AgujeroHielo();
-			
-			System.out.println("Has caido dentro de un agujero de hielo !!!");
-			
+		switch(Evento) {
+		
+		 case 1: 
+			 
+			 evntxt = "Te ha tocado los peces";
+			 
+			 break;
+			 
+		 case 2: 
+			 
+			 evntxt = "Te ha tocado las bolas de Nieve !!!";
+		
+			 break;
+			 
+		 case 3:
+			 
+			 int Dados = 0;
+			 
+			 int DadoAleatorio = eventAL.nextInt(25)+1 ;
+			 
+			 if (0 >= 25) {
+				 
+				 pingu.
+				 
+				 evntxt = "Te ha tocado un Dado Rapido !!!";
+
+			 }
+			 
+			 else if (0 >= 10) {
+				 
+				 evntxt = "Te ha tocado un Dado Lento !!!";
+				 
+			 }
+			 
+			 break;
+			 
 		}
-		
-		else if(Evento == Trineu){
-			
-			//Trienu.Trineo();
-			
-			System.out.println("De trineo a trineo !!!");
-			
-		}
-		
-		else if(Evento == oso) {
-			
-			//oso.Oso();
-			
-			System.out.println("Has sido atacado por un Oso !!!");
-			
-			System.out.println("Vuelves al principio del juego");
-			
-		}
-		
 		
 	}
 	
@@ -162,38 +213,24 @@ public class Casilla {
 		
 		
 	}
+	
 
+	public void Oso(Pinguino pingujug) {
+	    
+	    System.out.println("¿Quieres sobornar al Oso o aceptar la penalización?");
+	    
+	    if (pingujug.inventario.getPez() == 2)
+	        System.out.println("El Oso ha sido sobornado con los 2 peces.");
+	    } 
+	    
+	    else {
+	    	
+	        pingujug.getPosicion(0);
+	        System.out.println("El oso te ha atacado (vuelves al principio del juego).");
+	    }
 	
-	public void Oso(int CasillaN1) {
-	
-		int JugadorAtacado;
-		int Xjugador;
-		int CPU;
-		int oso;
-		
-		System.out.println("Quieres Sobornar al Oso o aceptar la penalizacion ???");
-		
-		Inventario soborno;
-		
-		soborno = new Inventario();
-		
-		if(oso == soborno.vistaInventario) {
-			
-			System.out.println("El Oso ha sido sobornado con los ( 2 peces )");
-			
-		}
-		
-		else {
-			
-			Xjugador.RetornoJugador();
-			System.out.println("El oso te ha atacado ( vuelves al principio del juego )");
-		
-		}
-		
-		return Xjugador;
-		
-		
 	}
+	
 	
 	
 	/*
