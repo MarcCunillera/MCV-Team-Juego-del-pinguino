@@ -57,7 +57,7 @@ public class Tablero {
 			int agujAnt = 0;
 			boolean encontradoA = false;
 			//bucle para caer al agujero anterior
-			for (int i = posic -1; i >= 0 && !encontradoA; i++) {
+			for (int i = posic -1; i >= 0 && !encontradoA; i--) {
 				if (tablero.get(i).getIDTipoCasilla() == 2) {
 					encontradoA = true;
 					agujAnt = i;
@@ -65,10 +65,10 @@ public class Tablero {
 			}
 			//casos
 			if(encontradoA) {
-				System.out.println(pingu.getnombre() + " Ha caído al agujero y ha salid en la casilla nº " + agujAnt);
+				System.out.println("El pingüino: " + pingu.getnombre() + " Ha caído al agujero y ha salid en la casilla nº " + agujAnt);
 				pingu.setPosicion(agujAnt);
 			}else {
-				System.out.println("El pinguino " + pingu.getnombre() + " Ha caído a un agujero sin salida, vuelve al inicio");
+				System.out.println("El pingüino: " + pingu.getnombre() + " Ha caído a un agujero sin salida, vuelve al inicio");
 				pingu.setPosicion(0);
 			}
 			break;
@@ -76,8 +76,18 @@ public class Tablero {
 			int trinPos = 0;
 			boolean encontradoT = false;
 			//bucle para avanzar al trineo siguiente
-			for (int i = 0; i <= 0 && !encontradoT; i++) {
-				
+			for (int i = 0; i < tablero.size() && !encontradoT; i++) {
+				if(tablero.get(i).getIDTipoCasilla() == 2) {
+					encontradoT = true;
+					trinPos = i;
+				}
+			}
+			//casos
+			if(encontradoT) {
+				System.out.println("El pingüino: " + pingu.getnombre() + " Se ha subido al trineo y ha avanzado al siguiente en la casilla nº " + trinPos);
+				pingu.setPosicion(trinPos);
+			}else {
+				System.out.println("El pingüino: " + pingu.getnombre() + " Se ha encontrado un trineo sin utilidad :(");
 			}
 			break;
 		}
