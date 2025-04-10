@@ -73,12 +73,12 @@ public class Casilla {
 	}
 	
 	//Getters y setters
-	public int getidCasilla() {
+	public int getIDCasilla() {
 		
 		return idCasilla;
 		
 	}
-	public void getidCasilla(int idCasilla) {
+	public void setIDCasilla(int idCasilla) {
 		
 		this.idCasilla = idCasilla;
 		
@@ -94,6 +94,14 @@ public class Casilla {
 		
 		this.TipoCasilla = TipoCasilla;
 		
+	}
+	
+	public int getIDTipoCasilla() {
+		return idTipoCasilla;
+	}
+	
+	public void setIDTipoCasilla(int idTipoCasilla) {
+		this.idTipoCasilla = idTipoCasilla;
 	}
 
 	public void RetornoJugador() {

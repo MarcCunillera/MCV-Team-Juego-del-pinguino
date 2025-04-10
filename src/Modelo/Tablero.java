@@ -34,24 +34,53 @@ public class Tablero {
 	}
 	
 	public void OrigenTablero(ArrayList<Casilla> tablero, ArrayList<Pinguino> ListaPinguinos) {
-		//sirve para poder mover el jugador con el trineo o el agujero
+		//sirve para poder mover el jugador con el trineo o el agujero o el oso
+		//PPinguino del cual es el turno
 		Pinguino pingu = ListaPinguinos.get(turno);
 		int posic = pingu.getPosicion();
-		boolean EventoesAgujero = false;
-		boolean agujero = false;
-		int posicAgujero;
+		//Cogemos la casilla en la que se encuentra para poder extraer el d del tipo de casilla
+		Casilla casillaAct = tablero.get(posic);
+		int idTipo = casillaAct.getIDTipoCasilla();
+		//boolean para saber si se puede sobornar al oso
+		boolean soborno = false;
 		
-		if (EventoesAgujero) {
-			for (int i = posic; i < posic && i > 0; i--) {
+		switch (idTipo) {
+		case 1: //oso
+			if(!soborno) {
+				pingu.setPosicion(0);
+			} else {
+				//sobornar
 				
 			}
-		} else {
-			for (int i = posic; i < tablero.size(); i++) {
+			break;
+		case 2: //agujero
+			int agujAnt = 0;
+			boolean encontradoA = false;
+			//bucle para caer al agujero anterior
+			for (int i = posic -1; i >= 0 && !encontradoA; i++) {
+				if (tablero.get(i).getIDTipoCasilla() == 2) {
+					encontradoA = true;
+					agujAnt = i;
+				}
+			}
+			//casos
+			if(encontradoA) {
+				System.out.println(pingu.getnombre() + " Ha caído al agujero y ha salid en la casilla nº " + agujAnt);
+				pingu.setPosicion(agujAnt);
+			}else {
+				System.out.println("El pinguino " + pingu.getnombre() + " Ha caído a un agujero sin salida, vuelve al inicio");
+				pingu.setPosicion(0);
+			}
+			break;
+		case 3: //trineo
+			int trinPos = 0;
+			boolean encontradoT = false;
+			//bucle para avanzar al trineo siguiente
+			for (int i = 0; i <= 0 && !encontradoT; i++) {
 				
 			}
+			break;
 		}
-		
-		
 	}
 	
 	public void MoverPinguino(ArrayList<Pinguino> ListaPinguinos, int Dado) {
