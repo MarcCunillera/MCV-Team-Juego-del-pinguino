@@ -3,6 +3,7 @@ package Controlador;
 import java.util.ArrayList;
 import java.util.Random;
 import Modelo.*;
+import Modelo.Pinguino;
 
 public class Casilla {
 	
@@ -18,6 +19,36 @@ public class Casilla {
 		this.TipoCasilla = TipoCasilla;
 		
 	}
+	
+	/*
+	 * Cambiar el tipo ID de la casilla interrogante cuanbdo se sepa que tipo de
+	 * casilla va a ser
+	 */
+	
+	//Getters y setters
+		public int getidCasilla() {
+			
+			return idCasilla;
+			
+		}
+		public void getidCasilla(int idCasilla) {
+			
+			this.idCasilla = idCasilla;
+			
+		}
+		
+		
+		public String getTipoCasilla() {
+			
+			return TipoCasilla;
+			
+		}
+		public void getTipoCasilla(String TipoCasilla) {
+			
+			this.TipoCasilla = TipoCasilla;
+			
+		}
+	
 	
 	//método para asignar id de tipo de casilla
 	public static void asignarCasillas(int idCasilla, ArrayList<Casilla> tablero) {
@@ -72,12 +103,12 @@ public class Casilla {
 	}
 	
 	//Getters y setters
-	public int getidCasilla() {
+	public int getIDCasilla() {
 		
 		return idCasilla;
 		
 	}
-	public void getidCasilla(int idCasilla) {
+	public void setIDCasilla(int idCasilla) {
 		
 		this.idCasilla = idCasilla;
 		
@@ -94,10 +125,113 @@ public class Casilla {
 		this.TipoCasilla = TipoCasilla;
 		
 	}
+	
+	public int getIDTipoCasilla() {
+		return idTipoCasilla;
+	}
+	
+	public void setIDTipoCasilla(int idTipoCasilla) {
+		this.idTipoCasilla = idTipoCasilla;
+	}
+
 
 	public void RetornoJugador() {
 		
 	}
+	
+	public void AgujeroHielo() {
+		
+	}
+	
+	/**
+	 * Metodos de los tipos de Casillas y Objetos
+	 */
+	
+	public void CasillaInterogante(Pinguino pingu) {
+		
+		Random eventAL = new Random();
+		
+		/**
+		 * Creacion de la variables con su respectivo valor que tiene cada uno
+		 */
+		
+		int DadoRapido = 1;
+		int DadoLento = 2;
+		int peces = 3 ;
+		int Bolasnieve = 4;
+		String evntxt = "";
+
+		int Evento = eventAL.nextInt(3)+1 ;
+		
+		/**
+		 * En este switch case tenemos los eventos en general que estaran en cada casilla
+		 */
+		
+		switch(Evento) {
+		
+		 case 1: 
+			 
+			 evntxt = "Te ha tocado los peces";
+			 
+			 break;
+			 
+		 case 2: 
+			 
+			 evntxt = "Te ha tocado las bolas de Nieve !!!";
+		
+			 break;
+			 
+		 case 3:
+			 
+			 int Dados = 0;
+			 
+			 int DadoAleatorio = eventAL.nextInt(25)+1 ;
+			 
+			 if (0 >= 25) {
+				 
+				 pingu.
+				 
+				 evntxt = "Te ha tocado un Dado Rapido !!!";
+
+			 }
+			 
+			 else if (0 >= 10) {
+				 
+				 evntxt = "Te ha tocado un Dado Lento !!!";
+				 
+			 }
+			 
+			 break;
+			 
+		}
+		
+	}
+	
+	
+	
+	public void Trineo(int trineo) {
+		
+		
+	}
+	
+
+	public void Oso(Pinguino pingujug) {
+	    
+	    System.out.println("¿Quieres sobornar al Oso o aceptar la penalización?");
+	    
+	    if (pingujug.inventario.getPez() == 2)
+	        System.out.println("El Oso ha sido sobornado con los 2 peces.");
+	    } 
+	    
+	    else {
+	    	
+	        pingujug.getPosicion(0);
+	        System.out.println("El oso te ha atacado (vuelves al principio del juego).");
+	    }
+	
+	}
+	
+	
 	
 	/*
 	 * La letra ( norm ) es una casilla normal
