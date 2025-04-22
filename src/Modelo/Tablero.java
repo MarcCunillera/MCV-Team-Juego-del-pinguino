@@ -26,9 +26,8 @@ public class Tablero {
 	
     // Metodes de la classe Tablero
 	public void GenerarTablero() {
-		Random rn = new Random();
 		//generación de tablero
-		for (int i = 0; i < 50; i++) {
+		for (int i = 1; i < 51; i++) {
 			Casilla.asignarCasillas(i, tablero); //llamar al método para generar el tablero
 		}
 	}
