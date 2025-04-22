@@ -8,15 +8,17 @@ public class Pinguino extends Usuarios {
 	// Hem instanciat les variables
 	private String color;
 	private String nombre;
+	private int posicion;
 	
 	//lista estatica para almacenar pinguinos
-	private ArrayList<Pinguino> ListaPinguinos = new ArrayList<>();
+	public ArrayList<Pinguino> ListaPinguinos = new ArrayList<>();
 	
 	// Hem definit el constructor
-	public Pinguino ( int ID, String color, String nombre) {
+	public Pinguino ( int ID, String color, String nombre, int posicion) {
 		super(ID);
 		this.color = color;
 		this.nombre = nombre;
+		this.posicion = 0;
 		
 		ListaPinguinos.add(this); //añadir los pinguinos dentro de la lista
 	}
@@ -41,6 +43,14 @@ public class Pinguino extends Usuarios {
 
     public void setnombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public int getPosicion() {
+    	return posicion;
+    }
+    
+    public void setPosicion(int posicion) {
+    	this.posicion = posicion;
     }
     
     // ToString per mostra el color i el nom
@@ -89,6 +99,13 @@ public class Pinguino extends Usuarios {
     }
     
     public void AlimentarFoca() {
+    	
+    	
+    }
+    
+    public void inventario() {
+    	this.getID();
+    	this.getPez();
     	
     	
     }

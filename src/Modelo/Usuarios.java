@@ -2,25 +2,25 @@ package Modelo;
 
 public class Usuarios {
 
-	private int ID;
+	private int id;
 	
 	// Hem definit el constructor
 	public Usuarios (int ID) {
-		this.ID = ID;
+		this.id = ID;
 	}
 	
 	// Geters y seters
     public int getID() {
-        return ID;
+        return id;
     }
 
     public void setID(int ID) {
-        this.ID = ID;
+        this.id = ID;
     }
     
  // ToString per mostra el ID del Usuari
     public String toString() {
-        return "ID: " + ID ; 
+        return "ID: " + id ; 
     }
 
 }
