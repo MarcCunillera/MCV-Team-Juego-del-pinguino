@@ -9,8 +9,8 @@ public class Tablero {
 	private int turno;
 	
 	// Hem definit el constructor
-	public Tablero(ArrayList tablero, int turno ) {
-		this.tablero = new ArrayList(50);
+	public Tablero(ArrayList<Casilla> tablero, int turno ) {
+		this.tablero = new ArrayList<>(50);
 		this.turno = 0;
 	}
 	

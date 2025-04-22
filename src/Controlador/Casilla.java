@@ -48,6 +48,24 @@ public class Casilla {
 			this.TipoCasilla = TipoCasilla;
 			
 		}
+		public int getIDCasilla() {
+			
+			return idCasilla;
+			
+		}
+		public void setIDCasilla(int idCasilla) {
+			
+			this.idCasilla = idCasilla;
+			
+		}
+		
+		public int getIDTipoCasilla() {
+			return idTipoCasilla;
+		}
+		
+		public void setIDTipoCasilla(int idTipoCasilla) {
+			this.idTipoCasilla = idTipoCasilla;
+		}
 	
 	
 	//método para asignar id de tipo de casilla
@@ -100,38 +118,6 @@ public class Casilla {
 		
 		Casilla nuevaCasilla = new Casilla(idCasilla, idTipo, nombreTipo); //generar la casilla
 		tablero.add(nuevaCasilla); //añadir la casilla al tablero
-	}
-	
-	//Getters y setters
-	public int getIDCasilla() {
-		
-		return idCasilla;
-		
-	}
-	public void setIDCasilla(int idCasilla) {
-		
-		this.idCasilla = idCasilla;
-		
-	}
-	
-	
-	public String getTipoCasilla() {
-		
-		return TipoCasilla;
-		
-	}
-	public void getTipoCasilla(String TipoCasilla) {
-		
-		this.TipoCasilla = TipoCasilla;
-		
-	}
-	
-	public int getIDTipoCasilla() {
-		return idTipoCasilla;
-	}
-	
-	public void setIDTipoCasilla(int idTipoCasilla) {
-		this.idTipoCasilla = idTipoCasilla;
 	}
 
 
