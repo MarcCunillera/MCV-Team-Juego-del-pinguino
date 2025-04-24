@@ -4,58 +4,39 @@ import java.util.ArrayList;
 import Controlador.*;
 
 public class Inventario {
-	private ArrayList<Casilla> inventario;
-	private int IDobjeto;
-	private String nombreObjeto;
-	private int cantObjeto;
-	
-	
+	private ArrayList<ObjetosInventario> inventario;
 	
 	//constructor de la clase
-	public Inventario(ArrayList<Casilla> inventario, int IDobjeto, String nombreObjeto, int cantObjeto) {
-		this.inventario = new ArrayList<>(11);
-		this.IDobjeto = IDobjeto;
-		this.nombreObjeto = nombreObjeto;
-		this.cantObjeto = cantObjeto;
+	public Inventario() {
+		this.inventario = new ArrayList <>(11);
+		this.generarInventario();
 	}
 	
-	//métodos get
-	public ArrayList<Casilla> getInventario(){
+	//Método para generar el inventario
+	private void generarInventario() {
+		for (int i = 0; i < 11; i++) { //tamaño de 11 casillas
+			inventario.add(new ObjetosInventario(i, 0, "Vacío", 0));
+		}
+	}
+	
+	//Método para modificar el contenido del inventario
+	public void modificarTablero() {
+		
+	}
+	
+	//Getters y setters
+	public ArrayList<ObjetosInventario> getInventario() {
 		return inventario;
 	}
-	
-	public int getIDobjeto() {
-		return IDobjeto;
-	}
-	
-	public String getNombreObjeto() {
-		return nombreObjeto;
-	}
-	
-	public int getCantObjeto() {
-		return cantObjeto;
-	}
-	
-	//métodos set
 
-	public void setInventario(ArrayList<Casilla> inventario) {
+	public void setInventario(ArrayList<ObjetosInventario> inventario) {
 		this.inventario = inventario;
 	}
 	
-	public void setIDobjeto(int IDobjeto) {
-		this.IDobjeto = IDobjeto;
-	}
-	
-	public void setnombreObjeto(String nombreObjeto) {
-		this.nombreObjeto = nombreObjeto;
-	}
-	
-	public void setCantObjeto(int cantObjeto) {
-		this.cantObjeto = cantObjeto;
-	}
-	
-	//método toString
+	//toString
+	@Override
 	public String toString() {
-		return "Inventario completo: " + inventario;
+		return "Inventario [inventario=" + inventario + "]";
 	}
+	
 }

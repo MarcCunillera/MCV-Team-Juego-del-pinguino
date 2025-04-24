@@ -3,7 +3,6 @@ package Controlador;
 import java.util.ArrayList;
 import java.util.Random;
 import Modelo.*;
-import Modelo.Pinguino;
 
 public class Casilla {
 	
