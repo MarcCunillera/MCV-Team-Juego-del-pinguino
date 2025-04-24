@@ -119,7 +119,6 @@ public class Casilla {
 		tablero.add(nuevaCasilla); //añadir la casilla al tablero
 	}
 
-
 	public void RetornoJugador() {
 		
 	}
@@ -227,4 +226,4 @@ public class Casilla {
 	 * 
 	 */
 	
-}
+
