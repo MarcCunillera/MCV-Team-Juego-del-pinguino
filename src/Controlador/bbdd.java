@@ -8,8 +8,8 @@ import java.sql.*;
  */
 public class bbdd {
 
-
-
+	
+	
     /**
      * Intenta establecer una conexión a la base de datos Oracle. NO HACE FALTA QUE ENTENDAIS COMO FUNCIONA,
      * SE HACE TODO DE MANERA AUTOMÁTICA.
