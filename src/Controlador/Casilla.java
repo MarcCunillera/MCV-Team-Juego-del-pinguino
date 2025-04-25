@@ -3,6 +3,7 @@ package Controlador;
 import java.util.ArrayList;
 import java.util.Random;
 import Modelo.*;
+import Modelo.Pinguino;
 
 public class Casilla {
 	
@@ -144,6 +145,7 @@ public class Casilla {
 		int DadoLento = 2;
 		int peces = 3 ;
 		int Bolasnieve = 4;
+	
 		String evntxt = "";
 
 		int Evento = eventAL.nextInt(3)+1 ;
@@ -200,17 +202,16 @@ public class Casilla {
 	}
 	
 
-	public void Oso(Pinguino pingujug) {
+	public void Oso(Pinguino pingu) {
 	    
-	    System.out.println("¿Quieres sobornar al Oso o aceptar la penalización?");
+	    System.out.println("¿Quieres sobornar al Oso ?");
 	    
-	    if (pingujug.inventario.getPez() == 2)
-	        System.out.println("El Oso ha sido sobornado con los 2 peces.");
-	    } 
-	    
-	    else {
+	    if (pingu.inventario.getPez() == 2) {
 	    	
-	        pingujug.getPosicion(0);
+	        System.out.println("El Oso ha sido sobornado con los 2 peces.");
+	    } else {
+	    	
+	    	pingu.getPosicion(0);
 	        System.out.println("El oso te ha atacado (vuelves al principio del juego).");
 	    }
 	
