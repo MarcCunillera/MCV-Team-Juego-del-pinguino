@@ -6,9 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< Updated upstream
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JavaFX12">
-=======
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/ConexioBBDD"/>
 	<classpathentry kind="lib" path="C:/Users/marcc/Desktop/pc Marc/JavaFX/javafx-sdk-17/lib/javafx.base.jar">
 		<attributes>
@@ -46,11 +43,9 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/marcc/Desktop/pc Marc/JavaFX/javafx-sdk-17/lib/javafx-swt.jar">
->>>>>>> Stashed changes
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/ConexioBBDD"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -11,6 +11,7 @@ public class Tablero {
 	// Hem definit el constructor
 	public Tablero(ArrayList<Casilla> tablero, int turno ) {
 		this.tablero = new ArrayList<>(50);
+		this.GenerarTablero();
 		this.turno = 0;
 	}
 	
@@ -32,6 +33,7 @@ public class Tablero {
 		}
 	}
 	
+	//método para el movimiento que causan algunos eventos a los jugadores
 	public void OrigenTablero(ArrayList<Casilla> tablero, ArrayList<Pinguino> ListaPinguinos) {
 		//sirve para poder mover el jugador con el trineo o el agujero o el oso
 		//PPinguino del cual es el turno
@@ -92,7 +94,8 @@ public class Tablero {
 		}
 	}
 	
-	public void MoverPinguino(ArrayList<Pinguino> ListaPinguinos, int Dado) {
+	//Método para mover el pinguino dentro del tablero
+	public void MoverPinguino(ArrayList<Pinguino> ListaPinguinos, int Dado, ArrayList<Casilla> tablero) {
 		//posición del jugador al tirar el dado
 		
 		Pinguino pingu = ListaPinguinos.get(turno); //obtener turno
@@ -103,6 +106,8 @@ public class Tablero {
 			//obtener resultado dado
 			int resul = pingu.TirarDado(Dado);
 			System.out.println(pingu.getnombre() + " Con ID: " + pingu.getID() + " Ha sacado un: " + resul);
+			
+			//revisar casilla
 			
 			
 			//avanzar turno
