@@ -3,6 +3,7 @@ package Controlador;
 import java.util.ArrayList;
 import java.util.Random;
 import Modelo.*;
+import Modelo.Pinguino;
 
 public class Casilla {
 	
@@ -108,6 +109,7 @@ public class Casilla {
 		tablero.add(nuevaCasilla); //añadir la casilla al tablero
 	}
 	
+
 	//Metodos de los tipos de Casillas y Objetos
 	public ObjetosInventario casillaInterogante() {
 		Random rn = new Random();
@@ -147,7 +149,29 @@ public class Casilla {
 		}
 		return new ObjetosInventario(-1, idObj, nomObj, cantidad);
 	}
-}
+	
+	public void Trineo(int trineo) {
+		
+		
+	}
+	
+
+	public void Oso(Pinguino pingu) {
+	    
+	    System.out.println("¿Quieres sobornar al Oso ?");
+	    
+	    if (pingu.inventario.getPez() == 2) {
+	    	
+	        System.out.println("El Oso ha sido sobornado con los 2 peces.");
+	    } else {
+	    	
+	    	pingu.getPosicion(0);
+	        System.out.println("El oso te ha atacado (vuelves al principio del juego).");
+	    }
+	
+	}
+	
+
 	/*
 	 * La letra ( norm ) es una casilla normal
 	 * 
