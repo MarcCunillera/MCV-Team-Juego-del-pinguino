@@ -109,11 +109,12 @@ public class Casilla {
 	}
 	
 	//Metodos de los tipos de Casillas y Objetos
-	public void casillaInterogante() {
+	public ObjetosInventario casillaInterogante() {
 		Random rn = new Random();
 		int Evento = rn.nextInt(3)+1;
-		int idObj;
-		String nomObj;
+		int idObj = 0;
+		int cantidad = 0;
+		String nomObj = "";
 		
 		//Pez (ID = 1), 1-3 Bolas de nieve (ID = 2), dado rápido(baja / ID = 3), dado lento (alta / ID = 4)
 		switch(Evento) {
@@ -121,11 +122,13 @@ public class Casilla {
 			System.out.println("Ha tocado pescados!");
 			idObj = 1;
 			nomObj = "Pez";
+			cantidad = 1;
 			break;
 		case 2: //bolas nieve
 			System.out.println("Bolas de nieve");
 			idObj = 2;
 			nomObj = "Bolas de Nieve";
+			cantidad = rn.nextInt(3)+1;
 			break;
 		case 3: //dados
 			System.out.println("Dado");
@@ -134,12 +137,15 @@ public class Casilla {
 			if (dadosProb > 7) {
 				idObj = 3;
 				nomObj = "Dado Rápido";
+				cantidad = 1;
 			} else {
 				idObj = 4;
 				nomObj = "Dado Lento";
 			}
+			cantidad = 1;
 			break;
 		}
+		return new ObjetosInventario(-1, idObj, nomObj, cantidad);
 	}
 }
 	/*

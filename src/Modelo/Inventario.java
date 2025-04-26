@@ -20,7 +20,8 @@ public class Inventario {
 	}
 	
 	//Método para modificar el contenido del inventario
-	public void modificarTablero() {
+	public void modificarInventario(ObjetosInventario objetoNuevo) {
+		boolean encontrado = false;
 		
 	}
 	
