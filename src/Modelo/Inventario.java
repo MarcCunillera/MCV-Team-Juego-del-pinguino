@@ -26,6 +26,7 @@ public class Inventario {
 	
 	//Getters y setters
 	public ArrayList<ObjetosInventario> getInventario() {
+
 		return inventario;
 	}
 
