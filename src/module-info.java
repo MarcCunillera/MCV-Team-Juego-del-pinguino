@@ -10,4 +10,5 @@ module MCVTeam {
 	exports Vista;
 	exports Controlador;
 	exports Modelo;
+	exports Interfaz_Grafica;
 }

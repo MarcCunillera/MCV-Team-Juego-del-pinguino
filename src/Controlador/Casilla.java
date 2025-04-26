@@ -27,36 +27,26 @@ public class Casilla {
 	
 	//Getters y setters
 		public int getidCasilla() {
-			
 			return idCasilla;
-			
 		}
 		public void getidCasilla(int idCasilla) {
-			
 			this.idCasilla = idCasilla;
-			
 		}
-		
 		
 		public String getTipoCasilla() {
-			
 			return TipoCasilla;
-			
 		}
+		
 		public void getTipoCasilla(String TipoCasilla) {
-			
 			this.TipoCasilla = TipoCasilla;
-			
 		}
+		
 		public int getIDCasilla() {
-			
 			return idCasilla;
-			
 		}
+		
 		public void setIDCasilla(int idCasilla) {
-			
 			this.idCasilla = idCasilla;
-			
 		}
 		
 		public int getIDTipoCasilla() {
@@ -104,10 +94,9 @@ public class Casilla {
 			contTrineos++;
 			break;
 		case 4:
-			//evento aleatorio
-			//obtener un pez, obtener 1-3 bolas de nieve, dado rapido (probabilidad baja), dado lento (probabilidad alta)
+			//Casilla interrogante
 			idTipo = 4;
-			nombreTipo = "Evento aleatório";
+			nombreTipo = "Casilla Interrogante";
 			break;
 		default:
 			//casilla normal
@@ -119,82 +108,41 @@ public class Casilla {
 		Casilla nuevaCasilla = new Casilla(idCasilla, idTipo, nombreTipo); //generar la casilla
 		tablero.add(nuevaCasilla); //añadir la casilla al tablero
 	}
+	
 
-
-	public void RetornoJugador() {
+	//Metodos de los tipos de Casillas y Objetos
+	public void casillaInterogante() {
+		Random rn = new Random();
+		int Evento = rn.nextInt(3)+1;
+		int idObj;
+		String nomObj;
 		
-	}
-	
-	public void AgujeroHielo() {
-		
-	}
-	
-	/**
-	 * Metodos de los tipos de Casillas y Objetos
-	 */
-	
-	public void CasillaInterogante(Pinguino pingu) {
-		
-		Random eventAL = new Random();
-		
-		/**
-		 * Creacion de la variables con su respectivo valor que tiene cada uno
-		 */
-		
-		int DadoRapido = 1;
-		int DadoLento = 2;
-		int peces = 3 ;
-		int Bolasnieve = 4;
-	
-		String evntxt = "";
-
-		int Evento = eventAL.nextInt(3)+1 ;
-		
-		/**
-		 * En este switch case tenemos los eventos en general que estaran en cada casilla
-		 */
-		
+		//Pez (ID = 1), 1-3 Bolas de nieve (ID = 2), dado rápido(baja / ID = 3), dado lento (alta / ID = 4)
 		switch(Evento) {
-		
-		 case 1: 
-			 
-			 evntxt = "Te ha tocado los peces";
-			 
-			 break;
-			 
-		 case 2: 
-			 
-			 evntxt = "Te ha tocado las bolas de Nieve !!!";
-		
-			 break;
-			 
-		 case 3:
-			 
-			 int Dados = 0;
-			 
-			 int DadoAleatorio = eventAL.nextInt(25)+1 ;
-			 
-			 if (0 >= 25) {
-				 
-				 pingu.
-				 
-				 evntxt = "Te ha tocado un Dado Rapido !!!";
-
-			 }
-			 
-			 else if (0 >= 10) {
-				 
-				 evntxt = "Te ha tocado un Dado Lento !!!";
-				 
-			 }
-			 
-			 break;
-			 
+		case 1: //pez
+			System.out.println("Ha tocado pescados!");
+			idObj = 1;
+			nomObj = "Pez";
+			break;
+		case 2: //bolas nieve
+			System.out.println("Bolas de nieve");
+			idObj = 2;
+			nomObj = "Bolas de Nieve";
+			break;
+		case 3: //dados
+			System.out.println("Dado");
+			int dadosProb = rn.nextInt(10)+1;
+			
+			if (dadosProb > 7) {
+				idObj = 3;
+				nomObj = "Dado Rápido";
+			} else {
+				idObj = 4;
+				nomObj = "Dado Lento";
+			}
+			break;
 		}
-		
 	}
-	
-	
 	
 	public void Trineo(int trineo) {
 		
@@ -217,8 +165,7 @@ public class Casilla {
 	
 	}
 	
-	
-	
+
 	/*
 	 * La letra ( norm ) es una casilla normal
 	 * 
@@ -228,4 +175,4 @@ public class Casilla {
 	 * 
 	 */
 	
-}
+

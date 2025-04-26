@@ -1,22 +1,14 @@
 package Controlador;
 import java.util.Random;
-import Modelo.Inventario;
+import Modelo.*;
 public class Eventos {
-
-	/*
-	 * Creacion de la variable privada
-	 */
-	
 	private int idEvento;
 	private int DadoRapido;
 	private int DadoLento;
 	private int pez;
 	private int nieve;
-	
-	/*
-	 * Constructor de las Clase Evento
-	 */
-	
+
+	//constructor
 	public Eventos(int idEvento, int dadoRapido,  int dadoLento, int pez, int nieve) {
 		
 		this.idEvento = idEvento;
@@ -26,11 +18,7 @@ public class Eventos {
 		this.nieve = nieve;
 	}
 	
-	/*
-	 * Getter y Setter del Id Evento
-	 */
-	
-
+	//Getters y setters
 	public int getIdEvento() {
 		return idEvento;
 	}
@@ -73,6 +61,10 @@ public class Eventos {
 	
 	public void InteraccionDado() {
 	
+	}
+	
+	public void sobornarOso() {
+		
 	}
 	
 	
