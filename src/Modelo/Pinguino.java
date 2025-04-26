@@ -93,21 +93,5 @@ public class Pinguino extends Usuarios {
     	return Dado;
     }
     
-    public void UsarBolasNieve() {
-    	
-    	
-    }
-    
-    public void AlimentarFoca() {
-    	
-    	
-    }
-    
-    public void inventario() {
-    	this.getID();
-    	this.getPez();
-    	
-    	
-    }
 
 }
