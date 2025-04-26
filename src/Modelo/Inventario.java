@@ -54,6 +54,23 @@ public class Inventario {
             objeto.setCantidad(6);
         }
     }
+    
+    // Método para eliminar un objeto del inventario por su ID
+    public void eliminarObjeto(int idObjeto) {
+        for (ObjetosInventario objeto : inventario) {
+            if (objeto.getIDobjeto() == idObjeto && objeto.getCantidad() > 0) {
+                // Reducir la cantidad si más de 1 objeto
+                if (objeto.getCantidad() > 1) {
+                    objeto.setCantidad(objeto.getCantidad() - 1);
+                } else {
+                    // Eliminar el objeto del inventario si la cantidad es 1
+                    inventario.remove(objeto);
+                }
+                System.out.println("Se ha eliminado 1 unidad de " + objeto.getNombreObjeto());
+                break;
+            }
+        }
+    }
 	
 	//Getters y setters
 	public ArrayList<ObjetosInventario> getInventario() {
