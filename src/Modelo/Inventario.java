@@ -19,6 +19,11 @@ public class Inventario {
 		this.cantObjeto = cantObjeto;
 	}
 	
+	//método para generar las casillas al iniciar el juego
+	public static void generarInventario() {
+		
+	}
+	
 	//métodos get
 	public ArrayList<Casilla> getInventario(){
 		return inventario;
