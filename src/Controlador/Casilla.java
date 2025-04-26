@@ -1,8 +1,8 @@
 package Controlador;
 
+import Modelo.ObjetosInventario;
 import java.util.ArrayList;
 import java.util.Random;
-import Modelo.ObjetosInventario;
 
 public class Casilla {
     private int idCasilla;
@@ -15,30 +15,12 @@ public class Casilla {
         this.tipoCasilla = tipoCasilla;
     }
 
-    // Getters y Setters
-    public int getIdCasilla() {
-        return idCasilla;
-    }
-
-    public void setIdCasilla(int idCasilla) {
-        this.idCasilla = idCasilla;
-    }
-
-    public int getIdTipoCasilla() {
-        return idTipoCasilla;
-    }
-
-    public void setIdTipoCasilla(int idTipoCasilla) {
-        this.idTipoCasilla = idTipoCasilla;
-    }
-
-    public String getTipoCasilla() {
-        return tipoCasilla;
-    }
-
-    public void setTipoCasilla(String tipoCasilla) {
-        this.tipoCasilla = tipoCasilla;
-    }
+    public int getIdCasilla() { return idCasilla; }
+    public void setIdCasilla(int idCasilla) { this.idCasilla = idCasilla; }
+    public int getIDTipoCasilla() { return idTipoCasilla; }
+    public void setIdTipoCasilla(int idTipoCasilla) { this.idTipoCasilla = idTipoCasilla; }
+    public String getTipoCasilla() { return tipoCasilla; }
+    public void setTipoCasilla(String tipoCasilla) { this.tipoCasilla = tipoCasilla; }
 
     public static void asignarCasillas(int idCasilla, ArrayList<Casilla> tablero) {
         Random rn = new Random();
@@ -64,16 +46,8 @@ public class Casilla {
         String nomObj = "";
 
         switch (evento) {
-            case 1:
-                idObj = 1;
-                nomObj = "Pez";
-                cantidad = 1;
-                break;
-            case 2:
-                idObj = 2;
-                nomObj = "Bolas de Nieve";
-                cantidad = rn.nextInt(3) + 1;
-                break;
+            case 1: idObj = 1; nomObj = "Pez"; cantidad = 1; break;
+            case 2: idObj = 2; nomObj = "Bolas de Nieve"; cantidad = rn.nextInt(3) + 1; break;
             case 3:
                 if (rn.nextBoolean()) {
                     idObj = 3;

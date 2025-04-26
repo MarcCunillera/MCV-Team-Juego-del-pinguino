@@ -4,12 +4,12 @@ public class Usuarios {
 
 	private int id;
 	
-	// Hem definit el constructor
+	//constructor
 	public Usuarios (int ID) {
 		this.id = ID;
 	}
 	
-	// Geters y seters
+	//Geters y seters
     public int getID() {
         return id;
     }
@@ -18,7 +18,7 @@ public class Usuarios {
         this.id = ID;
     }
     
- // ToString per mostra el ID del Usuari
+    //ToString per mostra el ID del Usuari
     public String toString() {
         return "ID: " + id ; 
     }
