@@ -149,27 +149,7 @@ public class Casilla {
 		}
 		return new ObjetosInventario(-1, idObj, nomObj, cantidad);
 	}
-	
-	public void Trineo(int trineo) {
-		
-		
-	}
-	
-
-	public void Oso(Pinguino pingu) {
-	    
-	    System.out.println("¿Quieres sobornar al Oso ?");
-	    
-	    if (pingu.inventario.getPez() == 2) {
-	    	
-	        System.out.println("El Oso ha sido sobornado con los 2 peces.");
-	    } else {
-	    	
-	    	pingu.getPosicion(0);
-	        System.out.println("El oso te ha atacado (vuelves al principio del juego).");
-	    }
-	
-	}
+}
 	
 
 	/*
