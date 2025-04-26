@@ -1,99 +1,71 @@
 package Modelo;
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
 
-public class Pinguino extends Usuarios {
-	
-	//Variables
-    private String color;
+import java.util.Random;
+
+public class Pinguino {
+    private int id;
     private String nombre;
     private int posicion;
-    private Inventario inventario;  // Cada pingüino tiene un acceso al inventario
+    private Inventario inventario;
 
-    //Lista estática de pingüinos
-    public static ArrayList<Pinguino> ListaPinguinos = new ArrayList<>();
-    public int turno;
-
-    //Constructor
-    public Pinguino(int ID, String color, String nombre, int posicion, Inventario inventario) {
-        super(ID);
-        this.color = color;
+    // Constructor
+    public Pinguino(int id, String nombre) {
+        this.id = id;
         this.nombre = nombre;
-        this.posicion = posicion;
-        this.inventario = inventario;  //Se asigna el inventario de la clase a cada pingüino
-        
-        ListaPinguinos.add(this); //Añadir el pingüino a la lista
+        this.posicion = 0; //Siempre empieza en 0
+        this.inventario = new Inventario(); //Cada pingüino tiene su propio inventario
     }
 
-    //Métodos de la clase Pinguino
-    public int tirarDado(int dado) {
-        Scanner sc = new Scanner(System.in);
-        Random rn = new Random();
+    // Método para tirar un dado
+    public int tirarDado(int dadoSeleccionado) {
+        Random random = new Random();
+        int resultado = 0;
 
-        System.out.println("Elige el tipo de dado:");
-        System.out.println("1- Dado normal");
-        System.out.println("2- Dado rápido");
-        System.out.println("3- Dado lento");
-        int tipoDado = sc.nextInt();
-
-        // Verificar si el dado es válido
-        if (!esDadoValido(tipoDado)) {
-            System.out.println("Tipo de dado no válido. Por favor, elige un número entre 1 y 3.");
-            return -1;  //Indicamos un valor no válido si el dado es incorrecto
+        if (!dadoExiste(dadoSeleccionado)) {
+            System.out.println("¡El dado seleccionado no existe en el inventario! Se lanza el dado normal (1-6).");
+            resultado = random.nextInt(6) + 1;
+            return resultado;
         }
 
-        int resultado = 0;  //Variable para el resultado del dado
-        //Casos para el tipo de dado
-        switch(tipoDado) {
-            case 1:
-                //Dado normal: 1 a 6
-                System.out.println("Has elegido dado Normal");
-                resultado = rn.nextInt(6) + 1;  // Generar número entre 1 y 6
+        switch (dadoSeleccionado) {
+            case 0: //Dado normal
+                resultado = random.nextInt(6) + 1; // 1-6
                 break;
-            case 2: 
-                //Dado rápido: 5 a 10
-                System.out.println("Has elegido dado Rápido");
-                resultado = rn.nextInt(6) + 5;  // Generar número entre 5 y 10
-                //Eliminar el dado rápido del inventario
-                eliminarDado(3);  //El ID del dado rápido es 3
+            case 3: //Dado rápido
+                resultado = random.nextInt(6) + 5; // 5-10
+                inventario.eliminarObjeto(3);
                 break;
-            case 3:
-                //Dado lento: 1 a 3
-                System.out.println("Has elegido dado Lento");
-                resultado = rn.nextInt(3) + 1;  //Generar número entre 1 y 3
-                //Eliminar el dado lento del inventario
-                eliminarDado(4);  //El ID del dado lento es 4
+            case 4: //Dado lento
+                resultado = random.nextInt(3) + 1; // 1-3
+                inventario.eliminarObjeto(4);
+                break;
+            default: //Cualquier otra opción usa dado normal
+                resultado = random.nextInt(6) + 1;
                 break;
         }
-
-        System.out.println("El resultado del dado es: " + resultado);
         return resultado;
     }
 
-    //Método privado para comprobar si el dado seleccionado es válido
-    private boolean esDadoValido(int tipoDado) {
-        //El dado debe ser 1, 2 o 3
-        return tipoDado >= 1 && tipoDado <= 3;
-    }
-
-    //Método privado para eliminar el dado del inventario (en caso de ser dado rápido o lento)
-    private void eliminarDado(int idDado) {
-        //Eliminamos el dado del inventario de este pingüino
-        inventario.eliminarObjeto(idDado);
+    //Método privado para comprobar si el dado existe en el inventario
+    private boolean dadoExiste(int dadoSeleccionado) {
+        if (dadoSeleccionado == 0) {
+            return true; //El dado normal siempre existe
+        }
+        for (ObjetosInventario objeto : inventario.getInventario()) {
+            if (objeto.getIDobjeto() == dadoSeleccionado && objeto.getCantidad() > 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
     //Getters y Setters
-    public Inventario getInventario() {
-        return inventario;
+    public int getID() {
+        return id;
     }
 
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
+    public void setID(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -112,8 +84,16 @@ public class Pinguino extends Usuarios {
         this.posicion = posicion;
     }
 
-    //ToString
+    public Inventario getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Inventario inventario) {
+        this.inventario = inventario;
+    }
+
+    @Override
     public String toString() {
-        return super.toString() + ", Color: " + color + ", Nombre: " + nombre;
+        return "Pinguino [ID=" + id + ", Nombre=" + nombre + ", Posición=" + posicion + ", Inventario=" + inventario + "]";
     }
 }
