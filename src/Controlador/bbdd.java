@@ -37,13 +37,13 @@ public class bbdd {
 		}
 		
 		System.out.println("¿Usuario?");
-		//String USER = scan.nextLine();
+		String USER = scan.nextLine();
 		
 		System.out.println("¿Contraseña?");
-		//String PWD = scan.nextLine();
+		String PWD = scan.nextLine();
 		
-		String USER = "DW2425_PIN_GRUP07";
-		String PWD = "ACMV007";
+		USER = "DW2425_PIN_GRUP07";
+		PWD = "ACMV007";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -161,4 +161,5 @@ public class bbdd {
 				e.printStackTrace();
 			}
 		}
+	
 }
