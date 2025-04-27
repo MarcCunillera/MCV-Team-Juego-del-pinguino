@@ -14,8 +14,14 @@ public class Main {
 
         // Crear pingüinos
         ArrayList<Pinguino> listaPinguinos = new ArrayList<>();
-        System.out.println("¿Cuántos pingüinos quieres crear?");
+        System.out.println("¿Cuántos pingüinos quieres crear? (min 2 - max 5)");
         int numPinguinos = sc.nextInt();
+        
+        //Control num pinguinos
+        while (numPinguinos > 5 || numPinguinos < 2) {
+        	System.out.println("Vuelve a elegir el número de pingüinos: ");
+        	numPinguinos = sc.nextInt();
+        }
         sc.nextLine(); //Consumir el salto de línea
 
         for (int i = 0; i < numPinguinos; i++) {
@@ -28,7 +34,24 @@ public class Main {
         System.out.println("\n--- ¡Comienza la partida! ---\n");
 
         boolean partidaActiva = true;
+        //Bucle para el juego
         while (partidaActiva) {
+        	//bucle para mostrar el tablero
+        	int filas = 5;
+        	int columnas = 10;
+        	int contador = 0;
+        	for (int i = 0; i < filas; i++) {
+        	    for (int j = 0; j < columnas; j++) {
+        	        //pillar la casilla correspondiente
+        	        Casilla casilla = tablero.get(contador++);
+        	        //tipo casilla
+        	        System.out.print("[" + casilla.getTipoCasilla().substring(0, 4) + "] "); //primeras 4 letras del tipo
+        	    }
+        	    //salto al final de cada fila
+        	    System.out.println();
+        	}
+        	
+            //juego
             Pinguino pinguActual = listaPinguinos.get(tableroJuego.getTurno());
 
             System.out.println("\nTurno de: " + pinguActual.getNombre() + " (Posición actual: " + pinguActual.getPosicion() + ")");
