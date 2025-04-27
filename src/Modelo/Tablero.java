@@ -20,7 +20,15 @@ public class Tablero {
         return "Casillas del tablero: " + tablero.size();
     }
 
-    public void GenerarTablero() {
+    public int getTurno() {
+		return turno;
+	}
+
+	public void setTurno(int turno) {
+		this.turno = turno;
+	}
+
+	public void GenerarTablero() {
         for (int i = 1; i <= 50; i++) {
             Casilla.asignarCasillas(i, tablero);
         }
