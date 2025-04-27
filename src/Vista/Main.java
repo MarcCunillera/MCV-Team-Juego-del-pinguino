@@ -11,7 +11,8 @@ public class Main {
 
         Tablero tableroJuego = new Tablero();  //generar el tablero
         ArrayList<Casilla> tablero = tableroJuego.getTablero();
-
+        Eventos evento = new Eventos (1,1,1,1,1);
+        
         // Crear pingüinos
         ArrayList<Pinguino> listaPinguinos = new ArrayList<>();
         System.out.println("¿Cuántos pingüinos quieres crear? (min 2 - max 5)");
@@ -73,15 +74,15 @@ public class Main {
 
                 switch (tipoCasilla) {
                     case 1: //Oso
-                        System.out.println("¡Oh no! " + pinguDespues.getNombre() + " se encontró un Oso 🐻 y vuelve al inicio.");
-                        pinguDespues.setPosicion(0);
+                        System.out.println("¡Oh no! " + pinguDespues.getNombre() + " se encontró un Oso 🐻 y vuelve al inicio");
+                        boolean sobornado = evento.sobornarOso(pinguDespues);
                         break;
                     case 2: //Agujero en el hielo
-                        System.out.println("¡Peligro! " + pinguDespues.getNombre() + " cayó en un agujero 🧊.");
+                        System.out.println("¡Peligro! " + pinguDespues.getNombre() + " cayó en un agujero 🧊");
                         tableroJuego.OrigenTablero(listaPinguinos);
                         break;
                     case 3: //Trineo
-                        System.out.println("¡Genial! " + pinguDespues.getNombre() + " encontró un Trineo 🛷.");
+                        System.out.println("¡Genial! " + pinguDespues.getNombre() + " encontró un Trineo 🛷");
                         tableroJuego.OrigenTablero(listaPinguinos);
                         break;
                     case 4: //Casilla Interrogante
