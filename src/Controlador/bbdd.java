@@ -3,163 +3,134 @@ package Controlador;
 import java.util.Scanner;
 import java.sql.*;
 
-/**
- * Clase que proporciona métodos para interactuar con una base de datos Oracle.
- */
 public class bbdd {
 
-    /**
-     * Intenta establecer una conexión a la base de datos Oracle. NO HACE FALTA QUE ENTENDAIS COMO FUNCIONA,
-     * SE HACE TODO DE MANERA AUTOMÁTICA.
-     *
-     * @return Objeto Connection si la conexión es exitosa, null en caso contrario. LA VARIABLE QUE DEVUELVE
-     * LA TENEIS QUE GUARDAR PARA LAS DEMÁS FUNCIONES
-     */
-	public static Connection conectarBaseDatos() {
-		Connection con = null;
+    public static Connection conectarBaseDatos() {
+        Connection con = null;
 
-		System.out.println("Intentando conectarse a la base de datos");
-		
-		System.out.println("Selecciona centro o fuera de centro: (CENTRO/FUERA)");
-		
-		Scanner scan = new Scanner(System.in);
-		
-		String s = scan.nextLine();
-		
-		s = s.toLowerCase();
-		
-		String URL;
-		
-		if(s.equals("centro")) {
-			URL = "jdbc:oracle:thin:@192.168.3.26:1521/XEPDB2";
-		} else {
-			URL = "jdbc:oracle:thin:@oracle.ilerna.com:1521/XEPDB2";
-		}
-		
-		System.out.println("¿Usuario?");
-		String USER = scan.nextLine();
-		
-		System.out.println("¿Contraseña?");
-		String PWD = scan.nextLine();
-		
-		USER = "DW2425_PIN_GRUP07";
-		PWD = "ACMV007";
-		
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(URL, USER, PWD);
-		} catch (ClassNotFoundException e) {
-			System.out.println("No se ha encontrado el driver " + e);
-		} catch (SQLException e) {
-			System.out.println("Error en las credenciales o en la URL " + e);
-		}
+        System.out.println("Intentando conectarse a la base de datos");
 
-		System.out.println("Conectados a la base de datos");
+        System.out.println("Selecciona centro o fuera de centro: (CENTRO/FUERA)");
 
-		return con;
-	}
+        Scanner scan = new Scanner(System.in);
+        String s = scan.nextLine().toLowerCase();
 
-    /**
-     * Realiza una inserción en la base de datos.
-     *
-     * @param con Objeto Connection que representa la conexión a la base de datos.
-     * @param sql Sentencia SQL de inserción que hayais creado.
-     */
-	public static void insert(Connection con, String sql) {
-		try {
-			Statement st = con.createStatement();
-			st.execute(sql);
-			
-			System.out.println("Insert hecho correctamente");
-		} catch (SQLException e) {
-			System.out.println("Ha habido un error en el Insert " + e);
-		}
-	}
-	
-    /**
-     * Realiza una actualización en la base de datos.
-     *
-     * @param con Objeto Connection que representa la conexión a la base de datos.
-     * @param sql Sentencia SQL de actualización que hayais creado.
-     */
-	public static void update(Connection con, String sql) {
-		try {
-			Statement st = con.createStatement();
-			st.execute(sql);
-			
-			System.out.println("Update hecho correctamente");
-		} catch (SQLException e) {
-			System.out.println("Ha habido un error en el Update " + e);
-		}
-	}
-	
-    /**
-     * Realiza una eliminación en la base de datos.
-     *
-     * @param con Objeto Connection que representa la conexión a la base de datos.
-     * @param sql Sentencia SQL de eliminación que hayais creado.
-     */
-	public static void delete(Connection con, String sql) {
-		try {
-			Statement st = con.createStatement();
-			st.execute(sql);
-			
-			System.out.println("Delete hecho correctamente");
-		} catch (SQLException e) {
-			System.out.println("Ha habido un error en el Delete " + e);
-		}
-	}
-	
-    /**
-     * Realiza una consulta en la base de datos y devuelve los resultados como un ResultSet
-     *
-     * @param con                         Objeto Connection que representa la conexión a la base de datos.
-     * @param sql                         Sentencia SQL de consulta.
-     * @param listaElementosSeleccionados Array de Strings con los nombres de las columnas seleccionadas.
-     * @return ResultSet con la query hecha
-     */
-	public static ResultSet select(Connection con, String sql) {
-		try {
-			Statement st = con.createStatement();
-			return st.executeQuery(sql);
+        String URL = s.equals("centro")
+            ? "jdbc:oracle:thin:@192.168.3.26:1521/XEPDB2"
+            : "jdbc:oracle:thin:@oracle.ilerna.com:1521/XEPDB2";
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		System.out.println("Unexpected error");
-		return null;
-	}
-	
-    /**
-     * Imprime los resultados de una consulta SELECT en la base de datos.
-     * EN ESTE CASO SI PODEIS IMPRIMIR MÁS DE UNA FILA.
-     *
-     * @param con                         Objeto Connection que representa la conexión a la base de datos.
-     * @param sql                         Sentencia SQL de consulta.
-     * @param listaElementosSeleccionados Array de Strings con los nombres de las columnas seleccionadas.
-     */
-	public static void print(Connection con, String sql, String[] listaElementosSeleccionados) {
-		try {
-				Statement st = con.createStatement();
-				ResultSet rs = st.executeQuery(sql);
+        System.out.println("¿Usuario?");
+        String USER = scan.nextLine();
 
-				if (rs.isBeforeFirst()) {
-					while (rs.next()) {
-						for (int i = 0; i < listaElementosSeleccionados.length; i++) {
-							System.out.println(listaElementosSeleccionados[i] + 
-									": " + rs.getString(listaElementosSeleccionados[i]));
-						}
-					}
-				} else {
-					System.out.println("No se ha encontrado nada");
-				}
+        System.out.println("¿Contraseña?");
+        String PWD = scan.nextLine();
 
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-	
+        USER = "DW2425_PIN_GRUP07";
+        PWD = "ACMV007";
+
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection(URL, USER, PWD);
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Error al conectar: " + e.getMessage());
+        }
+
+        System.out.println("Conectados a la base de datos");
+
+        return con;
+    }
+
+    public static void cerrarConexion(Connection con) {
+        try {
+            if (con != null && !con.isClosed()) {
+                con.close();
+                System.out.println("Conexión cerrada correctamente.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static int crearNuevaPartida(Connection con) {
+        int idPartida = -1;
+        try {
+            String sql = "INSERT INTO Partidas (ID_Partida, Num_Partida, Hora, DataPartida) " +
+                         "VALUES (partidas_seq.NEXTVAL, partidas_seq.CURRVAL, CURRENT_TIMESTAMP, CURRENT_DATE)";
+            insert(con, sql);
+
+            ResultSet rs = select(con, "SELECT MAX(ID_Partida) AS ID FROM Partidas");
+            if (rs.next()) {
+                idPartida = rs.getInt("ID");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return idPartida;
+    }
+
+    public static void crearJugador(Connection con, String nombre, String contrasena) {
+        String sql = "INSERT INTO Jugadores (ID_jugador, Nickname, Contrasena, N_partidas) " +
+                     "VALUES (jugadores_seq.NEXTVAL, '" + nombre + "', '" + contrasena + "', 0)";
+        insert(con, sql);
+    }
+
+    public static int obtenerIdJugador(Connection con, String nombre) {
+        int id = -1;
+        try {
+            ResultSet rs = select(con, "SELECT ID_jugador FROM Jugadores WHERE Nickname = '" + nombre + "'");
+            if (rs.next()) {
+                id = rs.getInt("ID_jugador");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    public static void crearParticipacion(Connection con, int idPartida, int idJugador) {
+        String sql = "INSERT INTO Participaciones (ID_Participacion, ID_Partida, ID_jugador, Dado_Lento, Dado_Rapido, Peces, Bolas_Nive) " +
+                     "VALUES (participaciones_seq.NEXTVAL, " + idPartida + ", " + idJugador + ", 0, 0, 0, 0)";
+        insert(con, sql);
+    }
+
+    public static int obtenerIdPartida(Connection con, int numPartida) {
+        int id = -1;
+        try {
+            ResultSet rs = select(con, "SELECT ID_Partida FROM Partidas WHERE Num_Partida = " + numPartida);
+            if (rs.next()) {
+                id = rs.getInt("ID_Partida");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return id;
+    }
+
+    public static void actualizarParticipacion(Connection con, int idPartida, String nombre, int nuevaPosicion) {
+        int idJugador = obtenerIdJugador(con, nombre);
+        if (idJugador != -1) {
+            String sql = "UPDATE Participaciones SET Peces = " + nuevaPosicion +
+                         " WHERE ID_Partida = " + idPartida + " AND ID_jugador = " + idJugador;
+            update(con, sql);
+        }
+    }
+
+    // 👇 Asegúrate de que estas funciones están implementadas en tu clase (o añádelas si no están):
+    public static void insert(Connection con, String sql) {
+        try (Statement stmt = con.createStatement()) {
+            stmt.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void update(Connection con, String sql) {
+        insert(con, sql); // misma implementación que insert
+    }
+
+    public static ResultSet select(Connection con, String sql) throws SQLException {
+        Statement stmt = con.createStatement();
+        return stmt.executeQuery(sql);
+    }
 }
+
