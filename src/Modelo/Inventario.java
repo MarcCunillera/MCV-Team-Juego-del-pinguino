@@ -27,9 +27,13 @@ public class Inventario {
         for (ObjetosInventario obj : inventario) {
             if (obj.getIDobjeto() == objetoNuevo.getIDobjeto() && obj.getCantidad() > 0) {
                 //Sumar cantidad, sin pasar de 6
-                obj.setCantidad(Math.min(obj.getCantidad() + objetoNuevo.getCantidad(), 6));
+                int cantidadNueva = obj.getCantidad() + objetoNuevo.getCantidad();
+                if (cantidadNueva > 6) {
+					objetoNuevo.setCantidad(6);
+				} else {
+					objetoNuevo.setCantidad(cantidadNueva);
+				}
                 encontrado = true;
-                break;
             }
         }
 
@@ -39,17 +43,14 @@ public class Inventario {
                 if (obj.getCantidad() == 0) { // espacio vacío
                     obj.setIDobjeto(objetoNuevo.getIDobjeto());
                     obj.setNombreObjeto(objetoNuevo.getNombreObjeto());
-                    obj.setCantidad(Math.min(objetoNuevo.getCantidad(), 6));
-                    break;
+                    int cantidad = obj.getCantidad() + objetoNuevo.getCantidad();
+                    if (cantidad > 6) {
+						objetoNuevo.setCantidad(6);
+					} else {
+						objetoNuevo.setCantidad(cantidad);
+					}
                 }
             }
-        }
-    }
-
-    //Método para validar que un objeto no tenga más de 6 unidades (opcional extra protección)
-    private void validarMaximos(ObjetosInventario objeto) {
-        if (objeto.getCantidad() > 6) {
-            objeto.setCantidad(6);
         }
     }
 
@@ -67,7 +68,6 @@ public class Inventario {
                     objeto.setCantidad(0);
                 }
                 System.out.println("Se ha eliminado 1 unidad de " + objeto.getNombreObjeto());
-                break;
             }
         }
     }
