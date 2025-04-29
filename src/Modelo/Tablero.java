@@ -62,10 +62,10 @@ public class Tablero {
                     }
                 }
                 if (encontradoA) {
-                    System.out.println(pingu.getNombre() + " cayó en un agujero y retrocedió a la casilla " + agujAnt);
+                    System.out.println(pingu.getNombre() + " cayó en un agujero 🕳 y retrocedió a la casilla " + agujAnt);
                     pingu.setPosicion(agujAnt);
                 } else {
-                    System.out.println(pingu.getNombre() + " cayó en un agujero sin salida, vuelve al inicio");
+                    System.out.println(pingu.getNombre() + " cayó en un agujero 🕳 sin salida, vuelve al inicio");
                     pingu.setPosicion(0);
                 }
                 break;
@@ -79,10 +79,10 @@ public class Tablero {
                     }
                 }
                 if (encontradoT) {
-                    System.out.println(pingu.getNombre() + " usó un trineo hasta la casilla " + trinPos);
+                    System.out.println(pingu.getNombre() + " usó un trineo 🛷 hasta la casilla " + trinPos);
                     pingu.setPosicion(trinPos);
                 } else {
-                    System.out.println(pingu.getNombre() + " encontró un trineo roto.");
+                    System.out.println(pingu.getNombre() + " encontró un trineo 🛷 roto :(");
                 }
                 break;
             case 4: //casilla interrogante

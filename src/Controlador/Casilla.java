@@ -48,13 +48,13 @@ public class Casilla {
         int[] types = {0,1,2,3,4,5};
         
         //control máximos
-        if (contOso >= 4 && tipo == 1) {
+        if (contOso >= 2 && tipo == 1) {
         	types[1] = 0;
         }
         if(contAgujero >= 4 && tipo == 2) {
         	types[2] = 0;
         }
-        if(contTrineo >= 4 && tipo == 3) {
+        if(contTrineo >= 3 && tipo == 3) {
         	types[3] = 0;
         }
         if(contCasillaInterrogante >= 10 && tipo == 4) {
@@ -90,15 +90,17 @@ public class Casilla {
         
 
         switch (evento) {
-            case 1: idObj = 1; nomObj = "Pez"; cantidad = 1; break;
-            case 2: idObj = 2; nomObj = "Bolas de Nieve"; cantidad = rn.nextInt(3) + 1; break;
+            case 1: idObj = 1; nomObj = "Pez"; cantidad = 1; System.out.println("Ha tocado un pez! 🦈"); break;
+            case 2: idObj = 2; nomObj = "Bolas de Nieve"; cantidad = rn.nextInt(3) + 1; System.out.println("Ha/n tocado " + cantidad + " bola/s de nieve! ❄"); break;
             case 3:
                 if (rn.nextBoolean()) {
                     idObj = 3;
                     nomObj = "Dado Rápido";
+                    System.out.println("Ha tocado un dado Rápido! 🎲");
                 } else {
                     idObj = 4;
                     nomObj = "Dado Lento";
+                    System.out.println("Ha tocado un dado Lento! 🎲");
                 }
                 cantidad = 1;
                 break;
