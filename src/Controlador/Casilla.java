@@ -1,230 +1,103 @@
 package Controlador;
 
+import Modelo.ObjetosInventario;
 import java.util.ArrayList;
 import java.util.Random;
-import Modelo.*;
 
 public class Casilla {
-	
-	private int idCasilla;
-	private int idTipoCasilla;
-	private String TipoCasilla;
-	
-	
-	public Casilla (int idCasilla, int idTipoCasilla, String TipoCasilla) {
-		
-		this.idCasilla = idCasilla;
-		this.idTipoCasilla = idTipoCasilla;
-		this.TipoCasilla = TipoCasilla;
-		
-	}
-	
-	/*
-	 * Cambiar el tipo ID de la casilla interrogante cuanbdo se sepa que tipo de
-	 * casilla va a ser
-	 */
-	
-	//Getters y setters
-		public int getidCasilla() {
-			
-			return idCasilla;
-			
-		}
-		public void getidCasilla(int idCasilla) {
-			
-			this.idCasilla = idCasilla;
-			
-		}
-		
-		
-		public String getTipoCasilla() {
-			
-			return TipoCasilla;
-			
-		}
-		public void getTipoCasilla(String TipoCasilla) {
-			
-			this.TipoCasilla = TipoCasilla;
-			
-		}
-		public int getIDCasilla() {
-			
-			return idCasilla;
-			
-		}
-		public void setIDCasilla(int idCasilla) {
-			
-			this.idCasilla = idCasilla;
-			
-		}
-		
-		public int getIDTipoCasilla() {
-			return idTipoCasilla;
-		}
-		
-		public void setIDTipoCasilla(int idTipoCasilla) {
-			this.idTipoCasilla = idTipoCasilla;
-		}
-	
-	
-	//método para asignar id de tipo de casilla
-	public static void asignarCasillas(int idCasilla, ArrayList<Casilla> tablero) {
-		Random rn = new Random();
-		int tipo = rn.nextInt(13);
-		int contOsos = 0;
-		int contTrineos = 0;
-		int contAguj = 0;
-		
-		int idTipo = 0;
-		String nombreTipo = "";
-		
-		switch (tipo) {
-		case 0:
-			//casilla normal
-			idTipo = 0;
-			nombreTipo = "Normal";
-			break;
-		case 1:
-			//oso
-			idTipo = 1;
-			nombreTipo = "oso";
-			contOsos++;
-			break;
-		case 2:
-			//agujero en el hielo
-			idTipo = 2;
-			nombreTipo = "agujero en el hielo";
-			contAguj++;
-			break;
-		case 3:
-			//trineo
-			idTipo = 3;
-			nombreTipo = "trineo";
-			contTrineos++;
-			break;
-		case 4:
-			//evento aleatorio
-			//obtener un pez, obtener 1-3 bolas de nieve, dado rapido (probabilidad baja), dado lento (probabilidad alta)
-			idTipo = 4;
-			nombreTipo = "Evento aleatório";
-			break;
-		default:
-			//casilla normal
-			idTipo = 0;
-			nombreTipo = "Normal";
-			break;
-		}
-		
-		Casilla nuevaCasilla = new Casilla(idCasilla, idTipo, nombreTipo); //generar la casilla
-		tablero.add(nuevaCasilla); //añadir la casilla al tablero
-	}
+    private int idCasilla;
+    private int idTipoCasilla;
+    private String tipoCasilla;
+    
+    //control de casillas
+    private static int contOso = 0;
+    private static int contAgujero = 0;
+    private static int contTrineo = 0;
+    private static int contCasillaInterrogante = 0;
 
+    public Casilla(int idCasilla, int idTipoCasilla, String tipoCasilla) {
+        this.idCasilla = idCasilla;
+        this.idTipoCasilla = idTipoCasilla;
+        this.tipoCasilla = tipoCasilla;
+    }
 
-	public void RetornoJugador() {
-		
-	}
-	
-	public void AgujeroHielo() {
-		
-	}
-	
-	/**
-	 * Metodos de los tipos de Casillas y Objetos
-	 */
-	
-	public void CasillaInterogante(Pinguino pingu) {
-		
-		Random eventAL = new Random();
-		
-		/**
-		 * Creacion de la variables con su respectivo valor que tiene cada uno
-		 */
-		
-		int DadoRapido = 1;
-		int DadoLento = 2;
-		int peces = 3 ;
-		int Bolasnieve = 4;
-		String evntxt = "";
+    public int getIdCasilla() { 
+    	return idCasilla; 
+    }
+    public void setIdCasilla(int idCasilla) { 
+    	this.idCasilla = idCasilla; 
+    }
+    public int getIDTipoCasilla() { 
+    	return idTipoCasilla; 
+    }
+    public void setIdTipoCasilla(int idTipoCasilla) { 
+    	this.idTipoCasilla = idTipoCasilla; 
+    }
+    public String getTipoCasilla() { 
+    	return tipoCasilla; 
+    }
+    public void setTipoCasilla(String tipoCasilla) { 
+    	this.tipoCasilla = tipoCasilla; 
+    }
 
-		int Evento = eventAL.nextInt(3)+1 ;
-		
-		/**
-		 * En este switch case tenemos los eventos en general que estaran en cada casilla
-		 */
-		
-		switch(Evento) {
-		
-		 case 1: 
-			 
-			 evntxt = "Te ha tocado los peces";
-			 
-			 break;
-			 
-		 case 2: 
-			 
-			 evntxt = "Te ha tocado las bolas de Nieve !!!";
-		
-			 break;
-			 
-		 case 3:
-			 
-			 int Dados = 0;
-			 
-			 int DadoAleatorio = eventAL.nextInt(25)+1 ;
-			 
-			 if (0 >= 25) {
-				 
-				 pingu.
-				 
-				 evntxt = "Te ha tocado un Dado Rapido !!!";
+    public static void asignarCasillas(int idCasilla, ArrayList<Casilla> tablero) {
+        Random rn = new Random();
+        int tipo = rn.nextInt(6);
+        String nombreTipo;
+        
+        //Si ya hay 4 osos, evitar generar más osos
+        while (contOso >= 4 && tipo == 1) {
+            tipo = rn.nextInt(4); //Generar un tipo diferente entre 0 y 3 (sin oso)
+        }
 
-			 }
-			 
-			 else if (0 >= 10) {
-				 
-				 evntxt = "Te ha tocado un Dado Lento !!!";
-				 
-			 }
-			 
-			 break;
-			 
-		}
-		
-	}
-	
-	
-	
-	public void Trineo(int trineo) {
-		
-		
-	}
-	
+        // Si ya hay 5 agujeros, evitar generar más agujeros
+        while (contAgujero >= 5 && tipo == 2) {
+            tipo = rn.nextInt(4); //Generar un tipo diferente entre 0 y 3 (sin agujero)
+        }
 
-	public void Oso(Pinguino pingujug) {
-	    
-	    System.out.println("¿Quieres sobornar al Oso o aceptar la penalización?");
-	    
-	    if (pingujug.inventario.getPez() == 2)
-	        System.out.println("El Oso ha sido sobornado con los 2 peces.");
-	    } 
-	    
-	    else {
-	    	
-	        pingujug.getPosicion(0);
-	        System.out.println("El oso te ha atacado (vuelves al principio del juego).");
-	    }
-	
-	}
-	
-	
-	
-	/*
-	 * La letra ( norm ) es una casilla normal
-	 * 
-	 * La palabra ( evn ) para las casillas con los eventos normales
-	 * 
-	 * La palabra ( espc ) para las casillas con los eventos normales
-	 * 
-	 */
-	
+        // Si ya hay 5 trineos, evitar generar más trineos
+        while (contTrineo >= 5 && tipo == 3) {
+            tipo = rn.nextInt(4); // Generar un tipo diferente entre 0 y 3 (sin trineo)
+        }
+
+        // Si ya hay 10 casillas interrogantes, evitar generar más casillas interrogantes
+        while (contCasillaInterrogante >= 10 && tipo == 4) {
+            tipo = rn.nextInt(4); //Generar un tipo diferente entre 0 y 3 (sin casilla interrogante)
+        }
+        
+        //elegir el tipo
+        switch (tipo) {
+            case 0: nombreTipo = "Normal"; break;
+            case 1: nombreTipo = "Oso"; break;
+            case 2: nombreTipo = "Agujero en el hielo"; break;
+            case 3: nombreTipo = "Trineo"; break;
+            case 4: nombreTipo = "Casilla Interrogante"; break;
+            default: nombreTipo = "Normal"; break;
+        }
+        tablero.add(new Casilla(idCasilla, tipo, nombreTipo));
+    }
+
+    public ObjetosInventario casillaInterrogante() {
+        Random rn = new Random();
+        int evento = rn.nextInt(3) + 1;
+        int idObj = 0;
+        int cantidad = 0;
+        String nomObj = "";
+
+        switch (evento) {
+            case 1: idObj = 1; nomObj = "Pez"; cantidad = 1; break;
+            case 2: idObj = 2; nomObj = "Bolas de Nieve"; cantidad = rn.nextInt(3) + 1; break;
+            case 3:
+                if (rn.nextBoolean()) {
+                    idObj = 3;
+                    nomObj = "Dado Rápido";
+                } else {
+                    idObj = 4;
+                    nomObj = "Dado Lento";
+                }
+                cantidad = 1;
+                break;
+        }
+        return new ObjetosInventario(-1, idObj, nomObj, cantidad);
+    }
 }

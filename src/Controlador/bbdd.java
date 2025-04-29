@@ -8,8 +8,6 @@ import java.sql.*;
  */
 public class bbdd {
 
-	
-	
     /**
      * Intenta establecer una conexión a la base de datos Oracle. NO HACE FALTA QUE ENTENDAIS COMO FUNCIONA,
      * SE HACE TODO DE MANERA AUTOMÁTICA.
@@ -33,9 +31,9 @@ public class bbdd {
 		String URL;
 		
 		if(s.equals("centro")) {
-			URL = "jdbc:oracle:thin:@192.168.3.26:1521:XEPDB2";
+			URL = "jdbc:oracle:thin:@192.168.3.26:1521/XEPDB2";
 		} else {
-			URL = "jdbc:oracle:thin:@oracle.ilerna.com:1521:XEPDB2";
+			URL = "jdbc:oracle:thin:@oracle.ilerna.com:1521/XEPDB2";
 		}
 		
 		System.out.println("¿Usuario?");
@@ -43,6 +41,9 @@ public class bbdd {
 		
 		System.out.println("¿Contraseña?");
 		String PWD = scan.nextLine();
+		
+		USER = "DW2425_PIN_GRUP07";
+		PWD = "ACMV007";
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -160,4 +161,5 @@ public class bbdd {
 				e.printStackTrace();
 			}
 		}
+	
 }

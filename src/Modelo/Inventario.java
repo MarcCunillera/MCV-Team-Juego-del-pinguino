@@ -1,47 +1,11 @@
 package Modelo;
 
 import java.util.ArrayList;
-import Controlador.*;
 
 public class Inventario {
-	private ArrayList<ObjetosInventario> inventario;
-	
-	//constructor de la clase
-	public Inventario() {
-		this.inventario = new ArrayList <>(11);
-		this.generarInventario();
-	}
-	
-	//Método para generar el inventario
-	private void generarInventario() {
-		for (int i = 0; i < 11; i++) { //tamaño de 11 casillas
-			inventario.add(new ObjetosInventario(i, 0, "Vacío", 0));
-		}
-	}
-	
-	//Método para modificar el contenido del inventario
-	public void modificarTablero() {
-		
-	}
-	
-	//Getters y setters
-	public ArrayList<ObjetosInventario> getInventario() {
 
-		return inventario;
-	}
+    private ArrayList<ObjetosInventario> inventario;
 
-<<<<<<< Updated upstream
-	public void setInventario(ArrayList<ObjetosInventario> inventario) {
-		this.inventario = inventario;
-	}
-	
-	//toString
-	@Override
-	public String toString() {
-		return "Inventario [inventario=" + inventario + "]";
-	}
-	
-=======
     //Constructor
     public Inventario() {
         this.inventario = new ArrayList<>(11);
@@ -63,13 +27,9 @@ public class Inventario {
         for (ObjetosInventario obj : inventario) {
             if (obj.getIDobjeto() == objetoNuevo.getIDobjeto() && obj.getCantidad() > 0) {
                 //Sumar cantidad, sin pasar de 6
-                int sumaValores = obj.getCantidad() + objetoNuevo.getCantidad();
-                if (sumaValores > 6) {
-                	obj.setCantidad(6);
-                }else {
-                	obj.setCantidad(sumaValores);
-                }
+                obj.setCantidad(Math.min(obj.getCantidad() + objetoNuevo.getCantidad(), 6));
                 encontrado = true;
+                break;
             }
         }
 
@@ -79,14 +39,17 @@ public class Inventario {
                 if (obj.getCantidad() == 0) { // espacio vacío
                     obj.setIDobjeto(objetoNuevo.getIDobjeto());
                     obj.setNombreObjeto(objetoNuevo.getNombreObjeto());
-                    int cantidad = objetoNuevo.getCantidad();
-                    if (cantidad > 6) {
-                    	objetoNuevo.setCantidad(6);
-                    } else {
-                    	objetoNuevo.setCantidad(cantidad);
-                    }
+                    obj.setCantidad(Math.min(objetoNuevo.getCantidad(), 6));
+                    break;
                 }
             }
+        }
+    }
+
+    //Método para validar que un objeto no tenga más de 6 unidades (opcional extra protección)
+    private void validarMaximos(ObjetosInventario objeto) {
+        if (objeto.getCantidad() > 6) {
+            objeto.setCantidad(6);
         }
     }
 
@@ -104,6 +67,7 @@ public class Inventario {
                     objeto.setCantidad(0);
                 }
                 System.out.println("Se ha eliminado 1 unidad de " + objeto.getNombreObjeto());
+                break;
             }
         }
     }
@@ -128,5 +92,4 @@ public class Inventario {
         }
         return sb.toString();
     }
->>>>>>> Stashed changes
 }
