@@ -35,6 +35,7 @@ public class Eventos {
 		return idEvento;
 	}
 
+<<<<<<< Updated upstream
 	public void setIdEvento(int idEvento) {
 		this.idEvento = idEvento;
 	}
@@ -76,4 +77,47 @@ public class Eventos {
 	}
 	
 	
+=======
+    //Método para sobornar al oso
+    public boolean sobornarOso(Pinguino pingu) {
+        Inventario inventario = pingu.getInventario();
+        
+        //Verificar si tiene un pez
+        for (ObjetosInventario obj : inventario.getInventario()) {
+            if (obj.getIDobjeto() == 1 && obj.getCantidad() > 0) { // Pez
+                inventario.eliminarObjeto(1);  // Eliminar un pez
+                System.out.println("Has sobornado al oso con un pez. ¡Sigues jugando!");
+                return true;
+            }
+        }
+        
+        //Si no tiene un pez, verificar el inventario
+        System.out.println("No tienes peces para sobornar al oso.");
+        
+        //Si tiene más de la mitad del inventario lleno
+        int cantidadLleno = 0;
+        for (ObjetosInventario obj : inventario.getInventario()) {
+            if (obj.getCantidad() > 0) {
+                cantidadLleno++;
+            }
+        }
+
+        //Si tiene más de la mitad del inventario lleno, le quitamos la mitad de los objetos
+        if (cantidadLleno > inventario.getInventario().size() / 2) {
+            for (ObjetosInventario obj : inventario.getInventario()) {
+                if (obj.getCantidad() > 0) {
+                    int cantidadEliminar = obj.getCantidad() / 2;
+                    obj.setCantidad(obj.getCantidad() - cantidadEliminar);
+                    System.out.println("Se ha eliminado la mitad de unidades del objeto: " + obj.getNombreObjeto());
+                }
+            }
+        } else {
+            //Si no tiene más de la mitad del inventario ocupado, lo enviamos a la primera casilla
+            pingu.setPosicion(0);
+            System.out.println("No tienes suficientes objetos en tu inventario. Te envían a la primera casilla.");
+        }
+        
+        return false;
+    }
+>>>>>>> Stashed changes
 }
