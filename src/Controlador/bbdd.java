@@ -5,40 +5,43 @@ import java.sql.*;
 
 public class bbdd {
 
-    public static Connection conectarBaseDatos() {
-        Connection con = null;
+	public static Connection conectarBaseDatos() {
+	    Connection con = null;
+	    Scanner scan = new Scanner(System.in);
 
-        System.out.println("Intentando conectarse a la base de datos");
+	    System.out.println("Intentando conectarse a la base de datos");
+	    System.out.println("Selecciona centro o fuera de centro: (CENTRO/FUERA)");
+	    String s = scan.nextLine().toLowerCase();
 
-        System.out.println("Selecciona centro o fuera de centro: (CENTRO/FUERA)");
+	    String URL = s.equals("centro")
+	        ? "jdbc:oracle:thin:@192.168.3.26:1521/XEPDB2"
+	        : "jdbc:oracle:thin:@oracle.ilerna.com:1521/XEPDB2";
 
-        Scanner scan = new Scanner(System.in);
-        String s = scan.nextLine().toLowerCase();
+	    while (con == null) {
+	        System.out.println("¿Usuario?");
+	        String USER = scan.nextLine();
 
-        String URL = s.equals("centro")
-            ? "jdbc:oracle:thin:@192.168.3.26:1521/XEPDB2"
-            : "jdbc:oracle:thin:@oracle.ilerna.com:1521/XEPDB2";
+	        System.out.println("¿Contraseña?");
+	        String PWD = scan.nextLine();
 
-        System.out.println("¿Usuario?");
-        String USER = scan.nextLine();
+	        try {
+	            Class.forName("oracle.jdbc.driver.OracleDriver");
+	            con = DriverManager.getConnection(URL, USER, PWD);
+	        } catch (SQLException e) {
+	            System.out.println("Usuario o contraseña incorrectos. Inténtalo de nuevo.");
+	        } catch (ClassNotFoundException e) {
+	            System.out.println("Error al cargar el driver JDBC.");
+	            break;
+	        }
+	    }
 
-        System.out.println("¿Contraseña?");
-        String PWD = scan.nextLine();
+	    if (con != null) {
+	        System.out.println("Conectado a la base de datos.");
+	    }
 
-        USER = "DW2425_PIN_GRUP07";
-        PWD = "ACMV007";
+	    return con;
+	}
 
-        try {
-            Class.forName("oracle.jdbc.driver.OracleDriver");
-            con = DriverManager.getConnection(URL, USER, PWD);
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Error al conectar: " + e.getMessage());
-        }
-
-        System.out.println("Conectados a la base de datos");
-
-        return con;
-    }
 
     public static void cerrarConexion(Connection con) {
         try {
