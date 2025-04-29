@@ -8,6 +8,11 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import Controlador.bbdd;
 
 public class PantallaPrincipalController {
 
@@ -23,27 +28,35 @@ public class PantallaPrincipalController {
     @FXML
     private Button registerButton;
 
+    private Connection con;
+
+    public void initialize() {
+        // Se conecta a la base de datos al cargar la interfaz
+        con = bbdd.conectarBaseDatos();
+    }
+
     @FXML
     private void handleLogin() {
-        String usuario = userField.getText();
-        String contrasena = passField.getText();
+        String usuario = userField.getText().trim();
+        String contrasena = passField.getText().trim();
 
         if (usuario.isEmpty() || contrasena.isEmpty()) {
             System.out.println("Debes rellenar usuario y contraseña.");
             return;
         }
 
-        // Aquí validamos el login (podrías conectar a la base de datos)
-        // Por simplicidad, vamos directo al juego
-        System.out.println("Login exitoso. Cargando juego...");
-
-        cargarPantallaJuego();
+        if (validarCredenciales(usuario, contrasena)) {
+            System.out.println("Login exitoso. Cargando juego...");
+            cargarPantallaJuego();
+        } else {
+            System.out.println("Usuario o contraseña incorrectos.");
+        }
     }
 
     @FXML
     private void handleRegister() {
-        String usuario = userField.getText();
-        String contrasena = passField.getText();
+        String usuario = userField.getText().trim();
+        String contrasena = passField.getText().trim();
 
         if (usuario.isEmpty() || contrasena.isEmpty()) {
             System.out.println("Debes rellenar usuario y contraseña para registrarte.");
@@ -55,10 +68,36 @@ public class PantallaPrincipalController {
             return;
         }
 
-        // Aquí insertaríamos el nuevo jugador en la base de datos
-        System.out.println("Registro exitoso. Usuario: " + usuario);
+        if (usuarioExiste(usuario)) {
+            System.out.println("Ese usuario ya está registrado.");
+            return;
+        }
 
+        bbdd.crearJugador(con, usuario, contrasena);
+        System.out.println("Registro exitoso. Usuario: " + usuario);
         cargarPantallaJuego();
+    }
+
+    private boolean usuarioExiste(String nombre) {
+        try {
+            String sql = "SELECT * FROM Jugadores WHERE Nickname = '" + nombre + "'";
+            ResultSet rs = bbdd.select(con, sql);
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return true; // prevenir registros fallidos por errores
+        }
+    }
+
+    private boolean validarCredenciales(String nombre, String contrasena) {
+        try {
+            String sql = "SELECT * FROM Jugadores WHERE Nickname = '" + nombre + "' AND Contrasena = '" + contrasena + "'";
+            ResultSet rs = bbdd.select(con, sql);
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     private void cargarPantallaJuego() {
@@ -73,3 +112,4 @@ public class PantallaPrincipalController {
         }
     }
 }
+
