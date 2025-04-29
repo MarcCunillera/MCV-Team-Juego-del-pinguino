@@ -133,32 +133,7 @@ public class Main {
 
                 Pinguino pinguDespues = listaPinguinos.get(tableroJuego.getTurno() == 0 ? listaPinguinos.size() - 1 : tableroJuego.getTurno() - 1);
                 int nuevaPosicion = pinguDespues.getPosicion();
-                Casilla casillaActual = tablero.get(nuevaPosicion);
-                int tipoCasilla = casillaActual.getIDTipoCasilla();
 
-                switch (tipoCasilla) {
-                    case 1:
-                        System.out.println("¡Oh no! " + pinguDespues.getNombre() + " se encontró un Oso 🐻 y vuelve al inicio");
-                        evento.sobornarOso(pinguDespues);
-                        break;
-                    case 2:
-                        System.out.println("¡Peligro! " + pinguDespues.getNombre() + " cayó en un agujero 🧊");
-                        tableroJuego.OrigenTablero(listaPinguinos);
-                        break;
-                    case 3:
-                        System.out.println("¡Genial! " + pinguDespues.getNombre() + " encontró un Trineo 🛷");
-                        tableroJuego.OrigenTablero(listaPinguinos);
-                        break;
-                    case 4:
-                        System.out.println("¡Sorpresa! Casilla Interrogante ❓ para " + pinguDespues.getNombre());
-                        ObjetosInventario objetoGanado = casillaActual.casillaInterrogante();
-                        pinguDespues.getInventario().modificarInventario(objetoGanado);
-                        System.out.println("Has obtenido: " + objetoGanado.getNombreObjeto() + " x" + objetoGanado.getCantidad());
-                        break;
-                    default:
-                        System.out.println("Casilla normal, todo tranquilo.");
-                        break;
-                }
 
                 bbdd.actualizarParticipacion(con, idPartida, pinguDespues.getNombre(), nuevaPosicion);
 
