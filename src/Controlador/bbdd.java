@@ -42,7 +42,6 @@ public class bbdd {
 	    return con;
 	}
 
-
     public static void cerrarConexion(Connection con) {
         try {
             if (con != null && !con.isClosed()) {
