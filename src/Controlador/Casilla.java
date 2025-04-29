@@ -10,6 +10,7 @@ public class Casilla {
     private String tipoCasilla;
     
     //control de casillas
+    private static int casInicio = 4;
     private static int contOso = 0;
     private static int contAgujero = 0;
     private static int contTrineo = 0;
@@ -44,40 +45,42 @@ public class Casilla {
         Random rn = new Random();
         int tipo = rn.nextInt(6);
         String nombreTipo;
+        int[] types = {0,1,2,3,4,5};
         
-        //Si ya hay 4 osos, evitar generar más osos
-        while (contOso >= 4 && tipo == 1) {
-            tipo = rn.nextInt(4); //Generar un tipo diferente entre 0 y 3 (sin oso)
+        //control máximos
+        if (contOso >= 4 && tipo == 1) {
+        	types[1] = 0;
         }
-
-        // Si ya hay 5 agujeros, evitar generar más agujeros
-        while (contAgujero >= 5 && tipo == 2) {
-            tipo = rn.nextInt(4); //Generar un tipo diferente entre 0 y 3 (sin agujero)
+        if(contAgujero >= 4 && tipo == 2) {
+        	types[2] = 0;
         }
-
-        // Si ya hay 5 trineos, evitar generar más trineos
-        while (contTrineo >= 5 && tipo == 3) {
-            tipo = rn.nextInt(4); // Generar un tipo diferente entre 0 y 3 (sin trineo)
+        if(contTrineo >= 4 && tipo == 3) {
+        	types[3] = 0;
         }
-
-        // Si ya hay 10 casillas interrogantes, evitar generar más casillas interrogantes
-        while (contCasillaInterrogante >= 10 && tipo == 4) {
-            tipo = rn.nextInt(4); //Generar un tipo diferente entre 0 y 3 (sin casilla interrogante)
+        if(contCasillaInterrogante >= 10 && tipo == 4) {
+        	types[4] = 0;
+        }
+        tipo = types[tipo];
+        //control primeras 4 casillas (normales)
+        if (casInicio > 0) {
+        	tipo = 0;
+        	casInicio--;
         }
         
         //elegir el tipo
         switch (tipo) {
             case 0: nombreTipo = "Normal"; break;
-            case 1: nombreTipo = "Oso"; break;
-            case 2: nombreTipo = "Agujero en el hielo"; break;
-            case 3: nombreTipo = "Trineo"; break;
-            case 4: nombreTipo = "Casilla Interrogante"; break;
+            case 1: nombreTipo = "Oso";contOso++; break;
+            case 2: nombreTipo = "Agujero en el hielo";contAgujero++; break;
+            case 3: nombreTipo = "Trineo";contTrineo++; break;
+            case 4: nombreTipo = "Casilla Interrogante";contCasillaInterrogante++; break;
             default: nombreTipo = "Normal"; break;
         }
         tablero.add(new Casilla(idCasilla, tipo, nombreTipo));
     }
-
-    public void casillaInterrogante() {
+    
+    //método para gestionar la casilla interrogante
+    public void casillaInterrogante(Pinguino pingu) {
         Random rn = new Random();
         int evento = rn.nextInt(3) + 1;
         int idObj = 0;

@@ -1,11 +1,12 @@
 package Modelo;
 
 import Controlador.*;
+import Modelo.*;
 import java.util.ArrayList;
 
 public class Tablero {
     private ArrayList<Casilla> tablero;
-    private int turno;
+    public int turno;
 
     public Tablero() {
         this.tablero = new ArrayList<>();
@@ -33,7 +34,8 @@ public class Tablero {
             Casilla.asignarCasillas(i, tablero);
         }
     }
-
+	
+	//Método para gestionar las casillas especiales
     public void OrigenTablero(ArrayList<Pinguino> ListaPinguinos) {
         Pinguino pingu = ListaPinguinos.get(turno);
         int posic = pingu.getPosicion();
@@ -83,9 +85,13 @@ public class Tablero {
                     System.out.println(pingu.getNombre() + " encontró un trineo roto.");
                 }
                 break;
+            case 4: //casilla interrogante
+            	casillaAct.casillaInterrogante(pingu);
+            	break;
         }
     }
 
+    //método para mover al pinguino
     public void MoverPinguino(ArrayList<Pinguino> ListaPinguinos, int dadoSeleccionado) {
         if (ListaPinguinos.isEmpty()) {
             System.out.println("No hay pingüinos en la partida.");
@@ -96,11 +102,12 @@ public class Tablero {
         int resultadoDado = pingu.tirarDado(dadoSeleccionado);
         System.out.println(pingu.getNombre() + " con ID " + pingu.getID() + " ha sacado un " + resultadoDado);
 
-        int nuevaPos = Math.min(pingu.getPosicion() + resultadoDado, tablero.size() - 1);
+        int nuevaPos = Math.min(pingu.getPosicion() + resultadoDado, tablero.size() - 1); //Seleccionar a que casilla ír
         pingu.setPosicion(nuevaPos);
         System.out.println(pingu.getNombre() + " avanzó a la casilla " + nuevaPos);
-
-        this.OrigenTablero(ListaPinguinos);
+        
+        
+		this.OrigenTablero(ListaPinguinos); //llamar al método para comprovar eventos
 
         turno = (turno + 1) % ListaPinguinos.size();
     }
