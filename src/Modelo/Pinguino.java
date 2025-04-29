@@ -53,15 +53,32 @@ public class Pinguino {
         }
         return false;
     }
-
-    public int getID() { return id; }
-    public void setID(int id) { this.id = id; }
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    public int getPosicion() { return posicion; }
-    public void setPosicion(int posicion) { this.posicion = posicion; }
-    public Inventario getInventario() { return inventario; }
-    public void setInventario(Inventario inventario) { this.inventario = inventario; }
+    
+    //getters y setters
+    public int getID() { 
+    	return id; 
+    }
+    public void setID(int id) { 
+    	this.id = id; 
+    }
+    public String getNombre() { 
+    	return nombre; 
+    }
+    public void setNombre(String nombre) { 
+    	this.nombre = nombre; 
+    }
+    public int getPosicion() { 
+    	return posicion; 
+    }
+    public void setPosicion(int posicion) { 
+    	this.posicion = posicion; 
+    }
+    public Inventario getInventario() { 
+    	return inventario; 
+    }
+    public void setInventario(Inventario inventario) { 
+    	this.inventario = inventario; 
+    }
 
     @Override
     public String toString() {

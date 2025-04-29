@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelo.ObjetosInventario;
+import Modelo.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -77,12 +77,14 @@ public class Casilla {
         tablero.add(new Casilla(idCasilla, tipo, nombreTipo));
     }
 
-    public ObjetosInventario casillaInterrogante() {
+    public void casillaInterrogante() {
         Random rn = new Random();
         int evento = rn.nextInt(3) + 1;
         int idObj = 0;
         int cantidad = 0;
         String nomObj = "";
+        int i = -1;
+        
 
         switch (evento) {
             case 1: idObj = 1; nomObj = "Pez"; cantidad = 1; break;
@@ -98,6 +100,9 @@ public class Casilla {
                 cantidad = 1;
                 break;
         }
-        return new ObjetosInventario(-1, idObj, nomObj, cantidad);
+        
+        //validación para añadir el objeto al inventario
+        ObjetosInventario obj = new ObjetosInventario(i, idObj, nomObj, cantidad);
+        Inventario.modificarInventario(obj);
     }
 }

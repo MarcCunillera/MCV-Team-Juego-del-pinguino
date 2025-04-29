@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class Inventario {
 
-    private ArrayList<ObjetosInventario> inventario;
+    private static ArrayList<ObjetosInventario> inventario;
 
     //Constructor
     public Inventario() {
-        this.inventario = new ArrayList<>(11);
+        Inventario.inventario = new ArrayList<>(11);
         this.generarInventario();
     }
 
@@ -20,7 +20,7 @@ public class Inventario {
     }
 
     //Método para modificar el inventario al añadir un nuevo objeto
-    public void modificarInventario(ObjetosInventario objetoNuevo) {
+    public static void modificarInventario(ObjetosInventario objetoNuevo) {
         boolean encontrado = false;
 
         //Buscar si el objeto ya existe en el inventario
@@ -79,7 +79,7 @@ public class Inventario {
 
     //Setter del inventario
     public void setInventario(ArrayList<ObjetosInventario> inventario) {
-        this.inventario = inventario;
+        Inventario.inventario = inventario;
     }
 
     //toString para mostrar el inventario
