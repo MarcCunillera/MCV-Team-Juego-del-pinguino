@@ -15,35 +15,13 @@ public class Pinguino {
         this.inventario = new Inventario();
     }
 
-    public int tirarDado(int dadoSeleccionado) {
+    public int tirarDadoNormal(int dadoSeleccionado) {
         Random random = new Random();
-        int resultado = 0;
-
-        if (!dadoExiste(dadoSeleccionado)) {
-            System.out.println("Dado no encontrado, tirando dado normal...");
-            resultado = random.nextInt(6) + 1;
-            return resultado;
-        }
-
-        switch (dadoSeleccionado) {
-            case 0:
-                resultado = random.nextInt(6) + 1;
-                break;
-            case 3:
-                resultado = random.nextInt(6) + 5;
-                inventario.eliminarObjeto(3);
-                break;
-            case 4:
-                resultado = random.nextInt(3) + 1;
-                inventario.eliminarObjeto(4);
-                break;
-            default:
-                resultado = random.nextInt(6) + 1;
-                break;
-        }
+        int resultado = random.nextInt(6) +1;
         return resultado;
     }
-
+    
+    //método para verificar si los dados especiales existen
     private boolean dadoExiste(int dadoSeleccionado) {
         if (dadoSeleccionado == 0) return true;
         for (ObjetosInventario obj : inventario.getInventario()) {
@@ -52,6 +30,38 @@ public class Pinguino {
             }
         }
         return false;
+    }
+    
+    //método para tirar dado lento
+    public int tirarDadoRapido(int dadoSeleccionado) {
+    	Random random = new Random();
+        int resultado = 0;
+
+        if (!dadoExiste(dadoSeleccionado)) {
+            System.out.println("Dado no encontrado, tirando dado normal...");
+            resultado = random.nextInt(6) + 1;
+            return resultado;
+        } else {
+        	resultado = random.nextInt(6) +5;
+        	inventario.eliminarObjeto(3);
+        }
+        return resultado;
+    }
+    
+    //método para tirar dado rápido
+    public int tirarDadoLento(int dadoSeleccionado) {
+    	Random random = new Random();
+        int resultado = 0;
+
+        if (!dadoExiste(dadoSeleccionado)) {
+            System.out.println("Dado no encontrado, tirando dado normal...");
+            resultado = random.nextInt(6) + 1;
+            return resultado;
+        } else {
+        	resultado = random.nextInt(3) + 1;
+        	inventario.eliminarObjeto(4);
+        }
+        return resultado;
     }
     
     //getters y setters
