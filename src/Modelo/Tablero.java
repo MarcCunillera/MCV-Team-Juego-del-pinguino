@@ -93,13 +93,28 @@ public class Tablero {
 
     //método para mover al pinguino
     public void MoverPinguino(ArrayList<Pinguino> ListaPinguinos, int dadoSeleccionado) {
-        if (ListaPinguinos.isEmpty()) {
+        int resultadoDado = 0;
+    	if (ListaPinguinos.isEmpty()) {
             System.out.println("No hay pingüinos en la partida.");
             return;
         }
 
         Pinguino pingu = ListaPinguinos.get(turno);
-        int resultadoDado = pingu.tirarDado(dadoSeleccionado);
+        switch(dadoSeleccionado) {
+        case 0:
+        	resultadoDado = pingu.tirarDadoNormal(dadoSeleccionado);
+        	break;
+        case 1:
+        	resultadoDado = pingu.tirarDadoLento(dadoSeleccionado);
+        	break;
+        case 2:
+        	resultadoDado = pingu.tirarDadoRapido(dadoSeleccionado);
+        	break;
+        default:
+        	resultadoDado = pingu.tirarDadoNormal(dadoSeleccionado);
+        	break;
+        }
+        //int resultadoDado = pingu.tirarDado(dadoSeleccionado);
         System.out.println(pingu.getNombre() + " con ID " + pingu.getID() + " ha sacado un " + resultadoDado);
 
         int nuevaPos = Math.min(pingu.getPosicion() + resultadoDado, tablero.size() - 1); //Seleccionar a que casilla ír
