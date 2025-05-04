@@ -104,17 +104,16 @@ public class Tablero {
         case 0:
         	resultadoDado = pingu.tirarDadoNormal(dadoSeleccionado);
         	break;
-        case 1:
-        	resultadoDado = pingu.tirarDadoLento(dadoSeleccionado);
-        	break;
-        case 2:
+        case 3:
         	resultadoDado = pingu.tirarDadoRapido(dadoSeleccionado);
+        	break;
+        case 4:
+        	resultadoDado = pingu.tirarDadoLento(dadoSeleccionado);
         	break;
         default:
         	resultadoDado = pingu.tirarDadoNormal(dadoSeleccionado);
         	break;
         }
-        //int resultadoDado = pingu.tirarDado(dadoSeleccionado);
         System.out.println(pingu.getNombre() + " con ID " + pingu.getID() + " ha sacado un " + resultadoDado);
 
         int nuevaPos = Math.min(pingu.getPosicion() + resultadoDado, tablero.size() - 1); //Seleccionar a que casilla ír

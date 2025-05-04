@@ -56,28 +56,29 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-            <MenuItem fx:id="newGame" mnemonicParsing="false" text="New" />
+            <MenuItem fx:id="menuNuevaPartida" mnemonicParsing="false" text="New" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="saveGame" mnemonicParsing="false" text="Save" />
-            <MenuItem fx:id="loadGame" mnemonicParsing="false" text="Load" />
+            <MenuItem fx:id="menuGuardarPartida" mnemonicParsing="false" text="Save" />
+            <MenuItem fx:id="menuCargarPartida" mnemonicParsing="false" text="Load" />
             <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="quitGame" mnemonicParsing="false" text="Quit" />
+            <MenuItem fx:id="menuSalir" mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
       </menus>
     </MenuBar>
+    
       <BorderPane>
          <bottom>
             <HBox BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane minHeight="200.0" minWidth="300.0">
                      <children>
-                        <Text fx:id="dadoResultText" strokeType="OUTSIDE" strokeWidth="0.0" text="Ha salido: " AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0">
+                        <Text fx:id="textoDado" strokeType="OUTSIDE" strokeWidth="0.0" text="Ha salido: " AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0">
                            <font>
                               <Font size="32.0" />
                            </font>
                         </Text>
-                        <Button fx:id="dado" layoutY="58.0" mnemonicParsing="false" onAction="#handleDado" text="Dado" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="100.0">
+                        <Button fx:id="botonLanzarDado" layoutY="58.0" mnemonicParsing="false" onAction="#handleDado" text="Dado" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="100.0">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -88,42 +89,42 @@
                     <content>
                       <AnchorPane>
                            <children>
-                              <Text fx:id="rapido_t" strokeType="OUTSIDE" strokeWidth="0.0" text="Dado rápido: 0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0">
+                              <Text fx:id="textoRapido" strokeType="OUTSIDE" strokeWidth="0.0" text="Dado rápido: 0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="lento_t" strokeType="OUTSIDE" strokeWidth="0.0" text="Dado lento: 0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="30.0">
+                              <Text fx:id="textoLento" strokeType="OUTSIDE" strokeWidth="0.0" text="Dado lento: 0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="30.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="peces_t" strokeType="OUTSIDE" strokeWidth="0.0" text="Peces: 0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="30.0">
+                              <Text fx:id="textoPeces" strokeType="OUTSIDE" strokeWidth="0.0" text="Peces: 0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="30.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="nieve_t" strokeType="OUTSIDE" strokeWidth="0.0" text="Bolas de nieve: 0" AnchorPane.leftAnchor="750.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0">
+                              <Text fx:id="textoNieve" strokeType="OUTSIDE" strokeWidth="0.0" text="Bolas de nieve: 0" AnchorPane.leftAnchor="750.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="30.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
                               </Text>
-                              <Button fx:id="rapido" mnemonicParsing="false" text="Usar" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="90.0">
+                              <Button fx:id="botonUsarRapido" mnemonicParsing="false" text="Usar" AnchorPane.leftAnchor="55.0" AnchorPane.topAnchor="90.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="lento" layoutX="65.0" layoutY="100.0" mnemonicParsing="false" text="Usar" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="90.0">
+                              <Button fx:id="botonUsarLento" layoutX="65.0" layoutY="100.0" mnemonicParsing="false" text="Usar" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="90.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="peces" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" text="Usar" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="90.0">
+                              <Button fx:id="botonUsarPeces" layoutX="75.0" layoutY="110.0" mnemonicParsing="false" text="Usar" AnchorPane.leftAnchor="505.0" AnchorPane.topAnchor="90.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="nieve" layoutX="85.0" layoutY="120.0" mnemonicParsing="false" text="Usar" AnchorPane.leftAnchor="810.0" AnchorPane.topAnchor="90.0">
+                              <Button fx:id="botonUsarNieve" layoutX="85.0" layoutY="120.0" mnemonicParsing="false" text="Usar" AnchorPane.leftAnchor="810.0" AnchorPane.topAnchor="90.0">
                                  <font>
                                     <Font size="30.0" />
                                  </font>
@@ -137,7 +138,7 @@
                   </ScrollPane>
                   <AnchorPane minHeight="200.0" minWidth="300.0">
                      <children>
-                        <Text fx:id="eventos" strokeType="OUTSIDE" strokeWidth="0.0" text="Evento ocurrido" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0">
+                        <Text fx:id="textoEventos" strokeType="OUTSIDE" strokeWidth="0.0" text="Evento ocurrido" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -149,8 +150,9 @@
                   <Insets />
                </BorderPane.margin></HBox>
          </bottom>
+         
          <center>
-            <GridPane fx:id="tablero" gridLinesVisible="true" prefHeight="500.0" BorderPane.alignment="CENTER">
+            <GridPane fx:id="gridTablero" gridLinesVisible="true" prefHeight="500.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -181,19 +183,19 @@
                         <Font size="30.0" />
                      </font>
                   </Text>
-                  <Circle fx:id="P1" fill="BLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="jugador1" fill="BLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin></Circle>
-                  <Circle fx:id="P2" fill="RED" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="jugador2" fill="RED" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <GridPane.margin>
                         <Insets left="40.0" />
                      </GridPane.margin></Circle>
-                  <Circle fx:id="P3" fill="GREEN" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="jugador3" fill="GREEN" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <GridPane.margin>
                         <Insets left="80.0" />
                      </GridPane.margin></Circle>
-                  <Circle fx:id="P4" fill="YELLOW" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+                  <Circle fx:id="jugador4" fill="YELLOW" radius="15.0" stroke="BLACK" strokeType="INSIDE">
                      <GridPane.margin>
                         <Insets left="120.0" />
                      </GridPane.margin></Circle>
