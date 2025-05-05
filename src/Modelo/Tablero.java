@@ -2,16 +2,21 @@ package Modelo;
 
 import Controlador.*;
 import Modelo.*;
+import javafx.scene.layout.GridPane;
+
 import java.util.ArrayList;
 
 public class Tablero {
     private ArrayList<Casilla> tablero;
+    private GridPane tableroGrafico;
     public int turno;
 
-    public Tablero() {
+    public Tablero(GridPane tableroGrafico) {
         this.tablero = new ArrayList<>();
-        this.GenerarTablero();
         this.turno = 0;
+        this.tableroGrafico = tableroGrafico;
+        this.GenerarTablero();
+        
     }
 
     public ArrayList<Casilla> getTablero() { return tablero; }
@@ -31,7 +36,7 @@ public class Tablero {
 
 	public void GenerarTablero() {
         for (int i = 1; i <= 50; i++) {
-            Casilla.asignarCasillas(i, tablero);
+			Casilla.asignarCasillas(i, tablero, tableroGrafico);
         }
     }
 	

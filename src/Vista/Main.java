@@ -29,7 +29,7 @@ public class Main {
 	            return;
 	        }
 
-	        Tablero tableroJuego = new Tablero(); // Asumo que esto inicializa el tablero
+	        Tablero tableroJuego = new Tablero(null); // Asumo que esto inicializa el tablero
 	        ArrayList<Casilla> tablero = tableroJuego.getTablero();
 	        Eventos evento = new Eventos(1, 1, 1, 1, 1);
 	        ArrayList<Pinguino> listaPinguinos = new ArrayList<>();

@@ -1,6 +1,9 @@
 package Vista;
 
 import java.util.Random;
+import Controlador.*;
+import Modelo.*;
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,6 +50,7 @@ public class PantallaJuegoController {
     private void initialize() {
         // This method is called automatically after the FXML is loaded
         // You can set initial values or add listeners here
+    	
         eventos.setText("¡El juego ha comenzado!");
     }
 

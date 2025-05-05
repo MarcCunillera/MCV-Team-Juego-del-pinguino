@@ -14,7 +14,8 @@ public class Pinguino {
         this.posicion = 0;
         this.inventario = new Inventario();
     }
-
+    
+    //metodo para tirar dado normal
     public int tirarDadoNormal(int dadoSeleccionado) {
         Random random = new Random();
         int resultado = random.nextInt(6) +1;

@@ -1,8 +1,12 @@
 package Controlador;
 
 import Modelo.*;
+
 import java.util.ArrayList;
 import java.util.Random;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 
 public class Casilla {
     private int idCasilla;
@@ -41,7 +45,7 @@ public class Casilla {
     	this.tipoCasilla = tipoCasilla; 
     }
 
-    public static void asignarCasillas(int idCasilla, ArrayList<Casilla> tablero) {
+    public static void asignarCasillas(int idCasilla, ArrayList<Casilla> tablero, GridPane tableroGrafico) {
         Random rn = new Random();
         int tipo = rn.nextInt(6);
         String nombreTipo;
@@ -77,6 +81,18 @@ public class Casilla {
             default: nombreTipo = "Normal"; break;
         }
         tablero.add(new Casilla(idCasilla, tipo, nombreTipo));
+        
+        //Entorno grafico
+        Label label = new Label(nombreTipo);
+        int fila = idCasilla / 10;
+        int columna = idCasilla % 10;
+        
+        try {
+			tableroGrafico.add(label, columna, fila);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     //método para gestionar la casilla interrogante
