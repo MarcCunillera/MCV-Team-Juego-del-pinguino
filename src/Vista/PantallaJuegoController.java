@@ -1,4 +1,4 @@
-package Vista;
+ package Vista;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
