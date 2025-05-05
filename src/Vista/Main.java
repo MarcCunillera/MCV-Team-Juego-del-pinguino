@@ -39,9 +39,9 @@ public class Main {
 	        if (opcion == 1) {
 	            // Crear nueva partida
 	        	idPartida = bbdd.crearNuevaPartida(con);
-	            System.out.println("¿Cuántos pingüinos quieres crear? (min 2 - max 5)");
+	            System.out.println("¿Cuántos pingüinos quieres crear? (min 2 - max 4)");
 	            int numPinguinos = sc.nextInt();
-	            while (numPinguinos < 2 || numPinguinos > 5) {
+	            while (numPinguinos < 2 || numPinguinos > 4) {
 	                System.out.println("Número no válido. Intenta de nuevo:");
 	                numPinguinos = sc.nextInt();
 	            }
