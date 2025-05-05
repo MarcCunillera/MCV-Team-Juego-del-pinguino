@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.sql.*;
 
 public class bbdd {
-
+	
 	public static Connection conectarBaseDatos() {
 	    Connection con = null;
 	    Scanner scan = new Scanner(System.in);

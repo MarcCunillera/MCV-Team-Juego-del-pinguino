@@ -1,9 +1,10 @@
 package Vista;
 
 import java.util.Random;
+import java.util.ArrayList;
 import Controlador.*;
 import Modelo.*;
-
+import java.sql.Connection;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,14 +46,26 @@ public class PantallaJuegoController {
     //ONLY FOR TESTING!!!
     private int p1Position = 0; // Tracks current position (from 0 to 49 in a 5x10 grid)
     private final int COLUMNS = 5;
+    
+    private int turno = 0;
+    private ArrayList<Pinguino> pingus = new ArrayList<>();
+    private Connection con;
+    private int idPartida;
+    
+    public void setIdPartida(int idPartida) {
+        this.idPartida = idPartida;
+    }
 
     @FXML
     private void initialize() {
         // This method is called automatically after the FXML is loaded
         // You can set initial values or add listeners here
-    	
+    	con = bbdd.conectarBaseDatos();
         eventos.setText("¡El juego ha comenzado!");
+        
+        pingus = Pinguino.getListaPinguinos();
     }
+    
 
     // Button and menu actions
 
@@ -79,17 +92,44 @@ public class PantallaJuegoController {
         System.out.println("Exit...");
         // TODO
     }
+    
+    //método para elegir de forma visual la ficha a mover
+    private Circle getPinguinCircle(int index) {
+        switch (index) {
+            case 0: return P1;
+            case 1: return P2;
+            case 2: return P3;
+            case 3: return P4;
+            default: return P1; // Valor por defecto por si ocurre algo inesperado
+        }
+    }
+    
+    //metodo para hacer update de la posicion del pinguino
+    private void updatePenguinPosition(int index) {
+        Pinguino pingu = pingus.get(index);
+        Circle pinguCircle = getPinguinCircle(index);
+        
+        int row = pingu.getPosicion() / 5; // Assuming a 5x10 grid
+        int col = pingu.getPosicion() % 5;
+        
+        GridPane.setRowIndex(pinguCircle, row);
+        GridPane.setColumnIndex(pinguCircle, col);
+    }
 
     @FXML
     private void handleDado(ActionEvent event) {
-        Random rand = new Random();
-        int diceResult = rand.nextInt(6) + 1;
-
-        // Update the Text 
-        dadoResultText.setText("Ha salido: " + diceResult);
-
-        // Update the position
-        moveP1(diceResult);
+        Pinguino pinguActual = pingus.get(turno);
+        int resulDado = pinguActual.tirarDadoNormal();
+        
+        dadoResultText.setText("Ha salido" + resulDado);
+        
+        //mover el pinguino
+        pinguActual.setPosicion(pinguActual.getPosicion() + resulDado);
+        
+        updatePenguinPosition(turno);
+        int nuevaPosicion = pinguActual.getPosicion();
+        
+        bbdd.actualizarParticipacion(con, idPartida, pinguActual.getNombre(), nuevaPosicion);
     }
 
     private void moveP1(int steps) {

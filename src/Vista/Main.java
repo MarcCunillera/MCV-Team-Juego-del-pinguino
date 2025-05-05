@@ -62,7 +62,7 @@ public class Main {
 	                int idJugador = bbdd.obtenerIdJugador(con, nombre);
 	                bbdd.crearParticipacion(con, idPartida, idJugador);
 
-	                Pinguino pingu = new Pinguino(i, nombre);
+	                Pinguino pingu = new Pinguino(i, nombre, 0);
 	                listaPinguinos.add(pingu);
 	            }
 
@@ -89,7 +89,7 @@ public class Main {
 	                    String nombre = rs.getString("Nickname");
 	                    int peces = rs.getInt("Peces");
 
-	                    Pinguino pingu = new Pinguino(0, nombre);
+	                    Pinguino pingu = new Pinguino(0, nombre, peces); //!
 	                    pingu.setPosicion(peces);
 	                    listaPinguinos.add(pingu);
 	                }

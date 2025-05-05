@@ -19,7 +19,9 @@ public class Tablero {
         
     }
 
-    public ArrayList<Casilla> getTablero() { return tablero; }
+    public ArrayList<Casilla> getTablero() { 
+    	return tablero; 
+    }
 
     @Override
     public String toString() {
@@ -107,16 +109,16 @@ public class Tablero {
         Pinguino pingu = ListaPinguinos.get(turno);
         switch(dadoSeleccionado) {
         case 0:
-        	resultadoDado = pingu.tirarDadoNormal(dadoSeleccionado);
+        	resultadoDado = pingu.tirarDadoNormal();
         	break;
         case 3:
-        	resultadoDado = pingu.tirarDadoRapido(dadoSeleccionado);
+        	resultadoDado = pingu.tirarDadoRapido();
         	break;
         case 4:
-        	resultadoDado = pingu.tirarDadoLento(dadoSeleccionado);
+        	resultadoDado = pingu.tirarDadoLento();
         	break;
         default:
-        	resultadoDado = pingu.tirarDadoNormal(dadoSeleccionado);
+        	resultadoDado = pingu.tirarDadoNormal();
         	break;
         }
         System.out.println(pingu.getNombre() + " con ID " + pingu.getID() + " ha sacado un " + resultadoDado);
