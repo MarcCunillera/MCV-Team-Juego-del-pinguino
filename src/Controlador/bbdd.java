@@ -56,8 +56,10 @@ public class bbdd {
     public static int crearNuevaPartida(Connection con) {
         int idPartida = -1;
         try {
-            String sql = "INSERT INTO Partidas (ID_Partida, Num_Partida, Hora, DataPartida) " +
-                         "VALUES (partidas_seq.NEXTVAL, partidas_seq.CURRVAL, CURRENT_TIMESTAMP, CURRENT_DATE)";
+            // Agregamos un estado por defecto ("EN_CURSO") y null para los campos adicionales
+            String sql = "INSERT INTO Partidas " +
+                         "(ID_Partida, Num_Partida, Estado, Hora, Data, ID_Casilla, Nom_Casilla) " +
+                         "VALUES (partidas_seq.NEXTVAL, partidas_seq.CURRVAL, 'EN_CURSO', CURRENT_TIMESTAMP, CURRENT_DATE, NULL, NULL)";
             insert(con, sql);
 
             ResultSet rs = select(con, "SELECT MAX(ID_Partida) AS ID FROM Partidas");
@@ -70,10 +72,17 @@ public class bbdd {
         return idPartida;
     }
 
+
     public static void crearJugador(Connection con, String nombre, String contrasena) {
         String sql = "INSERT INTO Jugadores (ID_jugador, Nickname, Contrasena, N_partidas) " +
-                     "VALUES (jugadores_seq.NEXTVAL, '" + nombre + "', '" + contrasena + "', 0)";
-        insert(con, sql);
+                     "VALUES (jugadores_seq.NEXTVAL, ?, ?, 0)";
+        try (PreparedStatement pstmt = con.prepareStatement(sql)) {
+            pstmt.setString(1, nombre);
+            pstmt.setString(2, contrasena);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static int obtenerIdJugador(Connection con, String nombre) {
@@ -90,8 +99,9 @@ public class bbdd {
     }
 
     public static void crearParticipacion(Connection con, int idPartida, int idJugador) {
-        String sql = "INSERT INTO Participaciones (ID_Participacion, ID_Partida, ID_jugador, Dado_Lento, Dado_Rapido, Peces, Bolas_Nive) " +
-                     "VALUES (participaciones_seq.NEXTVAL, " + idPartida + ", " + idJugador + ", 0, 0, 0, 0)";
+    	String sql = "INSERT INTO Participaciones (ID_Participacion, ID_Partida, ID_jugador, Dado_Lento, Dado_Rapido, Peces, Bolas_Nieve) " +
+    	             "VALUES (participaciones_seq.NEXTVAL, " + idPartida + ", " + idJugador + ", 0, 0, 0, 0)";
+
         insert(con, sql);
     }
 
