@@ -18,12 +18,12 @@ public class bbdd {
 	        : "jdbc:oracle:thin:@oracle.ilerna.com:1521/XEPDB2";
 
 	    while (con == null) {
-	        System.out.println("¿Usuario?");
-	        String USER = scan.nextLine();
-
-	        System.out.println("¿Contraseña?");
-	        String PWD = scan.nextLine();
-
+	        //System.out.println("¿Usuario?");
+	        //String USER = scan.nextLine();
+	    	String USER = "DW2425_PIN_GRUP07";
+	        //System.out.println("¿Contraseña?");
+	        //String PWD = scan.nextLine();
+	    	String PWD = "ACMV007";
 	        try {
 	            Class.forName("oracle.jdbc.driver.OracleDriver");
 	            con = DriverManager.getConnection(URL, USER, PWD);
