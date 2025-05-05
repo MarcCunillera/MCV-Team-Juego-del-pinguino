@@ -1,80 +1,131 @@
 package Vista;
 
+import java.util.Random;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
-public class PantallaJuegoController {
+public class pantallaJuegoController {
 
-    @FXML
-    private Text dadoResultText;
+    // Menu items
+    @FXML private MenuItem newGame;
+    @FXML private MenuItem saveGame;
+    @FXML private MenuItem loadGame;
+    @FXML private MenuItem quitGame;
 
-    @FXML
-    private Button dado;
+    // Buttons
+    @FXML private Button dado;
+    @FXML private Button rapido;
+    @FXML private Button lento;
+    @FXML private Button peces;
+    @FXML private Button nieve;
 
-    @FXML
-    private MenuItem newGame;
+    // Texts
+    @FXML private Text dadoResultText;
+    @FXML private Text rapido_t;
+    @FXML private Text lento_t;
+    @FXML private Text peces_t;
+    @FXML private Text nieve_t;
+    @FXML private Text eventos;
 
-    @FXML
-    private MenuItem saveGame;
-
-    @FXML
-    private MenuItem loadGame;
-
-    @FXML
-    private MenuItem quitGame;
-
-    @FXML
-    private Text rapido_t;
-
-    @FXML
-    private Text lento_t;
-
-    @FXML
-    private Text peces_t;
-
-    @FXML
-    private Text nieve_t;
-
-    @FXML
-    private Text eventos;
-
-    @FXML
-    private void handleDado() {
-        int resultado = (int) (Math.random() * 6) + 1;
-        dadoResultText.setText("Ha salido: " + resultado);
-        // Aquí deberías mover al pingüino en el tablero según el resultado
-        System.out.println("Dado lanzado, resultado: " + resultado);
-    }
+    // Game board and player pieces
+    @FXML private GridPane tablero;
+    @FXML private Circle P1;
+    @FXML private Circle P2;
+    @FXML private Circle P3;
+    @FXML private Circle P4;
+    
+    //ONLY FOR TESTING!!!
+    private int p1Position = 0; // Tracks current position (from 0 to 49 in a 5x10 grid)
+    private final int COLUMNS = 5;
 
     @FXML
     private void initialize() {
-        // Puedes inicializar aquí datos iniciales del tablero o partida
+        // This method is called automatically after the FXML is loaded
+        // You can set initial values or add listeners here
+        eventos.setText("¡El juego ha comenzado!");
     }
+
+    // Button and menu actions
 
     @FXML
     private void handleNewGame() {
-        System.out.println("Nueva partida iniciada.");
-        // Lógica para resetear partida
+        System.out.println("New game.");
+        // TODO
     }
 
     @FXML
     private void handleSaveGame() {
-        System.out.println("Guardando partida...");
-        // Aquí guardarías en la base de datos la partida actual
+        System.out.println("Saved game.");
+        // TODO
     }
 
     @FXML
     private void handleLoadGame() {
-        System.out.println("Cargando partida...");
-        // Cargar estado desde la base de datos
+        System.out.println("Loaded game.");
+        // TODO
     }
 
     @FXML
     private void handleQuitGame() {
-        System.out.println("Saliendo de la partida...");
-        System.exit(0);
+        System.out.println("Exit...");
+        // TODO
+    }
+
+    @FXML
+    private void handleDado(ActionEvent event) {
+        Random rand = new Random();
+        int diceResult = rand.nextInt(6) + 1;
+
+        // Update the Text 
+        dadoResultText.setText("Ha salido: " + diceResult);
+
+        // Update the position
+        moveP1(diceResult);
+    }
+
+    private void moveP1(int steps) {
+        p1Position += steps;
+
+        //Bound player
+        if (p1Position >= 50) {
+            p1Position = 49; // 5 columns * 10 rows = 50 cells (index 0 to 49)
+        }
+
+        //Check row and column
+        int row = p1Position / COLUMNS;
+        int col = p1Position % COLUMNS;
+
+        //Change P1 property to match row and column
+        GridPane.setRowIndex(P1, row);
+        GridPane.setColumnIndex(P1, col);
+    }
+
+    @FXML
+    private void handleRapido() {
+        System.out.println("Fast.");
+        // TODO
+    }
+
+    @FXML
+    private void handleLento() {
+        System.out.println("Slow.");
+        // TODO
+    }
+
+    @FXML
+    private void handlePeces() {
+        System.out.println("Fish.");
+        // TODO
+    }
+
+    @FXML
+    private void handleNieve() {
+        System.out.println("Snow.");
+        // TODO
     }
 }
-

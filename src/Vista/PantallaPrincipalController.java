@@ -2,74 +2,92 @@ package Vista;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.scene.Node;
 
-public class PantallaPrincipalController {
+public class pantallaPrincipalController {
+
+    @FXML private MenuItem newGame;
+    @FXML private MenuItem saveGame;
+    @FXML private MenuItem loadGame;
+    @FXML private MenuItem quitGame;
+
+    @FXML private TextField userField;
+    @FXML private PasswordField passField;
+
+    @FXML private Button loginButton;
+    @FXML private Button registerButton;
 
     @FXML
-    private TextField userField;
-
-    @FXML
-    private PasswordField passField;
-
-    @FXML
-    private Button loginButton;
-
-    @FXML
-    private Button registerButton;
-
-    @FXML
-    private void handleLogin() {
-        String usuario = userField.getText();
-        String contrasena = passField.getText();
-
-        if (usuario.isEmpty() || contrasena.isEmpty()) {
-            System.out.println("Debes rellenar usuario y contraseña.");
-            return;
-        }
-
-        // Aquí validamos el login (podrías conectar a la base de datos)
-        // Por simplicidad, vamos directo al juego
-        System.out.println("Login exitoso. Cargando juego...");
-
-        cargarPantallaJuego();
+    private void initialize() {
+        // This method is called automatically after the FXML is loaded
+        // You can set initial values or add listeners here
+        System.out.println("pantallaPrincipalController initialized");
     }
+
+    @FXML
+    private void handleNewGame() {
+        System.out.println("New Game clicked");
+        // TODO
+    }
+
+    @FXML
+    private void handleSaveGame() {
+        System.out.println("Save Game clicked");
+        // TODO
+    }
+
+    @FXML
+    private void handleLoadGame() {
+        System.out.println("Load Game clicked");
+        // TODO
+    }
+
+    @FXML
+    private void handleQuitGame() {
+        System.out.println("Quit Game clicked");
+        // TODO
+        System.exit(0);
+    }
+    
+    @FXML
+    private void handleLogin(ActionEvent event) {
+        String username = userField.getText();
+        String password = passField.getText();
+
+        System.out.println("Login pressed: " + username + " / " + password);
+
+        // Basic check (just for demo, replace with real login logic)
+        if (!username.isEmpty() && !password.isEmpty()) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/pantallaJuego.fxml"));
+                Parent pantallaJuegoRoot = loader.load();
+
+                Scene pantallaJuegoScene = new Scene(pantallaJuegoRoot);
+
+                // Get the current stage using the event
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(pantallaJuegoScene);
+                stage.setTitle("Pantalla de Juego");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Please. Enter user and password.");
+        }
+    }
+
 
     @FXML
     private void handleRegister() {
-        String usuario = userField.getText();
-        String contrasena = passField.getText();
-
-        if (usuario.isEmpty() || contrasena.isEmpty()) {
-            System.out.println("Debes rellenar usuario y contraseña para registrarte.");
-            return;
-        }
-
-        if (contrasena.length() > 8) {
-            System.out.println("Contraseña demasiado larga (máximo 8 caracteres).");
-            return;
-        }
-
-        // Aquí insertaríamos el nuevo jugador en la base de datos
-        System.out.println("Registro exitoso. Usuario: " + usuario);
-
-        cargarPantallaJuego();
-    }
-
-    private void cargarPantallaJuego() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Resources/pantallaJuego.fxml"));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println("Register pressed");
+        // TODO
     }
 }
