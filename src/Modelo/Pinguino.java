@@ -49,7 +49,8 @@ public class Pinguino extends Usuarios{
             resultado = random.nextInt(6) + 1;
             return resultado;
         } else {
-        	resultado = random.nextInt(6) +5;
+        	resultado = random.nextInt(6) +1;
+        	resultado = resultado + 4;
         	inventario.eliminarObjeto(3);
         }
         return resultado;
