@@ -77,19 +77,6 @@ public class PantallaPrincipalController {
         System.out.println("Registro exitoso. Usuario: " + usuario);
         cargarPantallaJuego();
     }
-    
-    private void cargarMenuPrincipal() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Resources/pantallaMenu.fxml"));
-            Scene scene = new Scene(loader.load());
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("Menú Principal");
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     private boolean usuarioExiste(String nombre) {
         try {
@@ -125,4 +112,3 @@ public class PantallaPrincipalController {
         }
     }
 }
-
