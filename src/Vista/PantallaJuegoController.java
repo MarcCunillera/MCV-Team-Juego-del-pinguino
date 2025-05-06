@@ -60,11 +60,14 @@ public class PantallaJuegoController {
     private void initialize() {
         // This method is called automatically after the FXML is loaded
         // You can set initial values or add listeners here
-    	con = bbdd.conectarBaseDatos();
         eventos.setText("¡El juego ha comenzado!");
         
         //añadir la lista de pinguinos
-        pingus = Pinguino.getListaPinguinos();
+        //pingus = Pinguino.getListaPinguinos();
+        pingus.add(new Pinguino(1, "Pinguino 1", 0));
+        pingus.add(new Pinguino(2, "Pinguino 1", 0));
+        pingus.add(new Pinguino(3, "Pinguino 1", 0));
+        pingus.add(new Pinguino(4, "Pinguino 1", 0));
     }
     
 
@@ -156,7 +159,7 @@ public class PantallaJuegoController {
         int resulRapido = pinguActual.tirarDadoRapido();
         
         //mostrar texto
-        rapido_t.setText("Resultado dado Rapido" + resulRapido);
+        eventos.setText("Resultado dado Rapido" + resulRapido);
         
         //mover el pinguino
         if((pinguActual.getPosicion() + resulRapido) > 49) { //si la posicion a cambiar es superior al limite del tablero
@@ -172,7 +175,19 @@ public class PantallaJuegoController {
     private void handleLento() {
         System.out.println("Slow.");
         // TODO
+        Pinguino pinguActual = pingus.get(turno);
         
+        //llamar a la función para tirar dado lento
+        int resulLento = pinguActual.tirarDadoLento();
+        eventos.setText("Resultado dado Lento" + resulLento);
+        
+        //mover al pinguino
+      //mover el pinguino
+        if((pinguActual.getPosicion() + resulLento) > 49) { //si la posicion a cambiar es superior al limite del tablero
+        	pinguActual.setPosicion(49);
+        } else {
+        	pinguActual.setPosicion(pinguActual.getPosicion() + resulLento);
+        }
     }
 
     @FXML
