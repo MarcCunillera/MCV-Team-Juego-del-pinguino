@@ -29,7 +29,7 @@ public class Main {
 	            return;
 	        }
 
-	        Tablero tableroJuego = new Tablero(); // Asumo que esto inicializa el tablero
+	        Tablero tableroJuego = new Tablero(null); // Asumo que esto inicializa el tablero
 	        ArrayList<Casilla> tablero = tableroJuego.getTablero();
 	        Eventos evento = new Eventos(1, 1, 1, 1, 1);
 	        ArrayList<Pinguino> listaPinguinos = new ArrayList<>();
@@ -39,9 +39,9 @@ public class Main {
 	        if (opcion == 1) {
 	            // Crear nueva partida
 	        	idPartida = bbdd.crearNuevaPartida(con);
-	            System.out.println("¿Cuántos pingüinos quieres crear? (min 2 - max 5)");
+	            System.out.println("¿Cuántos pingüinos quieres crear? (min 2 - max 4)");
 	            int numPinguinos = sc.nextInt();
-	            while (numPinguinos < 2 || numPinguinos > 5) {
+	            while (numPinguinos < 2 || numPinguinos > 4) {
 	                System.out.println("Número no válido. Intenta de nuevo:");
 	                numPinguinos = sc.nextInt();
 	            }
@@ -62,7 +62,7 @@ public class Main {
 	                int idJugador = bbdd.obtenerIdJugador(con, nombre);
 	                bbdd.crearParticipacion(con, idPartida, idJugador);
 
-	                Pinguino pingu = new Pinguino(i, nombre);
+	                Pinguino pingu = new Pinguino(i, nombre, 0);
 	                listaPinguinos.add(pingu);
 	            }
 
@@ -89,7 +89,7 @@ public class Main {
 	                    String nombre = rs.getString("Nickname");
 	                    int peces = rs.getInt("Peces");
 
-	                    Pinguino pingu = new Pinguino(0, nombre);
+	                    Pinguino pingu = new Pinguino(0, nombre, peces); //!
 	                    pingu.setPosicion(peces);
 	                    listaPinguinos.add(pingu);
 	                }

@@ -1,6 +1,10 @@
 package Vista;
 
 import java.util.Random;
+import java.util.ArrayList;
+import Controlador.*;
+import Modelo.*;
+import java.sql.Connection;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,7 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
-public class pantallaJuegoController {
+public class PantallaJuegoController {
 
     // Menu items
     @FXML private MenuItem newGame;
@@ -42,13 +46,30 @@ public class pantallaJuegoController {
     //ONLY FOR TESTING!!!
     private int p1Position = 0; // Tracks current position (from 0 to 49 in a 5x10 grid)
     private final int COLUMNS = 5;
+    
+    private int turno = 0;
+    private ArrayList<Pinguino> pingus = new ArrayList<>();
+    private Connection con;
+    private int idPartida;
+    
+    public void setIdPartida(int idPartida) {
+        this.idPartida = idPartida;
+    }
 
     @FXML
     private void initialize() {
         // This method is called automatically after the FXML is loaded
         // You can set initial values or add listeners here
         eventos.setText("¡El juego ha comenzado!");
+        
+        //añadir la lista de pinguinos
+        //pingus = Pinguino.getListaPinguinos();
+        pingus.add(new Pinguino(1, "Pinguino 1", 0));
+        pingus.add(new Pinguino(2, "Pinguino 1", 0));
+        pingus.add(new Pinguino(3, "Pinguino 1", 0));
+        pingus.add(new Pinguino(4, "Pinguino 1", 0));
     }
+    
 
     // Button and menu actions
 
@@ -62,6 +83,9 @@ public class pantallaJuegoController {
     private void handleSaveGame() {
         System.out.println("Saved game.");
         // TODO
+        for(Pinguino pingu: pingus) {
+        	bbdd.actualizarParticipacion(con, idPartida, pingu.getNombre(), pingu.getPosicion());
+        }
     }
 
     @FXML
@@ -75,46 +99,95 @@ public class pantallaJuegoController {
         System.out.println("Exit...");
         // TODO
     }
+    
+    //método para elegir de forma visual la ficha a mover
+    private Circle getPinguinCircle(int index) {
+        switch (index) {
+            case 0: return P1;
+            case 1: return P2;
+            case 2: return P3;
+            case 3: return P4;
+            default: return P1; // Valor por defecto por si ocurre algo inesperado
+        }
+    }
+    
+    //metodo para hacer update de la posicion del pinguino
+    private void updatePenguinPosition(int index) {
+        Pinguino pingu = pingus.get(index);
+        Circle pinguCircle = getPinguinCircle(index);
+        
+        int row = pingu.getPosicion() / 5; //5 X 10 grid
+        int col = pingu.getPosicion() % 5;
+        
+        GridPane.setRowIndex(pinguCircle, row);
+        GridPane.setColumnIndex(pinguCircle, col);
+        
+        turno = (turno + 1) % pingus.size(); //Asegura que el turno vaya de uno en uno
+    }
 
     @FXML
     private void handleDado(ActionEvent event) {
-        Random rand = new Random();
-        int diceResult = rand.nextInt(6) + 1;
-
-        // Update the Text 
-        dadoResultText.setText("Ha salido: " + diceResult);
-
-        // Update the position
-        moveP1(diceResult);
-    }
-
-    private void moveP1(int steps) {
-        p1Position += steps;
-
-        //Bound player
-        if (p1Position >= 50) {
-            p1Position = 49; // 5 columns * 10 rows = 50 cells (index 0 to 49)
+        Pinguino pinguActual = pingus.get(turno);
+        int resulDado = pinguActual.tirarDadoNormal();
+        
+        dadoResultText.setText("Ha salido" + resulDado);
+        
+        //mover el pinguino
+        if((pinguActual.getPosicion() + resulDado) > 49) { //si la posicion a cambiar es superior al limite del tablero
+        	pinguActual.setPosicion(49);
+        } else {
+        	pinguActual.setPosicion(pinguActual.getPosicion() + resulDado);
         }
-
-        //Check row and column
-        int row = p1Position / COLUMNS;
-        int col = p1Position % COLUMNS;
-
-        //Change P1 property to match row and column
-        GridPane.setRowIndex(P1, row);
-        GridPane.setColumnIndex(P1, col);
+        
+        //Actualizar el tablero de forma visual
+        updatePenguinPosition(turno);
+        int nuevaPosicion = pinguActual.getPosicion();
+        
+        if (nuevaPosicion >= 49) {
+            eventos.setText("¡El pingüino " + pinguActual.getNombre() + " ha ganado!");
+        }
+        
     }
 
     @FXML
     private void handleRapido() {
         System.out.println("Fast.");
         // TODO
+        Pinguino pinguActual = pingus.get(turno);
+        
+        //llamamos al metodo tirar dado rápido
+        int resulRapido = pinguActual.tirarDadoRapido();
+        
+        //mostrar texto
+        eventos.setText("Resultado dado Rapido" + resulRapido);
+        
+        //mover el pinguino
+        if((pinguActual.getPosicion() + resulRapido) > 49) { //si la posicion a cambiar es superior al limite del tablero
+        	pinguActual.setPosicion(49);
+        } else {
+        	pinguActual.setPosicion(pinguActual.getPosicion() + resulRapido);
+        }
+        
+        updatePenguinPosition(turno);
     }
 
     @FXML
     private void handleLento() {
         System.out.println("Slow.");
         // TODO
+        Pinguino pinguActual = pingus.get(turno);
+        
+        //llamar a la función para tirar dado lento
+        int resulLento = pinguActual.tirarDadoLento();
+        eventos.setText("Resultado dado Lento" + resulLento);
+        
+        //mover al pinguino
+      //mover el pinguino
+        if((pinguActual.getPosicion() + resulLento) > 49) { //si la posicion a cambiar es superior al limite del tablero
+        	pinguActual.setPosicion(49);
+        } else {
+        	pinguActual.setPosicion(pinguActual.getPosicion() + resulLento);
+        }
     }
 
     @FXML

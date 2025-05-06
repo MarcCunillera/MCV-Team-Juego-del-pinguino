@@ -2,19 +2,26 @@ package Modelo;
 
 import Controlador.*;
 import Modelo.*;
+import javafx.scene.layout.GridPane;
+
 import java.util.ArrayList;
 
 public class Tablero {
     private ArrayList<Casilla> tablero;
+    private GridPane tableroGrafico;
     public int turno;
 
-    public Tablero() {
+    public Tablero(GridPane tableroGrafico) {
         this.tablero = new ArrayList<>();
-        this.GenerarTablero();
         this.turno = 0;
+        this.tableroGrafico = tableroGrafico;
+        this.GenerarTablero();
+        
     }
 
-    public ArrayList<Casilla> getTablero() { return tablero; }
+    public ArrayList<Casilla> getTablero() { 
+    	return tablero; 
+    }
 
     @Override
     public String toString() {
@@ -31,7 +38,7 @@ public class Tablero {
 
 	public void GenerarTablero() {
         for (int i = 1; i <= 50; i++) {
-            Casilla.asignarCasillas(i, tablero);
+			Casilla.asignarCasillas(i, tablero, tableroGrafico);
         }
     }
 	
@@ -102,16 +109,16 @@ public class Tablero {
         Pinguino pingu = ListaPinguinos.get(turno);
         switch(dadoSeleccionado) {
         case 0:
-        	resultadoDado = pingu.tirarDadoNormal(dadoSeleccionado);
+        	resultadoDado = pingu.tirarDadoNormal();
         	break;
         case 3:
-        	resultadoDado = pingu.tirarDadoRapido(dadoSeleccionado);
+        	resultadoDado = pingu.tirarDadoRapido();
         	break;
         case 4:
-        	resultadoDado = pingu.tirarDadoLento(dadoSeleccionado);
+        	resultadoDado = pingu.tirarDadoLento();
         	break;
         default:
-        	resultadoDado = pingu.tirarDadoNormal(dadoSeleccionado);
+        	resultadoDado = pingu.tirarDadoNormal();
         	break;
         }
         System.out.println(pingu.getNombre() + " con ID " + pingu.getID() + " ha sacado un " + resultadoDado);

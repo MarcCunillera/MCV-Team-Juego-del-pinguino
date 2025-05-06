@@ -1,21 +1,27 @@
 package Modelo;
 
 import java.util.Random;
+import java.util.ArrayList;
 
-public class Pinguino {
-    private int id;
+public class Pinguino extends Usuarios{
     private String nombre;
     private int posicion;
     private Inventario inventario;
+    private int dadoSeleccionado;
+    
+    public static ArrayList<Pinguino> ListaPinguinos = new ArrayList<>();
 
-    public Pinguino(int id, String nombre) {
-        this.id = id;
+    public Pinguino(int id, String nombre, int posicion) {
+        super(id);
         this.nombre = nombre;
         this.posicion = 0;
         this.inventario = new Inventario();
+        
+        ListaPinguinos.add(this);
     }
-
-    public int tirarDadoNormal(int dadoSeleccionado) {
+    
+    //metodo para tirar dado normal
+    public int tirarDadoNormal() {
         Random random = new Random();
         int resultado = random.nextInt(6) +1;
         return resultado;
@@ -33,7 +39,8 @@ public class Pinguino {
     }
     
     //método para tirar dado lento
-    public int tirarDadoRapido(int dadoSeleccionado) {
+    public int tirarDadoRapido() {
+    	dadoSeleccionado = 3; //revisar
     	Random random = new Random();
         int resultado = 0;
 
@@ -42,14 +49,16 @@ public class Pinguino {
             resultado = random.nextInt(6) + 1;
             return resultado;
         } else {
-        	resultado = random.nextInt(6) +5;
+        	resultado = random.nextInt(6) +1;
+        	resultado = resultado + 4;
         	inventario.eliminarObjeto(3);
         }
         return resultado;
     }
     
     //método para tirar dado rápido
-    public int tirarDadoLento(int dadoSeleccionado) {
+    public int tirarDadoLento() {
+    	dadoSeleccionado = 4; //revisar
     	Random random = new Random();
         int resultado = 0;
 
@@ -65,12 +74,6 @@ public class Pinguino {
     }
     
     //getters y setters
-    public int getID() { 
-    	return id; 
-    }
-    public void setID(int id) { 
-    	this.id = id; 
-    }
     public String getNombre() { 
     	return nombre; 
     }
@@ -90,8 +93,17 @@ public class Pinguino {
     	this.inventario = inventario; 
     }
 
-    @Override
-    public String toString() {
-        return "Pinguino [ID=" + id + ", Nombre=" + nombre + ", Posición=" + posicion + ", Inventario=" + inventario + "]";
-    }
+	public static ArrayList<Pinguino> getListaPinguinos() {
+		return ListaPinguinos;
+	}
+
+	public void setListaPinguinos(ArrayList<Pinguino> listaPinguinos) {
+		ListaPinguinos = listaPinguinos;
+	}
+
+	@Override
+	public String toString() {
+		return "Pinguino [nombre=" + nombre + ", posicion=" + posicion + ", inventario=" + inventario
+				+ ", ListaPinguinos=" + ListaPinguinos + "]";
+	}
 }
