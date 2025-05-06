@@ -56,10 +56,12 @@
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
-			<MenuItem fx:id="newGame" mnemonicParsing="false" text="New" onAction="#handleNewGame"/>
-			<MenuItem fx:id="saveGame" mnemonicParsing="false" text="Save" onAction="#handleSaveGame"/>
-			<MenuItem fx:id="loadGame" mnemonicParsing="false" text="Load" onAction="#handleLoadGame"/>
-			<MenuItem fx:id="quitGame" mnemonicParsing="false" text="Quit" onAction="#handleQuitGame"/>
+            <MenuItem fx:id="newGame" mnemonicParsing="false" text="New" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem fx:id="saveGame" mnemonicParsing="false" text="Save" />
+            <MenuItem fx:id="loadGame" mnemonicParsing="false" text="Load" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem fx:id="quitGame" mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
       </menus>
