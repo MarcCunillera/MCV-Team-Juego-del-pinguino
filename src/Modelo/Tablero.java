@@ -2,19 +2,26 @@ package Modelo;
 
 import Controlador.*;
 import Modelo.*;
+import javafx.scene.layout.GridPane;
+
 import java.util.ArrayList;
 
 public class Tablero {
     private ArrayList<Casilla> tablero;
+    private GridPane tableroGrafico;
     public int turno;
 
-    public Tablero() {
+    public Tablero(GridPane tableroGrafico) {
         this.tablero = new ArrayList<>();
-        this.GenerarTablero();
         this.turno = 0;
+        this.tableroGrafico = tableroGrafico;
+        this.GenerarTablero();
+        
     }
 
-    public ArrayList<Casilla> getTablero() { return tablero; }
+    public ArrayList<Casilla> getTablero() { 
+    	return tablero; 
+    }
 
     @Override
     public String toString() {
@@ -31,7 +38,7 @@ public class Tablero {
 
 	public void GenerarTablero() {
         for (int i = 1; i <= 50; i++) {
-            Casilla.asignarCasillas(i, tablero);
+			Casilla.asignarCasillas(i, tablero, tableroGrafico);
         }
     }
 	
@@ -62,10 +69,10 @@ public class Tablero {
                     }
                 }
                 if (encontradoA) {
-                    System.out.println(pingu.getNombre() + " cayó en un agujero y retrocedió a la casilla " + agujAnt);
+                    System.out.println(pingu.getNombre() + " cayó en un agujero 🕳 y retrocedió a la casilla " + agujAnt);
                     pingu.setPosicion(agujAnt);
                 } else {
-                    System.out.println(pingu.getNombre() + " cayó en un agujero sin salida, vuelve al inicio");
+                    System.out.println(pingu.getNombre() + " cayó en un agujero 🕳 sin salida, vuelve al inicio");
                     pingu.setPosicion(0);
                 }
                 break;
@@ -79,10 +86,10 @@ public class Tablero {
                     }
                 }
                 if (encontradoT) {
-                    System.out.println(pingu.getNombre() + " usó un trineo hasta la casilla " + trinPos);
+                    System.out.println(pingu.getNombre() + " usó un trineo 🛷 hasta la casilla " + trinPos);
                     pingu.setPosicion(trinPos);
                 } else {
-                    System.out.println(pingu.getNombre() + " encontró un trineo roto.");
+                    System.out.println(pingu.getNombre() + " encontró un trineo 🛷 roto :(");
                 }
                 break;
             case 4: //casilla interrogante
@@ -93,13 +100,27 @@ public class Tablero {
 
     //método para mover al pinguino
     public void MoverPinguino(ArrayList<Pinguino> ListaPinguinos, int dadoSeleccionado) {
-        if (ListaPinguinos.isEmpty()) {
+        int resultadoDado = 0;
+    	if (ListaPinguinos.isEmpty()) {
             System.out.println("No hay pingüinos en la partida.");
             return;
         }
 
         Pinguino pingu = ListaPinguinos.get(turno);
-        int resultadoDado = pingu.tirarDado(dadoSeleccionado);
+        switch(dadoSeleccionado) {
+        case 0:
+        	resultadoDado = pingu.tirarDadoNormal();
+        	break;
+        case 3:
+        	resultadoDado = pingu.tirarDadoRapido();
+        	break;
+        case 4:
+        	resultadoDado = pingu.tirarDadoLento();
+        	break;
+        default:
+        	resultadoDado = pingu.tirarDadoNormal();
+        	break;
+        }
         System.out.println(pingu.getNombre() + " con ID " + pingu.getID() + " ha sacado un " + resultadoDado);
 
         int nuevaPos = Math.min(pingu.getPosicion() + resultadoDado, tablero.size() - 1); //Seleccionar a que casilla ír

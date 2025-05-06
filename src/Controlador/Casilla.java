@@ -1,8 +1,12 @@
 package Controlador;
 
 import Modelo.*;
+
 import java.util.ArrayList;
 import java.util.Random;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 
 public class Casilla {
     private int idCasilla;
@@ -41,20 +45,20 @@ public class Casilla {
     	this.tipoCasilla = tipoCasilla; 
     }
 
-    public static void asignarCasillas(int idCasilla, ArrayList<Casilla> tablero) {
+    public static void asignarCasillas(int idCasilla, ArrayList<Casilla> tablero, GridPane tableroGrafico) {
         Random rn = new Random();
         int tipo = rn.nextInt(6);
         String nombreTipo;
         int[] types = {0,1,2,3,4,5};
         
         //control máximos
-        if (contOso >= 4 && tipo == 1) {
+        if (contOso >= 2 && tipo == 1) {
         	types[1] = 0;
         }
         if(contAgujero >= 4 && tipo == 2) {
         	types[2] = 0;
         }
-        if(contTrineo >= 4 && tipo == 3) {
+        if(contTrineo >= 3 && tipo == 3) {
         	types[3] = 0;
         }
         if(contCasillaInterrogante >= 10 && tipo == 4) {
@@ -77,6 +81,18 @@ public class Casilla {
             default: nombreTipo = "Normal"; break;
         }
         tablero.add(new Casilla(idCasilla, tipo, nombreTipo));
+        
+        //Entorno grafico
+        Label label = new Label(nombreTipo);
+        int fila = idCasilla / 10;
+        int columna = idCasilla % 10;
+        
+        try {
+			tableroGrafico.add(label, columna, fila);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     //método para gestionar la casilla interrogante
@@ -90,15 +106,17 @@ public class Casilla {
         
 
         switch (evento) {
-            case 1: idObj = 1; nomObj = "Pez"; cantidad = 1; break;
-            case 2: idObj = 2; nomObj = "Bolas de Nieve"; cantidad = rn.nextInt(3) + 1; break;
+            case 1: idObj = 1; nomObj = "Pez"; cantidad = 1; System.out.println("Ha tocado un pez! 🦈"); break;
+            case 2: idObj = 2; nomObj = "Bolas de Nieve"; cantidad = rn.nextInt(3) + 1; System.out.println("Ha/n tocado " + cantidad + " bola/s de nieve! ❄"); break;
             case 3:
                 if (rn.nextBoolean()) {
                     idObj = 3;
                     nomObj = "Dado Rápido";
+                    System.out.println("Ha tocado un dado Rápido! 🎲");
                 } else {
                     idObj = 4;
                     nomObj = "Dado Lento";
+                    System.out.println("Ha tocado un dado Lento! 🎲");
                 }
                 cantidad = 1;
                 break;

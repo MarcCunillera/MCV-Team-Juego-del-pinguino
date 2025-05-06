@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.sql.*;
 
 public class bbdd {
-
+	
 	public static Connection conectarBaseDatos() {
 	    Connection con = null;
 	    Scanner scan = new Scanner(System.in);
@@ -20,10 +20,11 @@ public class bbdd {
 	    while (con == null) {
 	        //System.out.println("¿Usuario?");
 	        //String USER = scan.nextLine();
-	    	String USER = "DW2425_PIN_GRUP07";
+	        String USER = "DW2425_PIN_GRUP07";
 	        //System.out.println("¿Contraseña?");
 	        //String PWD = scan.nextLine();
-	    	String PWD = "ACMV007";
+	        String PWD = "ACMV007";
+            
 	        try {
 	            Class.forName("oracle.jdbc.driver.OracleDriver");
 	            con = DriverManager.getConnection(URL, USER, PWD);

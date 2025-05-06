@@ -58,13 +58,13 @@ public class Eventos {
         for (ObjetosInventario obj : inventario.getInventario()) {
             if (obj.getIDobjeto() == 1 && obj.getCantidad() > 0) { // Pez
                 inventario.eliminarObjeto(1);  // Eliminar un pez
-                System.out.println("Has sobornado al oso con un pez. ¡Sigues jugando!");
+                System.out.println("Has sobornado al oso con un pez 🦈 ¡Sigues jugando!");
                 return true;
             }
         }
         
         // Si no tiene un pez, verificar el inventario
-        System.out.println("No tienes peces para sobornar al oso.");
+        System.out.println("No tienes peces para sobornar al oso :(");
         
         // Si tiene más de la mitad del inventario lleno
         int cantidadLleno = 0;
