@@ -1,5 +1,8 @@
  package Vista;
 
+import java.sql.Connection;
+
+import Controlador.bbdd;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
@@ -39,6 +42,8 @@ public class PantallaJuegoController {
 
     @FXML
     private Text eventos;
+    
+    private Connection conn;
 
     @FXML
     private void handleDado() {
@@ -56,13 +61,16 @@ public class PantallaJuegoController {
     @FXML
     private void handleNewGame() {
         System.out.println("Nueva partida iniciada.");
-        // Lógica para resetear partida
+        conn = bbdd.conectarBaseDatos();
+        if (conn != null) {
+            int idPartida = bbdd.crearNuevaPartida(conn);
+            System.out.println("Partida creada amb ID: " + idPartida);
+        }
     }
 
     @FXML
     private void handleSaveGame() {
-        System.out.println("Guardando partida...");
-        // Aquí guardarías en la base de datos la partida actual
+
     }
 
     @FXML

@@ -41,18 +41,7 @@ public class bbdd {
 
 	    return con;
 	}
-
-    public static void cerrarConexion(Connection con) {
-        try {
-            if (con != null && !con.isClosed()) {
-                con.close();
-                System.out.println("Conexión cerrada correctamente.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
+	
     public static int crearNuevaPartida(Connection con) {
         int idPartida = -1;
         try {
@@ -72,6 +61,24 @@ public class bbdd {
         return idPartida;
     }
 
+    public static void cerrarConexion(Connection con) {
+        try {
+            if (con != null && !con.isClosed()) {
+                con.close();
+                System.out.println("Conexión cerrada correctamente.");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public static void guardarProgresoPartida(Connection con, int idPartida) {
+        String sql = "UPDATE Partidas SET Hora = CURRENT_TIMESTAMP WHERE ID_Partida = " + idPartida;
+        update(con, sql);
+        System.out.println("Progrés de la partida " + idPartida + " desat.");
+    }
+    
+    
 
     public static void crearJugador(Connection con, String nombre, String contrasena) {
         String sql = "INSERT INTO Jugadores (ID_jugador, Nickname, Contrasena, N_partidas) " +
@@ -127,7 +134,6 @@ public class bbdd {
         }
     }
 
-    // 👇 Asegúrate de que estas funciones están implementadas en tu clase (o añádelas si no están):
     public static void insert(Connection con, String sql) {
         try (Statement stmt = con.createStatement()) {
             stmt.executeUpdate(sql);
