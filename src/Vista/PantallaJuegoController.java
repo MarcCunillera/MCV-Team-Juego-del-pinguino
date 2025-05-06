@@ -43,10 +43,6 @@ public class PantallaJuegoController {
     @FXML private Circle P3;
     @FXML private Circle P4;
     
-    //ONLY FOR TESTING!!!
-    private int p1Position = 0; // Tracks current position (from 0 to 49 in a 5x10 grid)
-    private final int COLUMNS = 5;
-    
     private int turno = 0;
     private ArrayList<Pinguino> pingus = new ArrayList<>();
     private Connection con;
@@ -92,6 +88,8 @@ public class PantallaJuegoController {
     private void handleLoadGame() {
         System.out.println("Loaded game.");
         // TODO
+        eventos.setText("Elige un numero de partida a cargar");
+        System.out.println();
     }
 
     @FXML

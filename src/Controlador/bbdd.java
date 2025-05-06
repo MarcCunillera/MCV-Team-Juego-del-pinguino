@@ -144,5 +144,50 @@ public class bbdd {
         Statement stmt = con.createStatement();
         return stmt.executeQuery(sql);
     }
+    
+    
+    //metodos para guardar tablero y jugadores (mrc)
+    public static int insertarPartida(Connection con, String estado, Integer[] idCasillas) throws SQLException {
+        String sql = "INSERT INTO Partidas (ID_Partida, Num_Partida, Estado, Hora, Data, ID_Casilla) " +
+                     "VALUES (seq_partida.NEXTVAL, ?, ?, SYSTIMESTAMP, SYSDATE, ?)";
+
+        Array array = con.createArrayOf("NUMBER", idCasillas); // Oracle específico: usa STRUCT/ARRAY si es VARRAY
+        PreparedStatement ps = con.prepareStatement(sql, new String[]{"ID_Partida"});
+        ps.setInt(1, generarNumeroPartida(con));
+        ps.setString(2, estado);
+        ps.setArray(3, array); // Oracle puede requerir tipo específico (ver nota abajo)
+        ps.executeUpdate();
+
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            return rs.getInt(1);
+        } else {
+            throw new SQLException("No se pudo generar ID_Partida");
+        }
+    }
+
+    public static void insertarParticipacion(Connection con, int idPartida, int idJugador, int posicion, int dadoLento, int dadoRapido, int peces, int bolasNieve) throws SQLException {
+        String sql = "INSERT INTO Participaciones (ID_Participacion, ID_Partida, ID_Jugador, Jugador_Pos, Dado_Lento, Dado_Rapido, Peces, Bolas_Nieve) " +
+                     "VALUES (seq_participacion.NEXTVAL, ?, ?, ?, ?, ?, ?, ?)";
+
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setInt(1, idPartida);
+        ps.setInt(2, idJugador);
+        ps.setInt(3, posicion);
+        ps.setInt(4, dadoLento);
+        ps.setInt(5, dadoRapido);
+        ps.setInt(6, peces);
+        ps.setInt(7, bolasNieve);
+        ps.executeUpdate();
+    }
+
+    private static int generarNumeroPartida(Connection con) throws SQLException {
+        // Método simple para contar partidas actuales + 1
+        String sql = "SELECT NVL(MAX(Num_Partida), 0) + 1 AS nextNum FROM Partidas";
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(sql);
+        if (rs.next()) return rs.getInt("nextNum");
+        return 1;
+    }
 }
 
