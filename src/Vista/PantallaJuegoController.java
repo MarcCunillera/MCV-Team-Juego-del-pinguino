@@ -169,7 +169,7 @@ public class PantallaJuegoController {
     		int agujAnt = 0;
             boolean encontradoA = false;
             for (int i = pingu.getPosicion() - 1; i >= 0 && !encontradoA; i--) {
-                if (tableroCasillas.get(i).getIDTipoCasilla() == 2) {
+                if (tableroCasillas[i].Agujero != null) { //si el tipo de casilla es agujero
                     encontradoA = true;
                     agujAnt = i;
                 }
