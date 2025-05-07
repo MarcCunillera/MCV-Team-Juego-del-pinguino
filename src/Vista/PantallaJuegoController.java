@@ -132,6 +132,8 @@ public class PantallaJuegoController {
     //metodo para aplicar los efectos de las casillas
     public void efectoCasilla(int position) {
     	TipoCasilla casilla = tableroCasillas[position]; //almacenar la posicion de la casilla
+    	Pinguino pingu = pingus.get(turno);
+        Circle pinguCircle = getPinguinCircle(turno);
     	
     	switch(casilla) {
     	//caso del oso
@@ -164,7 +166,20 @@ public class PantallaJuegoController {
             break;
 			//caso del agujero
     	case Agujero:
-    		
+    		int agujAnt = 0;
+            boolean encontradoA = false;
+            for (int i = pingu.getPosicion() - 1; i >= 0 && !encontradoA; i--) {
+                if (tableroCasillas.get(i).getIDTipoCasilla() == 2) {
+                    encontradoA = true;
+                    agujAnt = i;
+                }
+            }
+            if (encontradoA) {
+                eventos.setText(pingu.getNombre() + " cayó en un agujero 🕳 y retrocedió a la casilla " + agujAnt);
+                pingu.setPosicion(agujAnt);
+            } else {
+                eventos.setText("El pinguino no se mueve de su posición");
+            }
     		break;
     	}
     }
@@ -225,9 +240,9 @@ public class PantallaJuegoController {
     }
     
     //metodo para hacer update de la posicion del pinguino
-    private void updatePenguinPosition(int index) {
-        Pinguino pingu = pingus.get(index);
-        Circle pinguCircle = getPinguinCircle(index);
+    private void updatePenguinPosition() {
+        Pinguino pingu = pingus.get(turno);
+        Circle pinguCircle = getPinguinCircle(turno);
         
         int row = pingu.getPosicion() / 5; //5 X 10 grid
         int col = pingu.getPosicion() % 5;
