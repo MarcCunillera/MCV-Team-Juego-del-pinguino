@@ -65,7 +65,6 @@ public class PantallaJuegoController {
     }
     
     private final int COLUMNS = 5; //Pruevas
-    private boolean efectoAplicado = false;
     
     private static final int numCasillas = 50; //cadena constante
     private TipoCasilla[] tableroCasillas = new TipoCasilla[numCasillas]; //generar las casillas
@@ -141,7 +140,6 @@ public class PantallaJuegoController {
     	switch(casilla) {
     	//caso del oso
     	case Oso:
-    		efectoAplicado = true;
     		if (cantidadPeces.get() > 0) {
     			Platform.runLater(() -> {
                     Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -172,7 +170,7 @@ public class PantallaJuegoController {
     		int agujAnt = 0;
             boolean encontradoA = false;
             for (int i = pingu.getPosicion() - 1; i >= 0 && !encontradoA; i--) {
-                if (tableroCasillas[i].Agujero != null) { //si el tipo de casilla es agujero
+                if (tableroCasillas[i].Agujero != null) { //si el tipo de casilla es agujero //revisar
                     encontradoA = true;
                     agujAnt = i;
                 }
@@ -209,7 +207,7 @@ public class PantallaJuegoController {
     		int trinPos = 0;
             boolean encontradoT = false;
             for (int i = pingu.getPosicion() + 1; i < tableroCasillas.length && !encontradoT; i++) {
-                if (tableroCasillas[i].Trineo != null) {
+                if (tableroCasillas[i].Trineo != null) { //revisar
                     encontradoT = true;
                     trinPos = i;
                 }
