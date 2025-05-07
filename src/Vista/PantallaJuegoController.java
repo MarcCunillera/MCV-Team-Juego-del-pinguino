@@ -2,10 +2,15 @@ package Vista;
 
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import Controlador.*;
 import Modelo.*;
 import java.sql.Connection;
 
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -14,7 +19,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
 
 public class PantallaJuegoController {
-
+	
     // Menu items
     @FXML private MenuItem newGame;
     @FXML private MenuItem saveGame;
@@ -43,6 +48,21 @@ public class PantallaJuegoController {
     @FXML private Circle P3;
     @FXML private Circle P4;
     
+    Random rn = new Random();
+    
+    public enum TipoCasilla {
+    	Normal,
+    	Agujero,
+    	Oso,
+    	Trineo,
+    	Meta
+    }
+    
+    private static final int numCasillas = 50; //cadena constante
+    private TipoCasilla[] tableroCasillas = new TipoCasilla[numCasillas]; //generar las casillas
+    private IntegerProperty cantidadPeces = new SimpleIntegerProperty(0);
+    private IntegerProperty cantidadNieve = new SimpleIntegerProperty(0);
+    
     private int turno = 0;
     private ArrayList<Pinguino> pingus = new ArrayList<>();
     private Connection con;
@@ -57,13 +77,34 @@ public class PantallaJuegoController {
         // This method is called automatically after the FXML is loaded
         // You can set initial values or add listeners here
         eventos.setText("¡El juego ha comenzado!");
-        
+        peces_t.textProperty().bind(Bindings.concat("Peces: ", cantidadPeces.asString()));
+        nieve_t.textProperty().bind(Bindings.concat("Bolas de nieve: ", cantidadNieve.asString()));
         //añadir la lista de pinguinos
         //pingus = Pinguino.getListaPinguinos();
         pingus.add(new Pinguino(1, "Pinguino 1", 0));
         pingus.add(new Pinguino(2, "Pinguino 1", 0));
         pingus.add(new Pinguino(3, "Pinguino 1", 0));
         pingus.add(new Pinguino(4, "Pinguino 1", 0));
+    }
+    
+    //inicializar tablero
+    private void iniciarTablero() {
+    	Arrays.fill(tableroCasillas, TipoCasilla.Normal);
+    	
+    	colocarCasillasEspeciales(TipoCasilla.Agujero, 4);
+    }
+    
+    //metodo para colocar las casillas especiales
+    private void colocarCasillasEspeciales(TipoCasilla tipo, int cantidad) {
+    	for (int i = 0; i < cantidad; i++) {
+			int position;
+			do {
+				position = rn.nextInt(tableroCasillas.length -1) +1;
+			} while (tableroCasillas[position] != TipoCasilla.Normal);
+			
+			tableroCasillas[position] = tipo;
+			
+		}
     }
     
 

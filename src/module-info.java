@@ -4,6 +4,7 @@ module MCVTeam {
 	requires transitive javafx.graphics;
 	requires javafx.controls;
 	requires javafx.fxml;
+	requires javafx.base;
 	
 	opens Vista to javafx.fxml;
 	
