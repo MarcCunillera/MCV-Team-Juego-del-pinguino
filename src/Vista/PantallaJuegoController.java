@@ -114,6 +114,9 @@ public class PantallaJuegoController {
     	
     	//imagenes
     	mostrarImagenesAgujero();
+    	mostrarImagenesInterrogante();
+    	mostrarImagenesOso();
+    	mostrarImagenesTrineo();
     }
     
     //metodo para colocar las casillas especiales
@@ -365,6 +368,60 @@ public class PantallaJuegoController {
     			
     			//añadir las imagenes
     			Image image = new Image(getClass().getResource("/Resources/agujero.png").toExternalForm());
+    			ImageView imageView = new ImageView(image);
+    			imageView.setFitWidth(40);
+    			imageView.setFitHeight(40);
+    			imageView.setPreserveRatio(true);
+    			tablero.add(imageView, col, row);
+    		}
+    	}
+    }
+    
+    //imagen trineo
+    private void mostrarImagenesTrineo() {
+    	for(int i = 0; i < tableroCasillas.length; i++) {
+    		if(tableroCasillas[i] == TipoCasilla.Trineo) {
+    			int row = i / COLUMNS;
+    			int col = i % COLUMNS;
+    			
+    			//añadir las imagenes
+    			Image image = new Image(getClass().getResource("/Resources/trineo.png").toExternalForm());
+    			ImageView imageView = new ImageView(image);
+    			imageView.setFitWidth(40);
+    			imageView.setFitHeight(40);
+    			imageView.setPreserveRatio(true);
+    			tablero.add(imageView, col, row);
+    		}
+    	}
+    }
+    
+    //imagen interrognate
+    private void mostrarImagenesInterrogante() {
+    	for(int i = 0; i < tableroCasillas.length; i++) {
+    		if(tableroCasillas[i] == TipoCasilla.Interrogante) {
+    			int row = i / COLUMNS;
+    			int col = i % COLUMNS;
+    			
+    			//añadir las imagenes
+    			Image image = new Image(getClass().getResource("/Resources/interrogante.png").toExternalForm());
+    			ImageView imageView = new ImageView(image);
+    			imageView.setFitWidth(40);
+    			imageView.setFitHeight(40);
+    			imageView.setPreserveRatio(true);
+    			tablero.add(imageView, col, row);
+    		}
+    	}
+    }
+    
+    //imagen oso
+    private void mostrarImagenesOso() {
+    	for(int i = 0; i < tableroCasillas.length; i++) {
+    		if(tableroCasillas[i] == TipoCasilla.Oso) {
+    			int row = i / COLUMNS;
+    			int col = i % COLUMNS;
+    			
+    			//añadir las imagenes
+    			Image image = new Image(getClass().getResource("/Resources/oso.png").toExternalForm());
     			ImageView imageView = new ImageView(image);
     			imageView.setFitWidth(40);
     			imageView.setFitHeight(40);
