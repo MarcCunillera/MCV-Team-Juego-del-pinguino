@@ -33,12 +33,15 @@
 -->
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -49,6 +52,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
 
 <VBox prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.PantallaJuegoController">
   <children>
@@ -70,20 +74,34 @@
          <bottom>
             <HBox BorderPane.alignment="CENTER">
                <children>
-                  <AnchorPane minHeight="200.0" minWidth="300.0">
+                  <AnchorPane minHeight="156.0" minWidth="199.0" prefHeight="200.0" prefWidth="330.0">
                      <children>
+<<<<<<< Updated upstream
                         <Text fx:id="dadoResultText" strokeType="OUTSIDE" strokeWidth="0.0" text="Ha salido: " AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0">
+=======
+                        <ImageView fitHeight="200.0" fitWidth="332.0" layoutY="1.0">
+                           <image>
+                              <Image url="@../../../../ImagenesTablero/Fondo_Hielo.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="textoDado" layoutX="81.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ha Salido: 0" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="33.0">
+>>>>>>> Stashed changes
                            <font>
                               <Font size="32.0" />
                            </font>
                         </Text>
+<<<<<<< Updated upstream
                         <Button fx:id="dado" layoutY="58.0" mnemonicParsing="false" onAction="#handleDado" text="Dado" AnchorPane.leftAnchor="110.0" AnchorPane.topAnchor="100.0">
+=======
+                        <Button fx:id="botonLanzarDado" layoutX="118.0" layoutY="110.0" mnemonicParsing="false" onAction="#handleDado" text="Dado" AnchorPane.leftAnchor="118.0" AnchorPane.topAnchor="110.0">
+>>>>>>> Stashed changes
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Button>
                      </children>
                   </AnchorPane>
+<<<<<<< Updated upstream
                   <ScrollPane minHeight="200.0" minWidth="680.0" vbarPolicy="NEVER">
                     <content>
                       <AnchorPane>
@@ -138,6 +156,12 @@
                   <AnchorPane minHeight="200.0" minWidth="300.0">
                      <children>
                         <Text fx:id="eventos" strokeType="OUTSIDE" strokeWidth="0.0" text="Evento ocurrido" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0">
+=======
+                  <Group />
+                  <AnchorPane minHeight="200.0" minWidth="156.0" prefHeight="200.0" prefWidth="886.0">
+                     <children>
+                        <Text fx:id="textoEventos" strokeType="OUTSIDE" strokeWidth="0.0" text="Evento ocurrido" wrappingWidth="656.9736328125" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="30.0">
+>>>>>>> Stashed changes
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -159,9 +183,9 @@
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -169,8 +193,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
+<<<<<<< Updated upstream
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Start">
                      <font>
                         <Font size="30.0" />
@@ -194,12 +222,338 @@
                         <Insets left="80.0" />
                      </GridPane.margin></Circle>
                   <Circle fx:id="P4" fill="YELLOW" radius="15.0" stroke="BLACK" strokeType="INSIDE">
+=======
+                  <ImageView fitHeight="47.0" fitWidth="47.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/7.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="49.0" fitWidth="54.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/8.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="44.0" fitWidth="48.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/9.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="49.0" fitWidth="52.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/10.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="49.0" fitWidth="48.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/5.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="48.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/4.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="51.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/3.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="256.0" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/Start.png" />
+                     </image>
+                  </ImageView>
+                  <Circle fx:id="jugador1" fill="BLUE" radius="15.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></Circle>
+                  <Circle fx:id="jugador2" fill="RED" radius="15.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin></Circle>
+                  <Circle fx:id="jugador3" fill="GREEN" radius="15.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="80.0" />
+                     </GridPane.margin></Circle>
+                  <Circle fx:id="jugador4" fill="YELLOW" radius="15.0" stroke="BLACK" strokeType="INSIDE" GridPane.rowIndex="3">
+>>>>>>> Stashed changes
                      <GridPane.margin>
                         <Insets left="120.0" />
                      </GridPane.margin></Circle>
+                  <Group GridPane.columnIndex="4" GridPane.rowIndex="12" />
+                  <Group GridPane.rowIndex="3" />
+                  <Group GridPane.rowIndex="3" />
+                  <ImageView fitHeight="46.0" fitWidth="256.0" GridPane.columnIndex="4" GridPane.rowIndex="12">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/Finish.png" />
+                     </image>
+                  </ImageView>
+                  <Group GridPane.rowIndex="3" />
+                  <TextFlow prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="49.0">
+                           <image>
+                              <Image url="@../../../../ImagenesTablero/6.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </TextFlow>
+                  <TextFlow prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="51.0">
+                           <image>
+                              <Image url="@../../../../ImagenesTablero/2.png" />
+                           </image>
+                        </ImageView>
+                        <Group />
+                     </children>
+                  </TextFlow>
+                  <ImageView fitHeight="47.0" fitWidth="50.0" GridPane.rowIndex="5">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/11.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="52.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/12.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="52.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/13.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="49.0" fitWidth="55.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/14.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="51.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/15.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="49.0" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/16.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/17.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/18.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="57.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/19.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="53.0" GridPane.columnIndex="4" GridPane.rowIndex="6">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/20.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="51.0" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/21.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="49.0" fitWidth="54.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/22.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="56.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/23.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="44.0" fitWidth="53.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/24.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="55.0" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/25.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="50.0" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/26.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="44.0" fitWidth="51.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/27.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="56.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/28.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="52.0" GridPane.columnIndex="3" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/29.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="54.0" GridPane.columnIndex="4" GridPane.rowIndex="8">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/30.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="42.0" fitWidth="50.0" GridPane.rowIndex="9">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/31.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="41.0" fitWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/32.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="57.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/33.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="41.0" fitWidth="48.0" GridPane.columnIndex="3" GridPane.rowIndex="9">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/34.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="47.0" fitWidth="58.0" GridPane.columnIndex="4" GridPane.rowIndex="9">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/35.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="49.0" fitWidth="51.0" GridPane.rowIndex="10">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/36.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="51.0" fitWidth="56.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/37.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="58.0" GridPane.columnIndex="2" GridPane.rowIndex="10">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/38.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="51.0" GridPane.columnIndex="3" GridPane.rowIndex="10">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/39.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="49.0" fitWidth="57.0" GridPane.columnIndex="4" GridPane.rowIndex="10">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/40.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="53.0" GridPane.columnIndex="4" GridPane.rowIndex="11">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/45.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="57.0" GridPane.columnIndex="3" GridPane.rowIndex="12">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/49.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="53.0" fitWidth="61.0" GridPane.columnIndex="2" GridPane.rowIndex="12">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/48.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="55.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/47.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="59.0" GridPane.rowIndex="12">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/46.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="53.0" fitWidth="60.0" GridPane.columnIndex="3" GridPane.rowIndex="11">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/44.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="51.0" fitWidth="58.0" GridPane.columnIndex="2" GridPane.rowIndex="11">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/43.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="57.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/42.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="50.0" fitWidth="58.0" GridPane.rowIndex="11">
+                     <image>
+                        <Image url="@../../../../ImagenesTablero/41.png" />
+                     </image>
+                  </ImageView>
                </children>
             </GridPane>
          </center>
       </BorderPane>
+      <ScrollPane minHeight="200.0" minWidth="680.0" prefHeight="200.0" prefWidth="814.0" vbarPolicy="NEVER">
+        <content>
+          <AnchorPane prefHeight="194.0" prefWidth="1159.0">
+               <children>
+                  <Text fx:id="textoRapido" layoutX="72.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dado rápido: 0" AnchorPane.leftAnchor="72.0" AnchorPane.topAnchor="29.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="textoLento" layoutX="356.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dado lento: 0" AnchorPane.leftAnchor="356.0" AnchorPane.topAnchor="31.626953125">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="textoPeces" layoutX="664.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Peces: 0" AnchorPane.leftAnchor="664.0" AnchorPane.topAnchor="30.626953125">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="textoNieve" layoutX="928.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bolas de nieve: 0" AnchorPane.leftAnchor="928.0" AnchorPane.rightAnchor="132.2919921875" AnchorPane.topAnchor="31.626953125">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="botonUsarRapido" layoutX="117.0" layoutY="90.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="106.0" text="Usar" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="90.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="botonUsarLento" layoutX="395.0" layoutY="90.0" mnemonicParsing="false" text="Usar" AnchorPane.leftAnchor="395.0" AnchorPane.topAnchor="90.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="botonUsarPeces" layoutX="667.0" layoutY="90.0" mnemonicParsing="false" text="Usar" AnchorPane.leftAnchor="667.0" AnchorPane.topAnchor="90.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="botonUsarNieve" layoutX="979.0" layoutY="90.0" mnemonicParsing="false" text="Usar" AnchorPane.leftAnchor="979.0" AnchorPane.topAnchor="90.0">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
   </children>
 </VBox>
