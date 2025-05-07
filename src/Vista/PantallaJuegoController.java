@@ -181,6 +181,29 @@ public class PantallaJuegoController {
                 eventos.setText("El pinguino no se mueve de su posición");
             }
     		break;
+    		//caso de interrogante
+    	case Interrogante:
+    		if(rn.nextBoolean()) {
+    			if(cantidadNieve.get() >= 6) { //COMPROBAR QUE NO SUPERE EL MAXIMO DE BOLAS DE NIEVE
+    				cantidadNieve.set(6);
+    				eventos.setText("Ya tienes el maximo de Nieve possible " + cantidadNieve.get());
+    			}else { //EN CASO DE QUE NO SUPERE EL LIMITE
+    				int nieve = rn.nextInt(3) + 1;
+        			cantidadNieve.set(cantidadNieve.get() + nieve);
+        			eventos.setText("Has conseguido " + nieve + " Bolas de Nieve!!!");
+    			}
+    		}else {
+    			if(cantidadPeces.get() >= 2 ) { //COMPROBAR QUE NO TENGA MAS DE 2 PECES
+    				eventos.setText("Ya tienes el maximo de peces " + cantidadPeces.get());
+    			}else { //EN CASO DE QUE TENGA MAS DE 2 PECES
+    				cantidadPeces.set(cantidadPeces.get() + 1);
+        			eventos.setText("Has conseguido 1 Pez!!!");
+    			}
+    		}
+    		break;
+    		//Caso trineo
+    	case Trineo:
+    		
     	}
     }
     
@@ -268,7 +291,7 @@ public class PantallaJuegoController {
         }
         
         //Actualizar el tablero de forma visual
-        updatePenguinPosition(turno);
+        updatePenguinPosition();
         int nuevaPosicion = pinguActual.getPosicion();
         
         if (nuevaPosicion >= 49) {
@@ -296,7 +319,7 @@ public class PantallaJuegoController {
         	pinguActual.setPosicion(pinguActual.getPosicion() + resulRapido);
         }
         
-        updatePenguinPosition(turno);
+        updatePenguinPosition();
     }
 
     @FXML
