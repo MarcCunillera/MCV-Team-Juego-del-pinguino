@@ -14,6 +14,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.Text;
@@ -55,8 +57,11 @@ public class PantallaJuegoController {
     	Agujero,
     	Oso,
     	Trineo,
+    	Interrogante,
     	Meta
     }
+    
+    private final int COLUMNS = 5; //Pruevas
     
     private static final int numCasillas = 50; //cadena constante
     private TipoCasilla[] tableroCasillas = new TipoCasilla[numCasillas]; //generar las casillas
@@ -85,13 +90,26 @@ public class PantallaJuegoController {
         pingus.add(new Pinguino(2, "Pinguino 1", 0));
         pingus.add(new Pinguino(3, "Pinguino 1", 0));
         pingus.add(new Pinguino(4, "Pinguino 1", 0));
+        
+        iniciarTablero();
     }
     
     //inicializar tablero
     private void iniciarTablero() {
     	Arrays.fill(tableroCasillas, TipoCasilla.Normal);
     	
+    	//meter casillas especiales aleatorias
     	colocarCasillasEspeciales(TipoCasilla.Agujero, 4);
+    	colocarCasillasEspeciales(TipoCasilla.Oso, 3);
+    	colocarCasillasEspeciales(TipoCasilla.Interrogante, 7);
+    	colocarCasillasEspeciales(TipoCasilla.Trineo, 4);
+    	
+    	//meter casilla inicio y fin (fijas)
+    	tableroCasillas[0] = TipoCasilla.Normal;
+    	tableroCasillas[49] = TipoCasilla.Meta;
+    	
+    	//imagenes
+    	mostrarImagenesAgujero();
     }
     
     //metodo para colocar las casillas especiales
@@ -240,4 +258,26 @@ public class PantallaJuegoController {
         System.out.println("Snow.");
         // TODO
     }
+    
+    //////////////////////////// PARA INSERTAR LAS IMAGENES ////////////////////////
+    
+    
+    //imagen agujero
+    private void mostrarImagenesAgujero() {
+    	for(int i = 0; i < tableroCasillas.length; i++) {
+    		if(tableroCasillas[i] == TipoCasilla.Agujero) {
+    			int row = i / COLUMNS;
+    			int col = i % COLUMNS;
+    			
+    			//añadir las imagenes
+    			Image image = new Image(getClass().getResource("/Resources/agujero.png").toExternalForm());
+    			ImageView imageView = new ImageView(image);
+    			imageView.setFitWidth(40);
+    			imageView.setFitHeight(40);
+    			imageView.setPreserveRatio(true);
+    			tablero.add(imageView, col, row);
+    		}
+    	}
+    }
+    
 }
