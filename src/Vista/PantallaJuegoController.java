@@ -178,7 +178,7 @@ public class PantallaJuegoController {
                 }
             }
             if (encontradoA) {
-                eventos.setText(pingu.getNombre() + " cayó en un agujero 🕳 y retrocedió a la casilla " + agujAnt);
+                eventos.setText(pingu.getID() + " cayó en un agujero 🕳 y retrocedió a la casilla " + agujAnt);
                 pingu.setPosicion(agujAnt);
             } else {
                 eventos.setText("El pinguino no se mueve de su posición");
@@ -206,7 +206,21 @@ public class PantallaJuegoController {
     		break;
     		//Caso trineo
     	case Trineo:
-    		
+    		int trinPos = 0;
+            boolean encontradoT = false;
+            for (int i = pingu.getPosicion() + 1; i < tableroCasillas.length && !encontradoT; i++) {
+                if (tableroCasillas[i].Trineo != null) {
+                    encontradoT = true;
+                    trinPos = i;
+                }
+            }
+            if (encontradoT) {
+                eventos.setText(pingu.getID() + " usó un trineo 🛷 hasta la casilla " + trinPos);
+                pingu.setPosicion(trinPos);
+            } else {
+                eventos.setText(pingu.getNombre() + " encontró un trineo 🛷 roto :(");
+            }
+            break;
     	}
     }
     
