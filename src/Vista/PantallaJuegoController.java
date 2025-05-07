@@ -3,17 +3,20 @@ package Vista;
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Optional;
 
 import Controlador.*;
 import Modelo.*;
 import java.sql.Connection;
 
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -62,6 +65,7 @@ public class PantallaJuegoController {
     }
     
     private final int COLUMNS = 5; //Pruevas
+    private boolean efectoAplicado = false;
     
     private static final int numCasillas = 50; //cadena constante
     private TipoCasilla[] tableroCasillas = new TipoCasilla[numCasillas]; //generar las casillas
@@ -125,6 +129,58 @@ public class PantallaJuegoController {
 		}
     }
     
+    //metodo para aplicar los efectos de las casillas
+    public void efectoCasilla(int position) {
+    	TipoCasilla casilla = tableroCasillas[position]; //almacenar la posicion de la casilla
+    	
+    	switch(casilla) {
+    	//caso del oso
+    	case Oso:
+    		efectoAplicado = true;
+    		if (cantidadPeces.get() > 0) {
+    			Platform.runLater(() -> {
+                    Alert alert = new Alert(AlertType.CONFIRMATION);
+                    alert.setTitle("Alerta! oso a la vista");
+                    alert.setHeaderText("quieres sobornar al oso?");
+                    alert.setContentText("Peces para sobornarlo: " + cantidadPeces.get());
+                    
+                    ButtonType siELec = new ButtonType("Sí", ButtonBar.ButtonData.YES);
+                    ButtonType noElec = new ButtonType("No", ButtonBar.ButtonData.NO);
+                    alert.getButtonTypes().setAll(siELec, noElec);
+                    
+                    Optional<ButtonType> result = alert.showAndWait();
+                    if (result.isPresent() && result.get() == siELec) {
+                        cantidadPeces.set(cantidadPeces.get() - 1);
+                        eventos.setText("Has sobornado al oso con 1 pez.");
+                    } else {
+                        //volver al inicio
+                    	alInicio();
+                    }
+                });
+            } else {
+                //volver al inicio
+            	alInicio();
+            }
+            break;
+			//caso del agujero
+    	case Agujero:
+    		
+    		break;
+    	}
+    }
+    
+    //metodo para volver al inicio
+    private void alInicio() {
+    	Pinguino pingu = pingus.get(turno);
+        Circle pinguCircle = getPinguinCircle(turno);
+        
+        GridPane.setRowIndex(pinguCircle, 0);
+        GridPane.setColumnIndex(pinguCircle, 0);
+        
+        eventos.setText("Un oso te ha atrapado y vuelves al inicio :(");
+        
+        turno = (turno + 1) % pingus.size(); //Asegura que el turno vaya de uno en uno
+    }
 
     // Button and menu actions
 
