@@ -288,6 +288,9 @@ public class PantallaJuegoController {
         GridPane.setRowIndex(pinguCircle, row);
         GridPane.setColumnIndex(pinguCircle, col);
         
+        int posicion = pingu.getPosicion();
+        efectoCasilla(posicion);
+        
         turno = (turno + 1) % pingus.size(); //Asegura que el turno vaya de uno en uno
     }
 
@@ -368,7 +371,7 @@ public class PantallaJuegoController {
         // TODO
     }
     
-    //////////////////////////// PARA INSERTAR LAS IMAGENES ////////////////////////
+    //////////////////////////// INSERTAR IMAGENES ///////////////////////////////////
     
     
     //imagen agujero
