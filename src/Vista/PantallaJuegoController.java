@@ -170,7 +170,7 @@ public class PantallaJuegoController {
     		int agujAnt = 0;
             boolean encontradoA = false;
             for (int i = pingu.getPosicion() - 1; i >= 0 && !encontradoA; i--) {
-                if (tableroCasillas[i].Agujero != null) { //si el tipo de casilla es agujero //revisar
+                if (tableroCasillas[i] == TipoCasilla.Agujero) { //si el tipo de casilla es agujero //revisar
                     encontradoA = true;
                     agujAnt = i;
                 }
@@ -207,7 +207,7 @@ public class PantallaJuegoController {
     		int trinPos = 0;
             boolean encontradoT = false;
             for (int i = pingu.getPosicion() + 1; i < tableroCasillas.length && !encontradoT; i++) {
-                if (tableroCasillas[i].Trineo != null) { //revisar
+                if (tableroCasillas[i] == TipoCasilla.Trineo) { //revisar
                     encontradoT = true;
                     trinPos = i;
                 }
@@ -219,6 +219,17 @@ public class PantallaJuegoController {
                 eventos.setText(pingu.getNombre() + " encontró un trineo 🛷 roto :(");
             }
             break;
+            
+            //en caso de caer a la casilla del final
+    	case Meta:
+    		Alert alert = new Alert(AlertType.INFORMATION);
+    		alert.setTitle("El pinguino: " + pingu.getID() + " ha llegado a la meta!!");
+    		alert.setHeaderText("El juego termina");
+    		alert.showAndWait();
+    		break;
+    	case Normal:
+    		eventos.setText("Casilla normal, todo tranquilo");
+    		break;
     	}
     }
     
