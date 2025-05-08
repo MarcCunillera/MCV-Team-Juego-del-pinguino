@@ -52,20 +52,20 @@
 
 <VBox prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vista.PantallaJuegoController">
   <children>
-    <MenuBar VBox.vgrow="NEVER">
-      <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem fx:id="newGame" mnemonicParsing="false" text="New" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="saveGame" mnemonicParsing="false" text="Save" />
-            <MenuItem fx:id="loadGame" mnemonicParsing="false" text="Load" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem fx:id="quitGame" mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-      </menus>
-    </MenuBar>
+	<MenuBar VBox.vgrow="NEVER">
+	    <menus>
+	        <Menu mnemonicParsing="false" text="File">
+	            <items>
+	                <MenuItem fx:id="newGame" mnemonicParsing="false" text="New" onAction="#handleNewGame"/>
+	                <SeparatorMenuItem mnemonicParsing="false"/>
+	                <MenuItem fx:id="saveGame" mnemonicParsing="false" text="Save" onAction="#handleSaveGame"/>
+	                <MenuItem fx:id="loadGame" mnemonicParsing="false" text="Load" onAction="#handleLoadGame"/>
+	                <SeparatorMenuItem mnemonicParsing="false"/>
+	                <MenuItem fx:id="quitGame" mnemonicParsing="false" text="Quit" onAction="#handleQuitGame"/>
+	            </items>
+	        </Menu>
+	    </menus>
+	</MenuBar>
       <BorderPane>
          <bottom>
             <HBox BorderPane.alignment="CENTER">

@@ -240,31 +240,94 @@ public class PantallaJuegoController {
     @FXML
     private void handleNewGame() {
         System.out.println("New game.");
-        // TODO
+        try {
+            // Crea nueva partida
+            idPartida = bbdd.crearNuevaPartida(con);
+            eventos.setText("Nueva partida creada con ID: " + idPartida);
+
+            // Crea una participación para cada jugador
+            for (Pinguino pingu : pingus) {
+                int idJugador = bbdd.obtenerIdJugador(con, pingu.getNombre());
+                if (idJugador == -1) {
+                    // Si no existe el jugador, lo crea
+                    bbdd.crearJugador(con, pingu.getNombre(), "defaultPwd"); // Usa una mejor contraseña en producción
+                    idJugador = bbdd.obtenerIdJugador(con, pingu.getNombre());
+                }
+                bbdd.crearParticipacion(con, idPartida, idJugador);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            eventos.setText("Error al crear nueva partida.");
+        }
     }
 
     @FXML
     private void handleSaveGame() {
         System.out.println("Saved game.");
-        // TODO
-        for(Pinguino pingu: pingus) {
-        	bbdd.actualizarParticipacion(con, idPartida, pingu.getNombre(), pingu.getPosicion());
+
+        Connection con = bbdd.conectarBaseDatos(); // <= IMPORTANTE: abrir conexión
+        if (con == null) {
+            eventos.setText("Error al conectar con la base de datos.");
+            return;
         }
+
+        for (Pinguino pingu : pingus) {
+            bbdd.actualizarParticipacion(con, idPartida, pingu.getNombre(), pingu.getPosicion());
+        }
+
+        eventos.setText("Partida guardada correctamente.");
     }
+
 
     @FXML
     private void handleLoadGame() {
         System.out.println("Loaded game.");
-        // TODO
-        eventos.setText("Elige un numero de partida a cargar");
-        System.out.println();
+        int numeroPartida = obtenerNumeroPartidaDesdeInput();
+
+        if (numeroPartida != -1) {
+            try {
+                idPartida = bbdd.obtenerIdPartida(con, numeroPartida);
+                if (idPartida != -1) {
+                    eventos.setText("Partida cargada con ID: " + idPartida);
+                    // Aquí podrías restaurar datos del tablero o jugadores
+                } else {
+                    eventos.setText("No se encontró la partida con ese número.");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                eventos.setText("Error al cargar la partida.");
+            }
+        }
     }
+    
+    private int obtenerNumeroPartidaDesdeInput() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Cargar partida");
+        dialog.setHeaderText("Carga de partida");
+        dialog.setContentText("Introduce el número de partida:");
+
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            try {
+                return Integer.parseInt(result.get());
+            } catch (NumberFormatException e) {
+                eventos.setText("Número inválido. Usa solo dígitos.");
+            }
+        } else {
+            eventos.setText("Carga cancelada.");
+        }
+
+        return -1;
+    }
+
 
     @FXML
     private void handleQuitGame() {
         System.out.println("Exit...");
-        // TODO
+        Platform.exit(); // cierra aplicación JavaFX
+        // Alternativamente: System.exit(0);
     }
+
     
     //método para elegir de forma visual la ficha a mover
     private Circle getPinguinCircle(int index) {
