@@ -89,10 +89,10 @@ public class PantallaJuegoController {
         nieve_t.textProperty().bind(Bindings.concat("Bolas de nieve: ", cantidadNieve.asString()));
         //añadir la lista de pinguinos
         //pingus = Pinguino.getListaPinguinos();
-        pingus.add(new Pinguino(1, "Pinguino 1", 0));
-        pingus.add(new Pinguino(2, "Pinguino 1", 0));
-        pingus.add(new Pinguino(3, "Pinguino 1", 0));
-        pingus.add(new Pinguino(4, "Pinguino 1", 0));
+        pingus.add(new Pinguino(1, "Pinguino 1", 0, 0, 0, 0, 0, 0));
+        pingus.add(new Pinguino(2, "Pinguino 1", 0, 0, 0, 0, 0, 0));
+        pingus.add(new Pinguino(3, "Pinguino 1", 0, 0, 0, 0, 0, 0));
+        pingus.add(new Pinguino(4, "Pinguino 1", 0, 0, 0, 0, 0, 0));
         
         iniciarTablero();
     }

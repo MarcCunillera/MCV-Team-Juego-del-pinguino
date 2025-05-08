@@ -8,14 +8,71 @@ public class Pinguino extends Usuarios{
     private int posicion;
     private Inventario inventario;
     private int dadoSeleccionado;
+    private int dadoNormal;
+    private int dadoLento;
+    private int dadoRapido;
+    private int bolasNieve;
+    private int pescado;
     
-    public static ArrayList<Pinguino> ListaPinguinos = new ArrayList<>();
+    public int getDadoSeleccionado() {
+		return dadoSeleccionado;
+	}
 
-    public Pinguino(int id, String nombre, int posicion) {
+	public void setDadoSeleccionado(int dadoSeleccionado) {
+		this.dadoSeleccionado = dadoSeleccionado;
+	}
+
+	public int getDadoNormal() {
+		return dadoNormal;
+	}
+
+	public void setDadoNormal(int dadoNormal) {
+		this.dadoNormal = dadoNormal;
+	}
+
+	public int getDadoLento() {
+		return dadoLento;
+	}
+
+	public void setDadoLento(int dadoLento) {
+		this.dadoLento = dadoLento;
+	}
+
+	public int getDadoRapido() {
+		return dadoRapido;
+	}
+
+	public void setDadoRapido(int dadoRapido) {
+		this.dadoRapido = dadoRapido;
+	}
+
+	public int getBolasNieve() {
+		return bolasNieve;
+	}
+
+	public void setBolasNieve(int bolasNieve) {
+		this.bolasNieve = bolasNieve;
+	}
+
+	public int getPescado() {
+		return pescado;
+	}
+
+	public void setPescado(int pescado) {
+		this.pescado = pescado;
+	}
+
+	public static ArrayList<Pinguino> ListaPinguinos = new ArrayList<>();
+
+    public Pinguino(int id, String nombre, int posicion, int dadoNormal, int dadoLento, int dadoRapido, int bolasNieve, int pescado) {
         super(id);
         this.nombre = nombre;
-        this.posicion = 0;
-        this.inventario = new Inventario();
+        this.posicion = posicion;
+        this.dadoNormal = dadoNormal;
+        this.dadoLento = dadoLento;
+        this.dadoRapido = dadoRapido;
+        this.bolasNieve = bolasNieve;
+        this.pescado = pescado;
         
         ListaPinguinos.add(this);
     }
