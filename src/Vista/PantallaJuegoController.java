@@ -90,9 +90,9 @@ public class PantallaJuegoController {
         //añadir la lista de pinguinos
         //pingus = Pinguino.getListaPinguinos();
         pingus.add(new Pinguino(1, "Pinguino 1", 0, 0, 0, 0, 0, 0));
-        pingus.add(new Pinguino(2, "Pinguino 1", 0, 0, 0, 0, 0, 0));
-        pingus.add(new Pinguino(3, "Pinguino 1", 0, 0, 0, 0, 0, 0));
-        pingus.add(new Pinguino(4, "Pinguino 1", 0, 0, 0, 0, 0, 0));
+        pingus.add(new Pinguino(2, "Pinguino 2", 0, 0, 0, 0, 0, 0));
+        pingus.add(new Pinguino(3, "Pinguino 3", 0, 0, 0, 0, 0, 0));
+        pingus.add(new Pinguino(4, "Pinguino 4", 0, 0, 0, 0, 0, 0));
         
         iniciarTablero();
     }
